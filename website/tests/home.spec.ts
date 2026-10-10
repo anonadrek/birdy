@@ -907,25 +907,38 @@ test.describe('så funkar det och fältboken', () => {
 });
 
 test.describe('appkarusellen', () => {
-  test('sex riktiga skärmar och pilarna byter text (SV)', async ({ page }) => {
+  test('tio riktiga skärmar och pilarna byter text (SV)', async ({ page }) => {
     const errors = trackConsoleErrors(page);
     await page.goto('/sv/');
     const tour = page.locator('#app');
-    await expect(tour.locator('.slide')).toHaveCount(6);
-    await expect(tour.locator('.slide .phone picture source[type="image/avif"]')).toHaveCount(6);
-    await expect(tour.locator('.plno span')).toHaveText(['Identifiera', 'Ljud-ID', 'Match', 'Mina arter', 'Uppslagsverk', 'Artprofil']);
-    await expect(tour.locator('.plno b')).toHaveText(['Pl. I', 'Pl. II', 'Pl. III', 'Pl. IV', 'Pl. V', 'Pl. VI']);
+    await expect(tour.locator('.slide')).toHaveCount(10);
+    await expect(tour.locator('.slide .phone picture source[type="image/avif"]')).toHaveCount(10);
+    await expect(tour.locator('.plno span')).toHaveText([
+      'Identifiera',
+      'Artprofil',
+      'Mina arter',
+      'Ljud-ID',
+      'Veckans uppslag',
+      'Troférummet',
+      'Uppslagsverk',
+      'Premium',
+      'Premium',
+      'Premium',
+    ]);
+    await expect(tour.locator('.plno b')).toHaveText([
+      'Pl. I', 'Pl. II', 'Pl. III', 'Pl. IV', 'Pl. V', 'Pl. VI', 'Pl. VII', 'Pl. VIII', 'Pl. IX', 'Pl. X',
+    ]);
     await tour.scrollIntoViewIfNeeded();
     const title = tour.locator('[data-ch]');
     await expect(title).toHaveText('Tre sätt att fånga');
     await tour.locator('[data-next]').click();
-    await expect(title).toHaveText('Lyssna efter sång');
-    await tour.locator('[data-next]').click();
-    await expect(title).toHaveText('Ärlig om hur säker den är');
-    await tour.locator('[data-prev]').click();
-    await expect(title).toHaveText('Lyssna efter sång');
-    await tour.locator('[data-track]').press('End');
     await expect(title).toHaveText('Allt om arten på ett uppslag');
+    await tour.locator('[data-next]').click();
+    await expect(title).toHaveText('Din egen fältbok');
+    await tour.locator('[data-prev]').click();
+    await expect(title).toHaveText('Allt om arten på ett uppslag');
+    await tour.locator('[data-track]').press('End');
+    await expect(title).toHaveText('Fältdagboken som PDF');
     expect(errors).toEqual([]);
   });
 
@@ -933,9 +946,68 @@ test.describe('appkarusellen', () => {
     for (const [path, lang] of [['/sv/', 'sv'], ['/', 'en']] as const) {
       await page.goto(path);
       const screens = await page.locator('#app .slide').evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.screen));
-      expect(screens).toEqual(['01-identifiera', '07-lyssna', '02-match', '03-mina-arter', '04-uppslagsverk', '05-artprofil']);
+      expect(screens).toEqual([
+        '01-identifiera',
+        '05-artprofil',
+        '03-mina-arter',
+        '07-lyssna',
+        '12-veckans-uppslag',
+        '14-troferum',
+        '16-uppslagsverk-vadare',
+        '17-fynd-karta',
+        '18-sasongsstatistik',
+        '19-exportera-pdf',
+      ]);
       await expect(page.locator('#app .phone img').first()).toHaveAttribute('alt', lang === 'sv' ? /Identifiera/ : /Identify/);
     }
+  });
+
+  test('de tre Premium-korten har en diskret mässingstagg på bygeln och Premium i kickern', async ({ page }) => {
+    await page.goto('/sv/');
+    const tour = page.locator('#app');
+    await expect(tour.locator('.pbadge')).toHaveCount(3);
+    await expect(tour.locator('.pbadge')).toHaveText(['Premium', 'Premium', 'Premium']);
+    await expect(tour.locator('.plno-premium')).toHaveCount(3);
+    for (const i of [7, 8, 9]) {
+      await expect(tour.locator('.slide').nth(i).locator('.pbadge')).toHaveCount(1);
+    }
+    for (const i of [0, 1, 2, 3, 4, 5, 6]) {
+      await expect(tour.locator('.slide').nth(i).locator('.pbadge')).toHaveCount(0);
+    }
+  });
+
+  test('ljudvågen på Lyssna-kortet animerar bara när kortet är centrerat, och står still vid minskad rörelse', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const tour = page.locator('#app');
+    await tour.scrollIntoViewIfNeeded();
+    const lyssna = tour.locator('.slide[data-screen="07-lyssna"]');
+    await expect(lyssna.locator('.wave-bar')).toHaveCount(48);
+    // Only the Listen card has a wave overlay.
+    await expect(tour.locator('.wave-bar')).toHaveCount(48);
+    // Lyssna is the 4th card (index 3), not centred on load — navigate there first.
+    await tour.locator('[data-track]').focus();
+    for (let i = 0; i < 3; i++) await tour.locator('[data-next]').click();
+    await expect.poll(() => lyssna.evaluate((el) => el.classList.contains('is-active'))).toBe(true);
+    await expect
+      .poll(() => lyssna.locator('.wave-bar').first().evaluate((el) => getComputedStyle(el).animationPlayState))
+      .toBe('running');
+    await tour.locator('[data-prev]').click();
+    await expect.poll(() => lyssna.evaluate((el) => el.classList.contains('is-active'))).toBe(false);
+    await expect
+      .poll(() => lyssna.locator('.wave-bar').first().evaluate((el) => getComputedStyle(el).animationPlayState))
+      .toBe('paused');
+  });
+
+  test.describe('ljudvågen vid minskad rörelse', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+    test('baren rör sig inte', async ({ page }) => {
+      await page.goto('/sv/');
+      const tour = page.locator('#app');
+      await tour.scrollIntoViewIfNeeded();
+      const bar = tour.locator('.wave-bar').first();
+      await expect.poll(() => bar.evaluate((el) => getComputedStyle(el).animationName)).toBe('none');
+    });
   });
 
   test('alla telefonbilder är laddade när man når karusellen', async ({ page }) => {
@@ -955,7 +1027,7 @@ test.describe('appkarusellen', () => {
     const neighbor = tour.locator('.slide').nth(1);
     const box = (await neighbor.boundingBox())!;
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-    await expect(tour.locator('[data-ch]')).toHaveText('Lyssna efter sång');
+    await expect(tour.locator('[data-ch]')).toHaveText('Allt om arten på ett uppslag');
   });
 
   for (const width of [320, 390]) {
@@ -967,7 +1039,7 @@ test.describe('appkarusellen', () => {
         await tour.scrollIntoViewIfNeeded();
         const cap = tour.locator('.cap');
         const heights: number[] = [(await cap.boundingBox())!.height];
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 9; i++) {
           await tour.locator('[data-next]').click();
           const expected = await tour.locator('.slide').nth(i).getAttribute('data-h');
           await expect(tour.locator('[data-ch]')).toHaveText(expected ?? '');
@@ -1006,9 +1078,9 @@ test.describe('appkarusellen', () => {
 
   test.describe('utan JavaScript', () => {
     test.use({ javaScriptEnabled: false });
-    test('bildtextlistan visar alla sex skärmar', async ({ page }) => {
+    test('bildtextlistan visar alla tio skärmar', async ({ page }) => {
       await page.goto('/sv/');
-      await expect(page.locator('#app .cap-list li')).toHaveCount(6);
+      await expect(page.locator('#app .cap-list li')).toHaveCount(10);
       await expect(page.locator('#app .foot')).toBeHidden();
     });
   });

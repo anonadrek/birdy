@@ -26,6 +26,37 @@ const screen = (name: string): ImageMetadata => {
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const plate = (i: number) => t.species.plate.replace('{n}', ROMAN[i] ?? String(i + 1));
 const first = slides[0];
+// Not every slide's copy object has `premium` (only the three Premium-feature cards do), so a plain
+// `s.premium` access does not type-check against the union Astro infers from the JSON. `in` narrows it.
+const isPremium = (s: (typeof slides)[number]): boolean => 'premium' in s && s.premium === true;
+
+// The Listen card's animated waveform overlay (2026-10-10, Albin's feedback): 48 small bars, each
+// sized and placed to sit exactly on the real bars already baked into 07-lyssna.png (measured from
+// the screenshot's own rust pixels, [left, width, top, height] in its 1080×1920 source px, converted
+// to % below so the overlay scales with the phone at any width). Animation only ever grows a bar
+// outward from its own centre (see .wave-bar's transform-origin in the style block), so a resting
+// bar matches the screenshot pixel-for-pixel and only the live page ever shows it taller — never
+// shorter, which would otherwise expose the real, static bar poking out from under a shrunken one.
+const WAVE_PX: number[][] = [
+  [63, 13, 895, 68], [84, 13, 891, 77], [105, 12, 887, 85], [125, 12, 884, 91], [145, 12, 882, 94],
+  [165, 12, 882, 94], [185, 12, 884, 91], [205, 12, 887, 85], [225, 12, 891, 77], [245, 12, 895, 68],
+  [265, 12, 900, 59], [285, 12, 904, 51], [305, 12, 907, 45], [325, 12, 908, 42], [345, 12, 908, 42],
+  [365, 12, 906, 46], [385, 12, 903, 52], [405, 12, 899, 60], [425, 12, 895, 69], [445, 12, 890, 78],
+  [465, 12, 887, 85], [485, 12, 884, 91], [505, 12, 882, 94], [525, 12, 882, 94], [545, 12, 884, 91],
+  [565, 12, 887, 85], [585, 12, 891, 77], [605, 12, 895, 68], [625, 12, 900, 59], [645, 12, 904, 51],
+  [665, 12, 907, 45], [685, 12, 908, 42], [705, 12, 908, 43], [725, 12, 906, 46], [745, 12, 903, 52],
+  [765, 12, 899, 60], [785, 12, 895, 69], [805, 12, 890, 78], [825, 12, 886, 86], [845, 12, 884, 91],
+  [865, 12, 882, 94], [885, 12, 882, 94], [905, 12, 884, 90], [925, 12, 887, 84], [945, 12, 891, 76],
+  [965, 12, 896, 67], [985, 12, 900, 58], [1005, 12, 904, 51],
+];
+const SRC_W = 1080;
+const SRC_H = 1920;
+const wavePct = ([left, width, top, height]: number[]) => ({
+  left: `${(left / SRC_W * 100).toFixed(3)}%`,
+  width: `${(width / SRC_W * 100).toFixed(3)}%`,
+  top: `${(top / SRC_H * 100).toFixed(3)}%`,
+  height: `${(height / SRC_H * 100).toFixed(3)}%`,
+});
 ---
 
 <section id="app" class="tour" data-tour data-loop>
@@ -42,8 +73,17 @@ const first = slides[0];
         <figure class="plate">
           <div class="phone">
             <Picture src={screen(s.screen)} formats={['avif']} fallbackFormat="webp" quality={82} widths={[270, 400, 540, 800]} sizes="(max-width: 760px) 222px, 252px" alt={s.alt} loading="lazy" decoding="async" />
+            {s.screen === '07-lyssna' && (
+              <div class="wave" aria-hidden="true">
+                {WAVE_PX.map((b, bi) => {
+                  const p = wavePct(b);
+                  return <span class="wave-bar" style={`left:${p.left};width:${p.width};top:${p.top};height:${p.height};--i:${bi}`}></span>;
+                })}
+              </div>
+            )}
+            {isPremium(s) && <span class="pbadge" aria-hidden="true">{t.premium.seal}</span>}
           </div>
-          <figcaption class="plno"><b>{plate(i)}</b><span>{s.k}</span></figcaption>
+          <figcaption class="plno"><b>{plate(i)}</b><span class:list={{ 'plno-premium': isPremium(s) }}>{s.k}</span></figcaption>
         </figure>
       </li>
     ))}
@@ -90,11 +130,31 @@ const first = slides[0];
   .slide { flex: 0 0 var(--w); scroll-snap-align: center; will-change: transform, opacity; transform-origin: 50% 60%; }
   @media (prefers-reduced-motion: reduce) { .slide { will-change: auto; } }
   .plate { margin: 0; }
-  /* The phone: a warm near-black bezel with the screenshot untouched inside. */
-  .phone { padding: 8px; border-radius: 30px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 16px 24px rgba(0, 0, 0, .5); }
+  /* The phone: a warm near-black bezel with the screenshot untouched inside. Positioned so the wave
+     overlay and the Premium seal (both absolute) anchor to the bezel, not the whole plate/caption. */
+  .phone { position: relative; padding: 8px; border-radius: 30px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 16px 24px rgba(0, 0, 0, .5); }
   .phone :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 22px; user-select: none; -webkit-user-drag: none; }
   .plno { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 248, 238, .78); }
   .plno b { font-family: var(--font-script); font-weight: 700; font-size: 23px; line-height: 1; letter-spacing: 0; text-transform: none; color: var(--apricot); transform: rotate(-3deg); }
+  /* The Listen card's sound wave, Albin's feedback 2026-10-10: a live pulse over the screenshot's own
+     waveform. Positioned in % of the phone's content box (the Picture fills it at 9:16), each bar's
+     resting box matches its real bar underneath (see WAVE_PX); transform-origin: center only ever
+     grows a bar outward in both directions, so it always still covers its static original at rest
+     and never reveals it mid-shrink. Pure CSS, paused for reduced motion and for a slide that is not
+     the centred one (track.is-settled sets .is-active, app-tour.ts). */
+  .wave { position: absolute; inset: 8px; border-radius: 22px; overflow: hidden; pointer-events: none; }
+  .wave-bar { position: absolute; background: var(--rust); border-radius: 6px; transform-origin: 50% 50%; animation: wave-pulse 2.3s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 45ms); }
+  @keyframes wave-pulse { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.22); } }
+  .slide:not(.is-active) .wave-bar { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .wave-bar { animation: none; transform: none; } }
+  /* The Premium tag for the three Premium-feature phones (Albin's feedback 2026-10-10: "refined,
+     small and precise, not a loud badge") — a hairline brass outline on the bezel's own near-black,
+     the same restrained vocabulary as .tag on the Premium page (PremiumPage.astro), not the filled
+     wax-seal medallion used for the hero sections. It sits just outside the screenshot, pinned to
+     the bezel like a small museum-label flag, so it never covers the photo underneath. The kicker
+     text (.plno-premium) is the other half of the "clear and important" ask. */
+  .pbadge { position: absolute; top: -10px; right: 10px; z-index: 2; padding: 3px 9px; border-radius: 999px; background: #17100C; border: 1px solid rgba(226, 192, 126, .55); color: var(--brass-hi); font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; line-height: 1.4; box-shadow: 0 3px 8px rgba(0, 0, 0, .4); }
+  .plno-premium { color: var(--brass-hi); }
 
   .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 660px; margin: 6px auto 0; padding: 0 24px; }
   .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 248, 238, .45); background: transparent; color: var(--cream); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }

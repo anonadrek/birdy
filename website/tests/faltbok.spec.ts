@@ -35,7 +35,7 @@ test.describe('espresso i stället för mossa', () => {
 
   test('telefonerna i karusellen är riktiga skärmbilder ur appen, inga ritade', async ({ page }) => {
     await page.goto('/sv/');
-    await expect(page.locator('#app .phone img')).toHaveCount(6);
+    await expect(page.locator('#app .phone img')).toHaveCount(10);
     await expect(page.locator('#app .ph')).toHaveCount(0);
     for (const alt of await page.locator('#app .phone img').evaluateAll((imgs) => imgs.map((i) => i.getAttribute('alt') ?? ''))) {
       expect(alt.length).toBeGreaterThan(20);
