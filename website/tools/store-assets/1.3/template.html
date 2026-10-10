@@ -129,23 +129,49 @@
   .fc svg.flight { position: absolute; left: 0; top: 0; z-index: 1; overflow: visible; }
 
   /* ---------- Variant F: Flocken (1.3.1, the website's Flock look since 2026-10-09) ----------
-     Peach paper lit like the home hero, espresso words with the slogan's handwritten rust accent, and the flock: on the
-     cards only a quiet stream of its small birds behind the phone (each card picks it up at the height where the one
-     before left it, so the set reads as one flock flying through the listing); Birdy's bird formed by the flock only on
-     the feature graphic. The phone is whole and hangs at the same height on every card. */
+     Peach paper as a material (a key light from the top left, a soft falloff, a very fine grain and faint mottling),
+     espresso words with the slogan's handwritten rust accent, and a realistic phone that sits on the paper: graphite
+     rim with a lit edge, thin black bezel, the screenshot untouched inside, a layered shadow cast down and to the right.
+     The flock: on the cards only a sparse stream of its small birds behind the phone (each card picks it up at the
+     height where the one before left it, so the set reads as one flock flying through the listing); Birdy's bird formed
+     by the flock only on the feature graphic. Same phone size and position, same text grid on every card. */
   .vf, .ff { --peach-hi: #FEEBD6; --peach-lo: #F8D6B4; }
-  .vf { background-color: var(--peach); background-image: radial-gradient(110% 72% at 50% 16%, var(--peach-hi) 0%, var(--peach) 50%, var(--peach-lo) 100%); }
+  .vf { background-color: var(--peach);
+    background-image:
+      radial-gradient(70% 42% at 14% 3%, rgba(255, 247, 238, .85) 0%, rgba(255, 247, 238, 0) 72%),
+      radial-gradient(140% 90% at 32% 18%, var(--peach-hi) 0%, var(--peach) 46%, #F7D5B1 100%); }
+  .vf svg.grain { position: absolute; left: 0; top: 0; z-index: 0; }
   .vf svg.stream, .ff svg.flock, .ff svg.ghost { position: absolute; left: 0; top: 0; overflow: visible; }
   .vf svg.stream { z-index: 1; }
-  .vf .text { position: absolute; left: 84px; right: 84px; top: 118px; display: flex; flex-direction: column; align-items: flex-start; gap: 0; z-index: 4; }
-  .vf .kick { font-size: 29px; letter-spacing: .17em; gap: 18px; margin-bottom: 26px; }
+  .vf .text { position: absolute; left: 84px; right: 84px; top: 104px; display: flex; flex-direction: column; align-items: flex-start; gap: 0; z-index: 4; }
+  .vf .kick { font-size: 29px; letter-spacing: .17em; gap: 18px; margin-bottom: 24px; }
   .vf .kick i { width: 40px; height: 3px; }
   .vf .hl { font-size: 118px; line-height: .98; letter-spacing: -.02em; white-space: nowrap; }
   .vf .hl .acc { display: block; width: max-content; margin-top: 2px; font-size: 1.25em; line-height: .96; transform: rotate(-1.6deg); transform-origin: left; }
-  .vf .note { margin-top: 30px; font-size: 52px; --nc: var(--muted); max-width: 900px; text-wrap: balance; }
-  .vf .wm { position: absolute; right: 80px; top: 92px; font-size: 62px; --wc: var(--ink); z-index: 4; }
+  .vf .note { margin-top: 32px; font-size: 52px; --nc: var(--muted); max-width: 900px; text-wrap: balance; }
+  .vf .wm { position: absolute; right: 84px; top: 84px; font-size: 62px; --wc: var(--ink); z-index: 4; }
   .vf .wm .bird { color: var(--rust); }
-  .vf .phone { background: var(--dark-deep); }
+
+  /* The phone. Body 732 x 1276 (screen 700 x 1244 at 9:16, bezel 12, rim 4), outer radius 76, screen radius 60. */
+  .vf .dev { position: absolute; z-index: 3; border-radius: 76px;
+    background: linear-gradient(152deg, #5d5048 0%, #312924 14%, #1c1715 46%, #130f0d 74%, #2b231f 100%);
+    box-shadow:
+      0 0 0 1px rgba(26, 15, 9, .5),
+      0 2px 3px rgba(48, 26, 14, .22),
+      6px 16px 24px -8px rgba(62, 33, 17, .28),
+      20px 48px 76px -18px rgba(62, 33, 17, .34),
+      38px 92px 150px -34px rgba(62, 33, 17, .26); }
+  .vf .dev::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 3;
+    box-shadow: inset 1.5px 1.5px 0 rgba(255, 236, 218, .38), inset -1px -1.5px 0 rgba(0, 0, 0, .55); }
+  .vf .dev .glass { position: absolute; inset: 4px; border-radius: 72px; background: #060404; overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06); }
+  .vf .dev .scr { position: absolute; left: 12px; top: 12px; display: block; border-radius: 60px; }
+  .vf .dev .cam { position: absolute; left: 50%; top: 30px; width: 20px; height: 20px; margin-left: -10px; border-radius: 50%; z-index: 2;
+    background: radial-gradient(circle at 38% 34%, #3b414b 0 2px, #111216 3.5px, #050506 100%); box-shadow: 0 0 0 1.5px #000; }
+  .vf .dev .btn { position: absolute; right: -5px; width: 5px; border-radius: 0 3px 3px 0;
+    background: linear-gradient(90deg, #15100e, #4d4039 60%, #241d19); box-shadow: 2px 3px 4px rgba(48, 26, 14, .28); }
+  .vf .dev .pwr { top: 286px; height: 98px; }
+  .vf .dev .vol { top: 424px; height: 170px; }
 
   .ff { background-color: var(--peach); background-image: radial-gradient(130% 120% at 70% 40%, var(--peach-hi) 0%, var(--peach) 45%, var(--peach-lo) 100%); }
   .ff svg.ghost { z-index: 1; }
@@ -236,39 +262,60 @@
       return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
     };
   }
-  // The cards' quiet hint of the flock: a loose stream of small birds behind the phone, so it shows only beside it.
+  // The cards' quiet hint of the flock: a sparse skein of small birds behind the phone, so it shows only beside it.
   // Card i enters at the left edge at STREAM_Y[i] and leaves at the right edge at STREAM_Y[i + 1], level at both edges,
   // so neighbouring cards join into one flock that meanders through the listing when Play shows them side by side. It
   // comes in low on the first card and lifts away towards the top on the last (the website's "Flocken lyfter").
+  // Birds are spaced along the path with a little jitter (a skein, not a cloud); nearer birds are larger and fuller.
   // Colours in the flock's own proportions (mostly copper), as hero/flock.mjs draws them.
-  const STREAM_Y = [1500, 1240, 1350, 1190, 1320, 1210, 700];
-  function stream(index, last, { w = 1080, n = 96 } = {}) {
+  const STREAM_Y = [1560, 1250, 1370, 1200, 1340, 1220, 1360, 1210, 640];
+  function stream(index, last, { w = 1080, n = 60 } = {}) {
     const r = rng(839 + index * 101);
     const y0 = STREAM_Y[index], y1 = STREAM_Y[index + 1];
-    // A cubic from (-30, y0) to (w + 30, y1), level at both ends; the last card's leaves rising.
-    const P = [[-30, y0], [w * 0.4, y0], [w * 0.6, last ? y1 + 420 : y1], [w + 30, y1]];
+    // A cubic from (-40, y0) to (w + 40, y1), level at both ends; the last card's leaves rising.
+    const P = [[-40, y0], [w * 0.42, y0], [w * 0.58, last ? y1 + 520 : y1], [w + 40, y1]];
     const at = (t) => {
       const u = 1 - t, a = u * u * u, b = 3 * u * u * t, c = 3 * u * t * t, d = t * t * t;
       return [a * P[0][0] + b * P[1][0] + c * P[2][0] + d * P[3][0], a * P[0][1] + b * P[1][1] + c * P[2][1] + d * P[3][1]];
     };
     let out = '';
     for (let i = 0; i < n; i += 1) {
-      const t = r();
+      const t = (i + r()) / n;
       const [x, cy] = at(t);
       const [xa, ya] = at(Math.min(1, t + 0.01)), [xb, yb] = at(Math.max(0, t - 0.01));
       const heading = (Math.atan2(ya - yb, xa - xb) * 180) / Math.PI;
-      // Looser in the middle, where the phone hides it; the same width at both edges, so the cards join.
-      const spread = 30 + 44 * Math.sin(Math.PI * t);
-      const y = cy + (r() + r() + r() - 1.5) * spread * 1.2;
-      const size = 15 + r() * 14;
-      const rot = heading * 0.7 - 12 + r() * 24;
+      // A thin skein at the edges (where the cards join), looser behind the phone.
+      const spread = 16 + 26 * Math.sin(Math.PI * t);
+      const y = cy + (r() + r() - 1) * spread;
+      const near = r();
+      const size = 12 + near * 14;
+      const op = Math.round((0.55 + near * 0.45) * 100) / 100;
+      const rot = heading * 0.8 + (r() - 0.5) * 16;
       const c = r();
-      const colour = c < 0.05 ? 0 : c < 0.66 ? 1 : c < 0.95 ? 2 : 3;
-      const op = r() < 0.3 ? 0.7 : 1;
+      const colour = c < 0.08 ? 0 : c < 0.70 ? 1 : c < 0.95 ? 2 : 3;
       out += flockBird(x, y, size, rot, colour, op);
     }
     return `<svg class="stream" width="${w}" height="1920" aria-hidden="true">${flockDefs()}<g>${out}</g></svg>`;
   }
+  // The paper as a material: faint low-frequency mottling plus a very fine grain of darker and lighter specks.
+  const paperGrain = (w = 1080, h = 1920) => {
+    const noise = (id, freq, octaves, seed, rgb, k, b) => `<filter id="${id}" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="${freq}" numOctaves="${octaves}" seed="${seed}" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 ${rgb[0]}  0 0 0 0 ${rgb[1]}  0 0 0 0 ${rgb[2]}  ${k} 0 0 0 ${b}"/></filter><rect width="${w}" height="${h}" filter="url(#${id})"/>`;
+    return `<svg class="grain" width="${w}" height="${h}" aria-hidden="true">`
+      + noise('pm', '0.0045 0.007', 3, 5, [0.62, 0.40, 0.24], 0.2, -0.07)
+      + noise('pd', '1.05', 2, 11, [0.30, 0.18, 0.10], 0.3, -0.12)
+      + noise('pl', '1.1', 1, 23, [1, 0.97, 0.92], 0.3, -0.13)
+      + '</svg>';
+  };
+  // The phone: body 732 x 1276 centred, 76 px above the bottom edge, the same on every card.
+  const DEV = { sw: 700, bz: 12, rim: 4, bottom: 76 };
+  DEV.sh = (DEV.sw * 16) / 9;
+  DEV.w = DEV.sw + 2 * (DEV.bz + DEV.rim);
+  DEV.h = DEV.sh + 2 * (DEV.bz + DEV.rim);
+  DEV.x = (1080 - DEV.w) / 2;
+  DEV.y = 1920 - DEV.bottom - DEV.h;
+  const device = (src) => `<div class="dev" style="left:${f2(DEV.x)}px;top:${f2(DEV.y)}px;width:${DEV.w}px;height:${f2(DEV.h)}px">`
+    + '<i class="btn pwr"></i><i class="btn vol"></i>'
+    + `<div class="glass"><img class="scr" src="${esc(src)}" alt="" style="width:${DEV.sw}px;height:${f2(DEV.sh)}px"><i class="cam"></i></div></div>`;
   // The feature graphic's flock: the profiles' and the website's "cover" flock (1640 x 720 units) forming Birdy's bird,
   // drawn at scale s with offset (ox, oy), plus the profiles' faint copper bird behind it.
   function coverFlock({ s, ox, oy, w, h }) {
@@ -285,12 +332,12 @@
     if (o.mode === 'card') {
       const k = card.kicker[L], h = card.head[L], n = card.note[L];
       if (o.variant === 'f') {
+        // The wordmark only on the first card, the set's cover; Play shows the icon and name above the rest.
         const { lead, acc } = split(h);
-        const sw = 700, bz = 16, x = (1080 - sw - 2 * bz) / 2;
-        return `${stream(o.index, o.last)}
+        return `${paperGrain()}${stream(o.index, o.last)}
           <div class="text">${kicker(k)}<h1 class="hl">${esc(lead)}<span class="acc">${esc(acc)}</span></h1><p class="note">${esc(n)}</p></div>
-          <div class="wm">${wordmark()}</div>
-          ${phone({ src: o.screen, sw, bz, r: 56, x, y: 0, style: '--shadow:0 48px 80px rgba(60,34,20,.26),0 12px 24px rgba(60,34,20,.14)' })}`;
+          ${o.index === 0 ? `<div class="wm">${wordmark()}</div>` : ''}
+          ${device(o.screen)}`;
       }
       if (o.variant === 'a') {
         return `<div class="dots"></div>
@@ -378,14 +425,10 @@
         let np = 52;
         while (note.scrollWidth > maxW && np > 42) { np -= 2; note.style.fontSize = np + 'px'; }
         if (note.scrollWidth > maxW) { note.style.whiteSpace = ''; note.style.maxWidth = ''; note.style.fontSize = '52px'; }
-        // The phone hangs at the same height on every card (Play shows them side by side), whole, under the words.
+        // The words must end well above the phone, which hangs at the same height on every card.
         const cr = c.getBoundingClientRect();
         const textBottom = c.querySelector('.text').getBoundingClientRect().bottom - cr.top;
-        const ph = c.querySelector('.phone');
-        const phoneH = ph.getBoundingClientRect().height;
-        const top = 1920 - 70 - phoneH;
-        if (textBottom + 40 > top) throw new Error(`variant f: the words end at ${Math.round(textBottom)} px, the phone starts at ${Math.round(top)} px`);
-        ph.style.top = top + 'px';
+        if (textBottom + 40 > DEV.y) throw new Error(`variant f: the words end at ${Math.round(textBottom)} px, the phone starts at ${Math.round(DEV.y)} px`);
       }
     }
     if (o.mode === 'card' && o.variant === 'b') {
