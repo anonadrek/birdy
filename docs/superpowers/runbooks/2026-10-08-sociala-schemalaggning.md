@@ -2,6 +2,11 @@
 
 Runbook för de 30 dagliga videorna (9 oktober till 7 november 2026, kl. 08.00 Stockholmstid) och för nästa serie. Skriven 2026-10-08 efter att de första 50 inläggen schemalagts via Chrome i Albins inloggade webbläsare.
 
+## Till nästa serie (efter 7 nov)
+
+- **En liten förloppsmätare överst i varje video** (Albin 2026-10-10: "en liten mätare i toppen av våra klipp där man ser hur långt det är kvar av klippet"). Byggs inför nästa schemaläggning, inte i de redan schemalagda. Den ska gå över hela den färdiga videon, alltså även titelkortet och loopen som `cover/title-card.mjs` lägger på efteråt, så den hör hemma i det sista steget (eller i stagen med den totala längden känd). Tunn och lugn i appens färger, ovanför plattformarnas egna knappar uppe till höger, och den får inte krocka med texten överst i stagen. Kontrollera i en förhandsvisning till Albin innan serien renderas.
+- YouTube 10 till 18 okt har fortfarande de gamla versionerna (utan flockomslag). Att byta dem kräver en omrendering av `week1` och `week1-reserves` (mapparna finns inte längre); valfritt.
+
 ## Läget 2026-10-08 kväll
 
 | Kanal | Verktyg | Schemalagt | Kvar |
@@ -46,7 +51,7 @@ Albin 2026-10-10 ("rubrikerna för korta för att bli virala"): YouTube-titeln �
 ## Meta klart till 7 nov (9 okt kväll, ca 17.20 till 18.40)
 
 - **Läget:** Facebook + Instagram har de nya versionerna (flockomslag, loop) varje dag 10 okt till 7 nov. 16 nya reels laddades upp i kväll (23 okt till 7 nov) utan att Meta strypte. De gamla 23–28 okt (12 st, FB + IG) är flyttade till Utkast. Kontroll efter omladdning av Schemalagt: 29 dagar, varje dag exakt ett FB- och ett IG-inlägg som inte är rött, alla med ljus miniatyr (nya); 11 röda rester ("Det gick inte att publicera") publiceras inte. Albin kan radera utkasten och de röda raderna när han vill.
-- **Hjälpskriptet** för bildtexter: `python cap.py <slug>` i en lokal hjälpmapp (skriver FB, IG och TikTok-texten som JSON-strängar). Vakten före Nästa jämför editorns `innerText` med förväntad text efter att alla blanktecken slagits ihop till ett mellanslag.
+- **Hjälpskriptet** för bildtexter: `node tools/social/caption-fields.mjs <slug>` (skriver FB, IG, TikTok-texten uppdelad i brödtext och hashtaggar samt YouTubes titel och beskrivning som JSON-strängar; ersätter den lokala `cap.py` sedan 2026-10-10). Vakten före Nästa jämför editorns `innerText` med förväntad text efter att alla blanktecken slagits ihop till ett mellanslag.
 - **Facebook-sidans namn** är nu "Birdy: Bird ID" (syns i Business Suite; "Publicera i" säger "Birdy: Bird ID och app.birdy").
 - **Brambling (7 nov)** har ingen publicerad artsida, så Facebook-texten länkar till `https://birdy.community/` i stället; vakten ska då leta efter den länken.
 - **Fällor i Business Suite i kväll:**
@@ -64,8 +69,9 @@ Albin 2026-10-10 ("rubrikerna för korta för att bli virala"): YouTube-titeln �
 
 ## Material
 
-- Gren `social/see-the-song`, worktree `C:/w/birdy-social`.
-- `tools/social/out/{week1,week1-reserves,oct19-nov7}/<slug>/`: `see-the-song.mp4`, `cover.jpg`, `caption.json` (`facebook`, `instagram`, `youtube.title`, `youtube.description`). Varje mapp har `schedule.csv` med datum, art, alla texter och en not om bästa omslagsruta.
+- Verktyget ligger på `main` sedan 2026-10-10 (`tools/social/`; grenen `social/see-the-song` och worktreen `C:/w/birdy-social` är borta). Artdatan läses ur repots egen `website/`-mapp.
+- `tools/social/out/<set>/<slug>/` (gitignorerat, finns bara på maskinen som renderade): `see-the-song.mp4`, `cover.jpg`, `caption.json` (`facebook`, `instagram`, `youtube.title`, `youtube.description`). Varje mapp har `schedule.csv` med datum, art, alla texter och en not om bästa omslagsruta. **Mapparna `week1`, `week1-reserves` och `oct19-nov7` försvann 2026-10-10** när worktreen togs bort; `oct29-nov7` (de tio sista, för YouTube) renderades om på `main` samma dag med exakt samma slutkort som de publicerade. Rendera om en serie så här (cirka 2,5 minuter per video): `node tools/social/see-the-song.mjs --species <QID,...> --out tools/social/out/<set> --start <ÅÅÅÅ-MM-DD>`, sedan i `tools/social`: `node cover/render-covers.mjs <set>` och `node cover/title-card.mjs <set>`. Obs: `schedule.csv` i en omrenderad delmängd kan få en annan ordning än den publicerade; datumen styrs av listan nedan.
+- **Rör aldrig en worktree med renderade videor med `git worktree remove --force`**: `out/` är gitignorerat och försvinner utan varning.
 - Facebook och YouTube har en direktlänk till artsidan (`https://birdy.community/species/<slug>/`). Instagram och TikTok säger "Link in bio", eftersom länkar i bildtexten inte går att klicka där. TikTok får Instagram-texten.
 - Texterna är på engelska med artens svenska namn i parentes och `#fåglar #fågelskådning` sist. Licensraden "Video licensed CC BY-SA 4.0" finns bara när foto eller ljud är CC BY-SA.
 
