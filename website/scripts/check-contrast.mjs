@@ -75,6 +75,9 @@ const pairs = [
   // AppTour.astro on the light gallery wall (2026-10-10): the Premium plate labels in deep brass, over the wall's peach
   // from its pool of light to its edges (the muted labels and the rust plate numbers are the peach pairs above).
   ['brass-deep', 'peach-hi', 4.5], ['brass-deep', 'peach', 4.5], ['brass-deep', 'peach-lo', 4.5],
+  // The Birdy × AlbIT note (2026-10-10): the gold × in the title is large text on the paper (3:1), AlbIT's gold link on
+  // its black in the end card.
+  ['albit-gold-ink', 'paper', 3], ['albit-gold', 'albit-ink', 4.5],
 ];
 
 for (const [fg, bg, min] of pairs) {
@@ -114,6 +117,8 @@ const compositedPairs = [
   { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: darkDeep, min: 4.5 },
   { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
   { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
+  // FieldNoteArticle.astro .cend-a: the end card's text on AlbIT's black (Birdy × AlbIT note).
+  { label: 'FieldNoteArticle .cend-a', fg: [245, 245, 243], alpha: 1, bg: tokens['albit-ink'] ? hexToRgb(tokens['albit-ink']) : null, min: 4.5 },
   // Nav.astro: the links (.82) on the solid paper bar (Albin 2026-10-10: the light bar replaced the espresso one).
   { label: 'Nav .links a (paper bar)', fg: tokens.ink ? hexToRgb(tokens.ink) : null, alpha: 0.82, bg: tokens.paper ? hexToRgb(tokens.paper) : null, min: 4.5 },
   // FinalCta.astro .sub (.85) on the espresso wall, over its lightest point (#3D2C22). The hero left the wall on 2026-10-09.

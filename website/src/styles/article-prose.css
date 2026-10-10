@@ -26,3 +26,17 @@
   .article-prose h2 { font-size: 25px; }
   .article-prose blockquote { font-size: 23px; }
 }
+
+/* The logbook in numbers (raw HTML in the note: <figure class="note-facts">, the Birdy × AlbIT note): six true figures
+   from the project's history, set like a field journal's tally. */
+.article-prose .note-facts { margin: 38px 0 34px; padding: 26px 0 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.article-prose .note-facts ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 24px; }
+.article-prose .note-facts li { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; }
+.article-prose .note-facts li::before { content: none; }
+.article-prose .note-facts b { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1.05; letter-spacing: -.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.article-prose .note-facts span { font-size: 13.5px; line-height: 1.4; color: var(--muted); }
+.article-prose .note-facts figcaption { margin-top: 18px; font-family: var(--font-script); font-weight: 700; font-size: 19px; color: var(--rust); transform: rotate(-1deg); transform-origin: left; }
+@media (max-width: 560px) {
+  .article-prose .note-facts ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .article-prose .note-facts b { font-size: 26px; }
+}

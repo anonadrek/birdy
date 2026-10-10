@@ -28,6 +28,12 @@ const fieldNotes = defineCollection({
     imageAlt: z.string().trim().min(1),
     imageCaption: z.string().optional(),
     imagePosition: z.string().optional(),
+    // When the note was last rewritten (2026-10-10, "Varför Birdy finns"): shown next to the date, used as the
+    // sitemap's lastmod and the article's modified time.
+    updated: z.coerce.date().optional(),
+    // A note told with AlbIT (the company behind Birdy): the hero where the two brands meet instead of the photo
+    // (CollabHero.astro). The photo is still the share image and the card image.
+    collab: z.enum(['albit']).optional(),
   }),
 });
 

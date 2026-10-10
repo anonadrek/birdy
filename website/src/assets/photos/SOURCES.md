@@ -9,6 +9,7 @@ Fotona är appens egna planschfoton (`asset-pack/src/main/assets/images/<QID>/he
 | `skaggmes-q192817.webp` | Skäggmes | Q192817 | Hobbyfotowiki | CC0 | Ta med Birdy ut i fält |
 | `rodhake-q25334.webp` | Rödhake | Q25334 | Rob Hille | Public domain | blogginlägget "Varför Birdy finns" (inläggets foto, korten och delningsbilden); delningsbilderna `public/og-field-{sv,en}.jpg` (tools/generate-og.mjs) |
 | `see-the-song-blames-q25404.webp` | (ljudringen ur blåmesvideon, ingen fågel) | Q25404 | Birdy, ringen ritad ur Benoît Van Heckes inspelning | CC BY-SA 4.0 | blogginlägget "See the song" (inläggets bild, korten och delningsbilden) |
+| `birdy-x-albit.webp` | (Birdy × AlbIT, ingen art) | - | Birdy, ritad i kod (`tools/render-collab-share.mjs` ur `src/lib/collab-hero.mjs`): Birdys flock och AlbIT:s ordmärke (`src/assets/brand/`, AlbIT AB:s eget) | AlbIT AB | blogginlägget "Birdy × AlbIT" (inläggets bild, korten och delningsbilden; på sidan ritas samma bild direkt i SVG) |
 
 ## Bilden och videon i inlägget See the song
 

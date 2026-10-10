@@ -73,7 +73,8 @@ test.describe('Field Notes', () => {
       const article = await page.goto(`${prefix}/blog/why-birdy/`);
       expect(article?.status()).toBe(200);
       await expect(page.locator('main h1')).toHaveText(title);
-      await expect(page.locator('.article-prose h2')).toHaveCount(3);
+      // Four sections since the rewrite on 2026-10-10 ("Dagboken behåller fyndet" / "The journal keeps the find").
+      await expect(page.locator('.article-prose h2')).toHaveCount(4);
       await expect(page.locator('meta[property="og:type"]')).toHaveAttribute('content', 'article');
       await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute('href', 'https://birdy.community/blog/why-birdy/');
       await expect(page.locator('link[rel="alternate"][hreflang="sv"]')).toHaveAttribute('href', 'https://birdy.community/sv/blog/why-birdy/');

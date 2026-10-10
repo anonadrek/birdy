@@ -23,6 +23,11 @@
   --brass-deep: #7A5A22;
   --cream: #FFF8EE;
   --navy: #1F3A5F;
+  /* AlbIT, the company behind Birdy (albit.se): only in the Birdy × AlbIT field note. --albit-gold-ink is the gold
+     darkened until it clears 3:1 as large text on the paper. */
+  --albit-ink: #111111;
+  --albit-gold: #C9A227;
+  --albit-gold-ink: #8F6F12;
 
   --font-serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
   --font-script: 'Caveat', 'Brush Script MT', cursive;

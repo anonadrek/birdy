@@ -8,15 +8,17 @@ import Kicker from './ui/Kicker.astro';
 import JournalHeadline from './ui/JournalHeadline.astro';
 import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import BuiltSpeciesLinks from './ui/BuiltSpeciesLinks.astro';
+import CollabHero from './CollabHero.astro';
 import { fieldNoteHref, fieldNotesHref, formatNoteDate, readingMinutes, type FieldNote } from '../lib/field-notes';
 import { getCopy } from '../lib/i18n';
-import { albitProductHref } from '../lib/links';
+import { albitProductHref, ALBIT_URL } from '../lib/links';
+import albitWordmark from '../assets/brand/albit-wordmark-white.png';
 import '../styles/article-prose.css';
 
 interface Props { note: FieldNote }
 const { note } = Astro.props;
 const { Content } = await render(note);
-const { locale, title, description, date, category, image, imageAlt, imageCaption, imagePosition } = note.data;
+const { locale, title, description, date, category, image, imageAlt, imageCaption, imagePosition, updated, collab } = note.data;
 const t = getCopy(locale);
 const sv = locale === 'sv';
 const pathname = fieldNoteHref(note);
@@ -26,11 +28,28 @@ const minutes = t.blog.minRead.replace('{n}', String(readingMinutes(note.body)))
 // The note's own photo, cropped to 1200×630, is the share image (spec §6).
 const share = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
+// A rewritten note says so next to its date (2026-10-10).
+const updatedLabel = updated ? t.blog.updated.replace('{date}', formatNoteDate(updated, locale)) : null;
+// The collab title: the × between the two brands in AlbIT's gold, the rest as written.
+const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.indexOf('×')), title.slice(title.indexOf('×') + 1)] : [title, null];
 ---
 
-<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} ogImage={share.src} ogImageAlt={imageAlt} themeColor="#2A1D17">
-  <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />
-  <main id="main" tabindex="-1">
+<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} articleModified={updated?.toISOString()} ogImage={share.src} ogImageAlt={imageAlt} themeColor={collab ? undefined : '#2A1D17'}>
+  {collab
+    ? <Nav locale={locale} variant="solid" switchLangHref={otherPath} />
+    : <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />}
+  <main id="main" tabindex="-1" class:list={{ 'is-collab': collab }}>
+    {collab ? (
+    <header class="chead">
+      <CollabHero label={t.blog.collabArt} />
+      <div class="ctitle">
+        <Kicker text={category} center />
+        <h1 class="ch1">{titleAfter === null ? title : <>{titleBefore}<span class="ch1-x">×</span>{titleAfter}</>}</h1>
+        <p class="aby"><a href={albitProductHref(locale)}>{t.blog.byline}</a></p>
+        <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}{updatedLabel && <> · {updatedLabel}</>}</p>
+      </div>
+    </header>
+    ) : (
     <header class="ahero">
       <Image class="ahero-img" src={image} alt={imageAlt} widths={[800, 1200, 1600]} sizes="100vw" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
       <div class="wrap">
@@ -39,13 +58,28 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
           <Kicker text={category} />
           <h1>{title}</h1>
           <p class="aby"><a href={albitProductHref(locale)}>{t.blog.byline}</a></p>
-          <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}</p>
+          <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}{updatedLabel && <> · {updatedLabel}</>}</p>
         </div>
       </div>
       {imageCaption && <span class="cap" aria-hidden="true">{imageCaption}</span>}
     </header>
+    )}
     <article class="asheet">
       <div class="article-prose"><BuiltSpeciesLinks><Content /></BuiltSpeciesLinks></div>
+      {collab ? (
+      <aside class="cend">
+        <div class="cend-b">
+          <JournalHeadline text={t.blog.endHeadline} level="h2" align="left" size="26px" />
+          <p>{t.blog.endSub}</p>
+          <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" />
+        </div>
+        <div class="cend-a">
+          <img src={albitWordmark.src} alt="AlbIT" width="132" height="35" loading="lazy" decoding="async" />
+          <p>{t.blog.collabAlbit}</p>
+          <a href={ALBIT_URL}>{t.blog.collabAlbitLink}<span aria-hidden="true"> ↗</span></a>
+        </div>
+      </aside>
+      ) : (
       <aside class="aend">
         <div>
           <JournalHeadline text={t.blog.endHeadline} level="h2" align="left" size="28px" />
@@ -53,6 +87,7 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
         </div>
         <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" />
       </aside>
+      )}
       <nav class="aback" aria-label={t.blog.kicker}>
         <a href={fieldNotesHref(locale)}><span aria-hidden="true">← </span>{t.blog.allNotes}</a>
         <a href={`${home}#how-it-works`}>{t.blog.seeHow}</a>
@@ -99,11 +134,34 @@ const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android'
   .aend p { margin: 8px 0 0; font-size: 14px; color: rgba(255, 248, 238, .78); }
   .aend :global(:focus-visible) { outline-color: var(--apricot); }
   .aback { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 600; color: var(--rust); padding: 22px 0 60px; border-top: 1px solid var(--line); }
+  /* The collab (birdy-x-albit): the hero where the brands meet, then the title on the paper, no photo underneath. */
+  .chead { position: relative; }
+  .ctitle { max-width: 860px; margin: 0 auto; padding: 54px 24px 6px; text-align: center; color: var(--ink); }
+  .ctitle :global(.kick) { justify-content: center; }
+  .ch1 { margin: 14px auto 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.04; letter-spacing: -.02em; max-width: 18ch; text-wrap: balance; overflow-wrap: anywhere; hyphens: auto; }
+  /* AlbIT's gold, darkened until it clears 3:1 as large text on the paper (scripts/check-contrast.mjs). */
+  .ch1-x { color: var(--albit-gold-ink); padding: 0 .08em; }
+  .ctitle .aby a { color: var(--ink); border-bottom: 1px solid var(--line); }
+  .ctitle .aby a:hover { border-bottom-color: var(--rust); }
+  .ctitle .ameta { color: var(--muted); }
+  .is-collab .asheet { margin-top: 0; }
+  .cend { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); margin: 52px 0 30px; border-radius: 18px; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+  .cend-b { padding: 30px 32px; background: var(--peach); --jh-ink: var(--ink); --jh-accent: var(--rust); }
+  .cend-b p { margin: 8px 0 18px; font-size: 14px; color: var(--muted); }
+  .cend-a { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 32px; background: var(--albit-ink); color: #F5F5F3; }
+  .cend-a img { display: block; width: 132px; height: auto; }
+  .cend-a p { margin: 0; font-size: 14px; line-height: 1.6; color: #F5F5F3; }
+  .cend-a a { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--albit-gold); border-bottom: 1px solid rgba(201, 162, 39, .5); padding-bottom: 1px; }
+  .cend-a a:hover { border-bottom-color: var(--albit-gold); }
+  .cend-a :global(:focus-visible) { outline-color: var(--albit-gold); }
   @media (max-width: 760px) {
     .ahero { min-height: 470px; }
     .ahero .wrap { padding-top: 104px; padding-bottom: 80px; }
     .cap { display: none; }
     .asheet { margin-top: -40px; padding: 34px 20px 6px; border-radius: 20px 20px 0 0; }
     .aend { flex-direction: column; align-items: flex-start; }
+    .ctitle { padding: 36px 20px 0; }
+    .cend { grid-template-columns: 1fr; }
+    .cend-b, .cend-a { padding: 26px 22px; }
   }
 </style>
