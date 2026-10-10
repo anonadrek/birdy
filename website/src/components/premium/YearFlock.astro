@@ -1,0 +1,35 @@
+---
+// The flock around the year (Albin 2026-10-10, P3): the 839 birds of the home hero fly one full circle around the
+// Premium seal, brass where the year is now, today's bird lit (src/lib/year-flock.mjs). The flock flies in once when
+// the band comes into view, then rests; without motion it is simply there.
+import { yearFlockSvg } from '../../lib/year-flock.mjs';
+import { date } from 'virtual:birdy-daily-bird';
+
+interface Props { label: string; seal: string }
+const { label, seal } = Astro.props;
+const svg = yearFlockSvg({ iso: date.iso });
+---
+
+<figure class="yflock" role="img" aria-label={label} data-year-flock>
+  <Fragment set:html={svg} />
+  <span class="seal seal--brass yseal" aria-hidden="true">{seal}</span>
+</figure>
+
+<style>
+  .yflock { position: relative; width: min(480px, 100%); aspect-ratio: 1; margin: 0 auto; }
+  .yflock :global(svg.yf) { display: block; width: 100%; height: 100%; overflow: visible; }
+  .yflock :global(.yf-months text) { font: 600 12px var(--font-sans); letter-spacing: .1em; text-anchor: middle; fill: var(--muted); }
+  .yflock :global(.yf-months text.yf-now) { fill: var(--rust); }
+  @media (max-width: 560px) { .yflock :global(.yf-months text) { font-size: 16px; } }
+  .yflock :global(.yf-birds) { transform-box: view-box; transform-origin: 50% 50%; }
+  /* The seal in the middle of the year, a little larger than the band's other stamps. */
+  .yseal { position: absolute; left: 50%; top: 50%; width: 28%; height: 28%; margin: 0; transform: translate(-50%, -50%) rotate(-8deg); font-size: clamp(18px, 2.4vw, 26px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .22); }
+  .yseal::before { inset: 6px; }
+  /* The reveal wrapper is the band's own (Premium.astro), outside this component's scope, so it is matched globally. */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html.motion-ready [data-reveal].is-visible) .yflock :global(.yf-birds) { animation: yf-fly 1.8s var(--ease-paper) both; }
+    :global(html.motion-ready [data-reveal].is-visible) .yflock :global(.yf-lit) { animation: yf-light .5s 1.5s ease-out both; }
+  }
+  @keyframes yf-fly { from { transform: rotate(-60deg); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: 1; } }
+  @keyframes yf-light { from { opacity: 0; } to { opacity: 1; } }
+</style>

@@ -11,8 +11,9 @@ interface Props {
   switchLangHref?: string;
   /** overlay = transparent over the first view until it scrolls past; solid = paper bar in the flow. */
   variant?: 'overlay' | 'solid';
-  /** What the transparent overlay bar lies on: 'dark' (espresso heroes and photos: cream text, apricot wordmark) or
-   * 'peach' (the home page's peach hero, spec 2026-10-09: ink text, rust wordmark). The solid bar is paper with ink
+  /** What the transparent overlay bar lies on: 'dark' (an espresso first view: cream text, apricot wordmark) or
+   * 'peach' (a peach first view, the home page's hero since 2026-10-09 and the Premium page's since 2026-10-10: ink
+   * text, rust wordmark). The solid bar is paper with ink
    * text and the rust wordmark either way (Albin 2026-10-10: the site's light theme, no brown bar). */
   surface?: 'dark' | 'peach';
 }
@@ -125,8 +126,7 @@ const mobileOnly = [
   .nav--solid { position: sticky; top: 0; }
   /* Paper by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
   .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--paper); box-shadow: 0 1px 0 rgba(var(--dark-rgb), .12); }
-  /* Transparent over a dark first view (the Premium page's hero, a field note's photo): cream text, apricot wordmark,
-     apricot focus rings. */
+  /* Transparent over a dark first view: cream text, apricot wordmark, apricot focus rings. */
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; color: var(--cream); --nav-brand: var(--apricot); }
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) :global(:focus-visible) { outline-color: var(--apricot); }
   /* The home page's peach hero (surface="peach", spec 2026-10-09): ink on the transparent bar, the rust wordmark, rust

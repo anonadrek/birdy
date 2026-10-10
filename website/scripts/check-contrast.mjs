@@ -75,6 +75,9 @@ const pairs = [
   // AppTour.astro on the light gallery wall (2026-10-10): the Premium plate labels in deep brass, over the wall's peach
   // from its pool of light to its edges (the muted labels and the rust plate numbers are the peach pairs above).
   ['brass-deep', 'peach-hi', 4.5], ['brass-deep', 'peach', 4.5], ['brass-deep', 'peach-lo', 4.5],
+  // Premium in the light (2026-10-10): the kickers, numerals and price labels in deep brass on the Premium page's paper
+  // and cream as well as on its peach (above).
+  ['brass-deep', 'paper', 4.5], ['brass-deep', 'card', 4.5],
   // The Birdy × AlbIT note (2026-10-10): the gold × in the title is large text on the paper (3:1), AlbIT's gold link on
   // its black in the end card.
   ['albit-gold-ink', 'paper', 3], ['albit-gold', 'albit-ink', 4.5],
@@ -97,7 +100,7 @@ for (const [fg, bg, min] of pairs) {
 // Genomskinliga textfärger: några komponenter skriver texten som rgba(...) direkt i <style>
 // (inte en token), så vakten ovan ser dem aldrig. De alfa-blandas här mot den riktiga bakgrunden
 // (c = a*fg + (1-a)*bg per kanal) innan samma WCAG-kontroll körs. Ändras en av rgba()-färgerna
-// eller bakgrunden i Footer.astro/Premium.astro, uppdatera paret här också — varje CSS-regel har
+// eller bakgrunden i Footer.astro, uppdatera paret här också — varje CSS-regel har
 // en kommentar ("alpha checked in scripts/check-contrast.mjs") som pekar tillbaka hit.
 const luminanceRgb = ([r, g, b]) => 0.2126 * channel(r) + 0.7152 * channel(g) + 0.0722 * channel(b);
 const ratioRgb = (a, b) => {
@@ -107,27 +110,16 @@ const ratioRgb = (a, b) => {
 const compositeOver = (fg, alpha, bg) => fg.map((c, i) => alpha * c + (1 - alpha) * bg[i]);
 
 const darkDeep = tokens['dark-deep'] ? hexToRgb(tokens['dark-deep']) : null;
-// Ljusaste punkten i Premiums espressogradient: mässingsglöden från .prem::before (10 % av
-// rgba(226, 192, 126)) över --dark, mitt i den radiella höjdpunkten. Finns inte som egen token,
-// så den härleds ur --dark (rundar till #3C2D21) istället för att stå hårdkodad separat.
-const premiumGradientLight = tokens.dark ? compositeOver([226, 192, 126], 0.1, hexToRgb(tokens.dark)) : null;
 
 const compositedPairs = [
   { label: 'Footer .fbot', fg: [233, 226, 210], alpha: 0.55, bg: darkDeep, min: 4.5 },
   { label: 'Footer .sib-kick', fg: [233, 226, 210], alpha: 0.6, bg: darkDeep, min: 4.5 },
-  { label: 'Premium .pnote', fg: [242, 234, 220], alpha: 0.62, bg: premiumGradientLight, min: 4.5 },
-  { label: 'Premium .feat p', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
   // FieldNoteArticle.astro .cend-a: the end card's text on AlbIT's black (Birdy × AlbIT note).
   { label: 'FieldNoteArticle .cend-a', fg: [245, 245, 243], alpha: 1, bg: tokens['albit-ink'] ? hexToRgb(tokens['albit-ink']) : null, min: 4.5 },
   // Nav.astro: the links (.82) on the solid paper bar (Albin 2026-10-10: the light bar replaced the espresso one).
   { label: 'Nav .links a (paper bar)', fg: tokens.ink ? hexToRgb(tokens.ink) : null, alpha: 0.82, bg: tokens.paper ? hexToRgb(tokens.paper) : null, min: 4.5 },
   // FinalCta.astro .sub (.85) on the espresso wall, over its lightest point (#3D2C22). The hero left the wall on 2026-10-09.
   { label: 'FinalCta .sub', fg: [255, 248, 238], alpha: 0.85, bg: [61, 44, 34], min: 4.5 },
-  // PremiumPage.astro: the faintest text (.fine, .66) on the dark bands, the card text (.78) on the chosen price card's
-  // brass tint, and the breadcrumbs (.78) in the hero's brass glow.
-  { label: 'PremiumPage .fine', fg: [242, 234, 220], alpha: 0.66, bg: premiumGradientLight, min: 4.5 },
-  { label: 'PremiumPage .pcard.sel', fg: [242, 234, 220], alpha: 0.78, bg: tokens.dark ? compositeOver([226, 192, 126], 0.07, hexToRgb(tokens.dark)) : null, min: 4.5 },
-  { label: 'PremiumPage .crumbs', fg: [242, 234, 220], alpha: 0.78, bg: tokens.dark ? compositeOver([226, 192, 126], 0.14, hexToRgb(tokens.dark)) : null, min: 4.5 },
 ];
 
 for (const { label, fg, alpha, bg, min } of compositedPairs) {

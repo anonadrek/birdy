@@ -1,6 +1,8 @@
 ---
-// The Premium page, /premium/ and /sv/premium/ (plan 2026-10-08 Task 6, mockups premium-a.html and premium-a-en.html):
-// espresso and brass like the app's own Premium and thank-you screens. The facts follow docs/play-store/terms.md §5 and
+// The Premium page, /premium/ and /sv/premium/ (plan 2026-10-08 Task 6, mockups premium-a.html and premium-a-en.html;
+// in the light since 2026-10-10, Albin: "more inline with the site ... make it also premium"): the site's own papers in
+// turn, peach, paper and cream, torn into each other, with brass as Premium's detail (seals, rules, numerals), the way
+// the app's 1.3 Premium screens are paper with brass. The facts follow docs/play-store/terms.md §5 and
 // privacy-policy.md §1, §4 and §5 on release/1.3.0: Premium is the finds map, the journal as a PDF, season statistics
 // and seven badges, bought as a year or for good in Google Play; audio ID is never part of it (BirdNET's licence).
 // Prices only on the Swedish page (Play shows the local price elsewhere); no Offer/Product JSON-LD, since Play sets them.
@@ -15,6 +17,7 @@ import MarginNote from '../ui/MarginNote.astro';
 import DeckleEdge from '../ui/DeckleEdge.astro';
 import PlayStoreBadge from '../ui/PlayStoreBadge.astro';
 import AppStoreBadge from '../ui/AppStoreBadge.astro';
+import YearFlock from './YearFlock.astro';
 import { type Locale, getCopy } from '../../lib/i18n';
 import { premiumHref } from '../../lib/links';
 import { releaseDependentCopy, releaseTimelineEntry } from '../../lib/release.mjs';
@@ -63,10 +66,10 @@ const accent = (s: string) => parseHeadline(s);
 const phoneSizes = '(min-width: 900px) 270px, 230px';
 ---
 
-<Layout locale={locale} pathname={pathname} title={p.title} description={p.description} ogImage={`/og-premium-${locale}.jpg?v=1`} ogImageAlt={p.shareAlt} jsonLd={jsonLd} themeColor="#2A1D17">
-  <Nav locale={locale} variant="overlay" />
+<Layout locale={locale} pathname={pathname} title={p.title} description={p.description} ogImage={`/og-premium-${locale}.jpg?v=2`} ogImageAlt={p.shareAlt} jsonLd={jsonLd} themeColor="#FDE5CB">
+  <Nav locale={locale} variant="overlay" surface="peach" />
   <main id="main" tabindex="-1" class="pp" data-premium-page>
-    <header class="dark hero">
+    <header class="hero">
       <div class="glow" aria-hidden="true"></div>
       <div class="wrap grid">
         <div class="hero-words">
@@ -86,16 +89,14 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
             <PlayStoreBadge locale={locale} href={play} alt={t.alt.playStoreBadge} size="small" loading="eager" />
           </div>
         </div>
-        <div class="hero-phone">
-          <div class="pphone tilt"><Image src={stats} alt={p.heroAlt} widths={[300, 450, 600]} sizes="(min-width: 900px) 290px, 250px" loading="eager" fetchpriority="high" decoding="async" /></div>
-          <span class="seal seal--brass hseal" aria-hidden="true">{p.heroSeal}</span>
-          <span class="hand" aria-hidden="true">{p.heroHand}</span>
+        <div class="hero-vis">
+          <YearFlock label={t.premium.ringAlt} seal={p.heroSeal} />
         </div>
       </div>
     </header>
 
-    <section class="paper situation">
-      <DeckleEdge color="var(--dark-deep)" />
+    <section class="situation">
+      <DeckleEdge color="var(--peach)" />
       <div class="wrap grid">
         <div data-reveal>
           <Kicker text={p.situation.kicker} />
@@ -124,7 +125,7 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
       </div>
     </section>
 
-    <section class="dark gets">
+    <section class="gets">
       <DeckleEdge color="var(--paper)" />
       <div class="wrap">
         <div data-reveal>
@@ -135,7 +136,7 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
         {p.gets.features.map((f, i) => (
           <div class:list={['feat', { flip: i % 2 === 1 }]} data-feature={i}>
             <div class="txt" data-reveal>
-              <span class="tag">{f.tag}</span>
+              <span class="tag"><b aria-hidden="true">{['I', 'II', 'III', 'IV'][i]}</b>{f.tag}</span>
               <h3>{f.title}</h3>
               <p>{f.body}</p>
             </div>
@@ -159,7 +160,7 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
     </section>
 
     <section class="freeband">
-      <DeckleEdge color="var(--dark-deep)" />
+      <DeckleEdge color="var(--card)" />
       <div class="wrap grid">
         <div data-reveal>
           <Kicker text={p.free.kicker} />
@@ -170,7 +171,7 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
       </div>
     </section>
 
-    <section class="dark prices" id={pricesId}>
+    <section class="prices" id={pricesId}>
       <DeckleEdge color="var(--peach)" />
       <div class="wrap">
         <div data-reveal>
@@ -191,8 +192,8 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
       </div>
     </section>
 
-    <section class="paper early">
-      <DeckleEdge color="var(--dark-deep)" />
+    <section class="early">
+      <DeckleEdge color="var(--paper)" />
       <div class="wrap grid">
         <div data-reveal>
           <span class="seal seal--brass eseal" aria-hidden="true">{p.early.seal}</span>
@@ -205,8 +206,8 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
       </div>
     </section>
 
-    <section class="dark buy">
-      <DeckleEdge color="var(--paper)" />
+    <section class="buy">
+      <DeckleEdge color="var(--card)" />
       <div class="wrap grid">
         <div data-reveal>
           <Kicker text={p.buy.kicker} />
@@ -225,42 +226,39 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
       </div>
     </section>
   </main>
-  <Footer locale={locale} edgeColor="var(--dark-deep)" />
+  <Footer locale={locale} />
 </Layout>
 
 <style>
-  .pp { --brass-glow: rgba(226, 192, 126, .14); }
   .pp :global(.wrap) { position: relative; }
-  .dark { position: relative; color: var(--cream); background: linear-gradient(180deg, var(--dark) 0%, var(--dark-deep) 100%); --kick-color: var(--brass-hi); --jh-ink: var(--cream); --jh-accent: var(--brass-hi); --mn-color: var(--apricot); }
-  .dark :global(:focus-visible) { outline-color: var(--apricot); }
-  .paper { position: relative; background: var(--paper); }
+  /* Light sections in the site's order of papers; brass only where Premium speaks: kickers, numerals, rules, seals. */
+  .pp { --kick-color: var(--brass-deep); --brass-rule: rgba(184, 137, 58, .55); --brass-rule-soft: rgba(184, 137, 58, .28); }
 
-  /* Hero: brass light behind the phone, the app's own headline. */
-  .hero { overflow: hidden; padding: 104px 0 70px; }
-  .glow { position: absolute; inset: 0; background: radial-gradient(60% 55% at 78% 34%, var(--brass-glow), transparent 62%); pointer-events: none; }
+  /* Hero: the home hero's peach paper, lit where the visual sits. */
+  .hero { position: relative; overflow: hidden; padding: 104px 0 70px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(70% 70% at 76% 38%, var(--peach-hi) 0%, var(--peach) 55%, var(--peach-lo) 100%); }
+  .glow { position: absolute; inset: 0; background: radial-gradient(40% 45% at 77% 40%, rgba(226, 192, 126, .22), transparent 70%); pointer-events: none; }
   .hero .grid { position: relative; display: grid; gap: 40px; }
   .hero-words { position: relative; }
   .nav-until { position: absolute; left: 0; bottom: 100%; width: 1px; height: 100vh; pointer-events: none; }
-  .crumbs ol { display: flex; gap: 8px; list-style: none; margin: 0 0 22px; padding: 0; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: rgba(242, 234, 220, .78); }
-  .crumbs li + li::before { content: '›'; margin-right: 8px; color: var(--brass-hi); }
-  .crumbs a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(226, 192, 126, .5); }
-  .crumbs a:hover { color: var(--cream); }
-  h1 { margin-top: 2px; font-size: clamp(46px, 7.4vw, 82px); line-height: .98; letter-spacing: -.02em; color: var(--cream); text-wrap: balance; }
-  h1 em { display: block; margin-top: 4px; font-family: var(--font-script); font-weight: 700; font-style: normal; font-size: 1.16em; letter-spacing: 0; line-height: .95; color: var(--brass-hi); }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .hero .lead { --lead-color: rgba(242, 234, 220, .82); max-width: 32rem; }
+  .crumbs ol { display: flex; gap: 8px; list-style: none; margin: 0 0 22px; padding: 0; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: var(--muted); }
+  .crumbs li + li::before { content: '›'; margin-right: 8px; color: var(--brass-deep); }
+  .crumbs a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--brass-rule); }
+  .crumbs a:hover { color: var(--ink); }
+  h1 { margin-top: 2px; font-size: clamp(46px, 7.4vw, 82px); line-height: .98; letter-spacing: -.02em; color: var(--ink); text-wrap: balance; }
+  h1 em { display: block; margin-top: 4px; font-family: var(--font-script); font-weight: 700; font-style: normal; font-size: 1.16em; letter-spacing: 0; line-height: .95; color: var(--rust); }
+  .hero .lead { max-width: 32rem; }
   .ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 26px; }
-  .btn-brass { display: inline-flex; align-items: center; height: 50px; padding: 0 22px; border-radius: 12px; background: linear-gradient(135deg, var(--brass-hi), var(--brass)); color: var(--brass-ink); font-weight: 600; font-size: 15px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 8px 18px rgba(0, 0, 0, .3); transition: transform .25s var(--ease-paper); }
+  /* Brass with a sheen: the one brass control on each light page (the home band's "All about Premium" is the same). */
+  .btn-brass { display: inline-flex; align-items: center; height: 50px; padding: 0 22px; border-radius: 12px; background: linear-gradient(135deg, #EDD39A, var(--brass-hi) 30%, var(--brass) 100%); color: var(--brass-ink); font-weight: 600; font-size: 15px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(122, 90, 34, .35), 0 1px 2px rgba(var(--dark-rgb), .12), 0 10px 22px -8px rgba(122, 90, 34, .55); transition: transform .25s var(--ease-paper); }
   .btn-brass:hover { transform: translateY(-2px); }
-  .hero-phone { position: relative; width: 250px; margin: 20px auto 44px; }
-  .pphone { width: 100%; max-width: var(--pw, 250px); padding: 8px; border-radius: 34px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), var(--psh, 0 30px 60px rgba(0, 0, 0, .5)); }
+  /* The year ring (YearFlock): the same flock around the same seal as the home page's Premium band. */
+  .hero-vis { position: relative; width: min(420px, 100%); margin: 10px auto 40px; }
+  /* The app's own screens in the dark phone, as in the gallery on the home page. */
+  .pphone { width: 100%; max-width: var(--pw, 250px); padding: 8px; border-radius: 34px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 3px 6px rgba(var(--dark-rgb), .14), 0 22px 44px rgba(var(--dark-rgb), .26); }
   .pphone :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 26px; }
-  .tilt { --pw: 250px; transform: rotate(-3deg); --psh: 0 34px 70px rgba(0, 0, 0, .5); }
-  .hseal { position: absolute; right: -28px; top: 40px; z-index: 3; width: 86px; height: 86px; font-size: 16px; transform: rotate(-9deg); }
-  .hand { position: absolute; left: -26px; bottom: -44px; z-index: 3; font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1; color: var(--apricot); transform: rotate(-4deg); white-space: nowrap; }
 
-  /* Läget: the story and the timeline down a dotted line. */
-  .situation { padding: 92px 0 84px; }
+  /* Where we stand: the story and the timeline down a dotted line, on the paper. */
+  .situation { position: relative; background: var(--paper); padding: 92px 0 84px; }
   .situation .grid { display: grid; gap: 40px; }
   .story { margin-top: 20px; display: grid; gap: 14px; font-size: 16px; line-height: 1.68; color: var(--ink); max-width: 36rem; }
   .story p { margin: 0; }
@@ -275,26 +273,26 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
   .more { margin: 4px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); max-width: 30rem; }
   .tbird { position: absolute; left: -38px; top: -34px; width: 26px; height: 25px; background: var(--rust); -webkit-mask: url('/brand/birdy-bird.png') center / contain no-repeat; mask: url('/brand/birdy-bird.png') center / contain no-repeat; transform: rotate(-12deg); }
 
-  /* Det här får du i dag: text and real screens, alternating. */
-  .gets { padding: 104px 0 90px; }
+  /* What you get today: the four things in turn, numbered like plates, with the app's real screens, on the cream. */
+  .gets { position: relative; background: var(--card); padding: 104px 0 90px; }
   .feat { display: grid; gap: 30px; margin-top: 64px; align-items: center; }
-  .tag { display: inline-block; margin-bottom: 12px; padding: 3px 11px; border: 1px solid rgba(226, 192, 126, .5); border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--brass-hi); }
-  .feat h3 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.04; color: var(--cream); }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .feat .txt p { margin: 12px 0 0; font-size: 15.5px; line-height: 1.62; color: rgba(242, 234, 220, .8); max-width: 30rem; }
+  .tag { display: inline-flex; align-items: baseline; gap: 10px; margin-bottom: 12px; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brass-deep); }
+  .tag b { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 22px; letter-spacing: 0; text-transform: none; color: var(--brass-deep); }
+  .feat h3 { font-size: clamp(30px, 3.4vw, 42px); line-height: 1.04; color: var(--ink); }
+  .feat .txt p { margin: 12px 0 0; font-size: 15.5px; line-height: 1.62; color: var(--muted); max-width: 30rem; }
   .vis { display: flex; justify-content: center; }
   .vis .pphone { --pw: 240px; }
   /* Three loose pages fanned out; sized in percent so they fit a 320 px screen. */
   .pages { position: relative; width: min(300px, 100%); aspect-ratio: 300 / 330; }
-  .pages :global(img) { position: absolute; width: 65%; height: auto; aspect-ratio: 900 / 1274; box-shadow: 0 20px 40px rgba(0, 0, 0, .45); }
+  .pages :global(img) { position: absolute; width: 65%; height: auto; aspect-ratio: 900 / 1274; box-shadow: 0 1px 2px rgba(var(--dark-rgb), .14), 0 18px 34px rgba(var(--dark-rgb), .2); }
   .pages :global(img:nth-child(1)) { left: 0; top: 9%; transform: rotate(-8deg); }
   .pages :global(img:nth-child(2)) { left: 17.5%; top: 2.5%; transform: rotate(-1deg); }
   .pages :global(img:nth-child(3)) { left: 35%; top: 10%; transform: rotate(7deg); }
-  .maph { width: 240px; aspect-ratio: 9 / 16; border: 2px dashed rgba(226, 192, 126, .45); border-radius: 34px; display: grid; place-items: center; text-align: center; padding: 26px; font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1.12; color: var(--apricot); }
-  .maph small { display: block; margin-top: 14px; font-family: var(--font-sans); font-weight: 600; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: rgba(242, 234, 220, .78); }
+  .maph { width: 240px; aspect-ratio: 9 / 16; border: 2px dashed var(--brass-rule); border-radius: 34px; display: grid; place-items: center; text-align: center; padding: 26px; background: var(--paper); font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1.12; color: var(--rust); }
+  .maph small { display: block; margin-top: 14px; font-family: var(--font-sans); font-weight: 600; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 
-  /* Alltid gratis, on peach. */
-  .freeband { position: relative; background: var(--peach); padding: 92px 0 86px; }
+  /* Always free, on peach. */
+  .freeband { position: relative; background: var(--peach); padding: 92px 0 86px; --kick-color: var(--rust); }
   .freeband .grid { display: grid; gap: 30px; }
   .bn { margin: 22px 0 0; font-size: 15px; line-height: 1.62; color: var(--muted); max-width: 34rem; }
   .bn b { color: var(--ink); font-weight: 600; }
@@ -302,21 +300,22 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
   .checks li { display: flex; gap: 12px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid rgba(154, 69, 38, .2); font-size: 16px; color: var(--ink); }
   .checks li::before { content: '✓'; color: var(--rust); font-weight: 600; }
 
-  /* Priser: the app's two cards. */
-  .prices { padding: 104px 0 92px; }
+  /* Prices: the app's two cards as gilt plates, a double brass rule inside the edge; the year is the chosen one. */
+  .prices { position: relative; background: var(--paper); padding: 104px 0 92px; }
   .cards { display: grid; gap: 16px; margin-top: 34px; }
-  .pcard { position: relative; padding: 24px 24px 22px; border-radius: 16px; border: 1px solid rgba(226, 192, 126, .35); background: rgba(255, 255, 255, .03); }
-  .pcard.sel { border: 2px solid var(--brass-hi); background: rgba(226, 192, 126, .07); }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .pcard .lab { font-family: var(--font-sans); font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: rgba(242, 234, 220, .78); }
-  .amt { margin: 10px 0 0; font-family: var(--font-serif); font-size: clamp(42px, 5vw, 54px); line-height: 1; color: var(--cream); font-variant-numeric: tabular-nums; }
-  .amt small { margin-left: 8px; font-family: var(--font-sans); font-size: 15px; color: rgba(242, 234, 220, .78); }
-  .pcard p:not(.amt) { margin: 12px 0 0; font-size: 14.5px; line-height: 1.55; color: rgba(242, 234, 220, .8); }
-  .phand { position: absolute; right: 18px; top: 14px; font-family: var(--font-script); font-weight: 700; font-size: 22px; color: var(--apricot); transform: rotate(-4deg); }
-  .fine { margin: 20px 0 0; font-size: 13px; line-height: 1.6; color: rgba(242, 234, 220, .66); max-width: 42rem; }
+  .pcard { position: relative; padding: 28px 28px 24px; border-radius: 16px; background: var(--card); box-shadow: 0 0 0 1px var(--line), 0 18px 36px -24px rgba(122, 90, 34, .45); }
+  .pcard::before { content: ''; position: absolute; inset: 8px; border: 1px solid var(--brass-rule-soft); border-radius: 10px; pointer-events: none; }
+  .pcard.sel { box-shadow: 0 0 0 2px var(--brass), 0 22px 40px -22px rgba(122, 90, 34, .55); }
+  .pcard.sel::before { border-color: var(--brass-rule); }
+  .pcard .lab { font-family: var(--font-sans); font-size: 11.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brass-deep); }
+  .amt { margin: 10px 0 0; font-family: var(--font-serif); font-size: clamp(42px, 5vw, 54px); line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .amt small { margin-left: 8px; font-family: var(--font-sans); font-size: 15px; color: var(--muted); }
+  .pcard p:not(.amt) { margin: 12px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+  .phand { position: absolute; right: 22px; top: 18px; font-family: var(--font-script); font-weight: 700; font-size: 22px; color: var(--rust); transform: rotate(-4deg); }
+  .fine { margin: 20px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 42rem; }
 
-  /* Tidiga fältmedlemmar. */
-  .early { padding: 96px 0 90px; }
+  /* Early field members, on the cream. */
+  .early { position: relative; background: var(--card); padding: 96px 0 90px; }
   .early .grid { display: grid; gap: 40px; }
   .eseal { width: 112px; height: 112px; font-size: 17px; line-height: 1.1; text-align: center; margin-bottom: 18px; }
   .big { margin: 18px 0 0; font-size: 18px; line-height: 1.62; color: var(--ink); max-width: 36rem; }
@@ -325,24 +324,22 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
   .small { margin: 14px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); max-width: 34rem; }
   .early-phone { --pw: 240px; margin: 0 auto; }
 
-  /* Så köper du + frågor. */
-  .buy { padding: 100px 0 100px; }
+  /* How to buy and questions, on the paper. */
+  .buy { position: relative; background: var(--paper); padding: 100px 0 100px; }
   .buy .grid { display: grid; gap: 44px; }
   .steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
-  .steps li { counter-increment: s; display: flex; gap: 14px; align-items: baseline; font-size: 16px; line-height: 1.5; color: rgba(242, 234, 220, .9); }
-  .steps li::before { content: counter(s); flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--brass-hi); color: var(--brass-ink); font-family: var(--font-serif); font-size: 16px; transform: translateY(4px); }
+  .steps li { counter-increment: s; display: flex; gap: 14px; align-items: baseline; font-size: 16px; line-height: 1.5; color: var(--ink); }
+  .steps li::before { content: counter(s); flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .45), transparent 55%), var(--brass); color: var(--brass-ink); font-family: var(--font-serif); font-size: 16px; transform: translateY(4px); }
   .buy .badges { margin-top: 30px; }
-  .faq { border-top: 1px solid rgba(255, 255, 255, .14); }
-  .faq div { padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, .14); }
-  .faq h3 { font-size: 20px; line-height: 1.2; color: var(--cream); }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .faq p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.62; color: rgba(242, 234, 220, .74); }
+  .faq { border-top: 1px solid var(--line); }
+  .faq div { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .faq h3 { font-size: 20px; line-height: 1.2; color: var(--ink); }
+  .faq p { margin: 6px 0 0; font-size: 14.5px; line-height: 1.62; color: var(--muted); }
 
   @media (min-width: 900px) {
     .hero { padding: 0; }
-    .hero .grid { grid-template-columns: minmax(0, 1fr) 360px; gap: 60px; align-items: center; min-height: clamp(640px, 88svh, 760px); padding-top: 76px; }
-    .hero-phone { width: 290px; margin: 30px 0 -40px auto; }
-    .tilt { --pw: 290px; }
+    .hero .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: 60px; align-items: center; min-height: clamp(640px, 88svh, 760px); padding-top: 76px; }
+    .hero-vis { width: 100%; margin: 0; }
     .situation, .freeband, .early { padding: 120px 0 108px; }
     .situation .grid, .freeband .grid, .buy .grid { grid-template-columns: 1fr 1fr; gap: 80px; }
     .timeline { margin-top: 64px; }
@@ -357,12 +354,9 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
     .early-phone { --pw: 280px; }
     .buy { padding: 116px 0; }
   }
+  /* The hero is the first view, not a reveal: its flock flies in as the page loads, with YearFlock's own keyframes. */
   @media (prefers-reduced-motion: no-preference) {
-    .hero-phone { animation: pp-rise 1s .15s var(--ease-paper) both; }
-    .hseal { animation: pp-stamp .55s .9s cubic-bezier(.2, 1.4, .4, 1) both; }
-    .hand { animation: pp-write 1s 1.2s cubic-bezier(.45, .05, .35, 1) both; }
+    .hero-vis :global(.yf-birds) { animation: yf-fly 1.8s .1s var(--ease-paper) both; }
+    .hero-vis :global(.yf-lit) { animation: yf-light .5s 1.6s ease-out both; }
   }
-  @keyframes pp-rise { from { transform: translateY(40px) rotate(2deg); } }
-  @keyframes pp-stamp { from { opacity: 0; transform: scale(1.7) rotate(-20deg); } }
-  @keyframes pp-write { from { clip-path: inset(-20% 100% -20% 0); } to { clip-path: inset(-20% -2% -20% 0); } }
 </style>
