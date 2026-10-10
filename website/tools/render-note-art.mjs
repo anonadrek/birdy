@@ -9,7 +9,7 @@
 //
 // The silhouettes are the covers' own (tools/social/cover/sil, from PhyloPic, CC0). Seeded, so a run gives the same
 // birds every time.
-import { mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -219,6 +219,7 @@ async function silhouetteFlock(f) {
   const head = from.reduce((a, p) => (p[1] < a[1] ? p : a), from[0]);
   const way = f.leaveSide >= 0 ? 1 : -1;
   const EDGE_PAD = 18;
+  let lastLeave = null;
   for (let n = 0; n < LEAVE; n++) {
     const t = n + r() * 0.4 - 0.2;
     const lx = clamp(head[0] + way * (26 + 20 * t) * k, EDGE_PAD, W - EDGE_PAD);
@@ -226,12 +227,15 @@ async function silhouetteFlock(f) {
     const heading = Math.atan2(-(3 + 2.6 * t), way * 28) * 180 / Math.PI + (r() - 0.5) * 8;
     const size = Math.max(7, 17 - 1.3 * n + r() * 4) * k, alpha = Math.min(1, Math.max(0.3, 0.85 - 0.06 * n + r() * 0.15));
     bird(ctx, lx, ly, size, heading, COLOURS[1 + Math.floor(r() * 2)], alpha);
+    lastLeave = { x: lx, y: ly };
   }
   const size = 44 * k;
   ctx.save(); ctx.beginPath(); ctx.arc(lit[0], lit[1], size * 0.95, 0, Math.PI * 2);
   ctx.fillStyle = '#FFFAF1'; ctx.fill(); ctx.lineWidth = 5 * k; ctx.strokeStyle = '#9A4526'; ctx.stroke(); ctx.restore();
   bird(ctx, lit[0], lit[1], size, -8, '#9A4526', 1);
-  return edge.length + inner.length + 1 + LEAVE;
+  const aim = { x: x0 + w * 0.45, y: y0 + h * 0.35 };
+  const landing = inner.reduce((a, p) => ((p[0] - aim.x) ** 2 + (p[1] - aim.y) ** 2 < (a[0] - aim.x) ** 2 + (a[1] - aim.y) ** 2 ? p : a), inner[0] ?? lit);
+  return { count: edge.length + inner.length + 1 + LEAVE, exit: { x: lastLeave.x / W, y: lastLeave.y / H }, land: { x: landing[0] / W, y: landing[1] / H } };
 }
 
 // A short stream of birds between two points, like the home hero's trail (seeded, thinning towards its end).
@@ -265,9 +269,10 @@ async function polaroid(p) {
 window.__ready = (async () => {
   await document.fonts.load('700 40px Caveat');
   await document.fonts.load('600 20px Inter');
-  let count = null;
+  let flight = null;
+  let avoid = [];
   if (PIC.trail) trail(PIC.trail);
-  if (PIC.flock) count = await silhouetteFlock(PIC.flock);
+  if (PIC.flock) flight = await silhouetteFlock(PIC.flock);
   if (PIC.polaroid) await polaroid(PIC.polaroid);
   if (PIC.words && PIC.words.items.length) {
     const col = document.createElement('div');
@@ -281,9 +286,11 @@ window.__ready = (async () => {
     art.append(col);
     await document.fonts.ready;
     col.style.top = Math.round((H - col.offsetHeight) / 2) + 'px';
+    const b = col.getBoundingClientRect();
+    avoid = [{ x: (b.left - 16) / W, y: (b.top - 16) / H, w: (b.width + 32) / W, h: (b.height + 32) / H }];
   }
   await document.fonts.ready;
-  return count;
+  return { count: flight?.count ?? null, exit: flight?.exit ?? null, land: flight?.land ?? null, avoid };
 })();
 </script>`;
 }
@@ -304,6 +311,13 @@ function inLocale(pic, locale) {
   };
 }
 
+// The pictures' flight data (exit, land, avoid), read back in by src/components/NoteCard.astro via artKey. Only
+// written in the normal (non-preview) run: a --out run is a proposal, not the data other components read.
+const artFile = join(root, 'src/data/note-art.json');
+const art = existsSync(artFile) ? JSON.parse(readFileSync(artFile, 'utf8')) : {};
+const r4 = (n) => Math.round(n * 1e4) / 1e4;
+const pt = (p) => p && { x: r4(p.x), y: r4(p.y) };
+
 const dir = mkdtempSync(join(tmpdir(), 'note-art-'));
 const browser = await chromium.launch({ args: ['--allow-file-access-from-files'] });
 try {
@@ -314,16 +328,17 @@ try {
     if (!PICTURES[name]) throw new Error(`no picture called ${name} (${Object.keys(PICTURES).join(', ')})`);
     for (const locale of LOCALES) {
       const pic = inLocale(PICTURES[name], locale);
+      const base = `${pic.file}-${locale}`;
       const photo = pic.polaroid ? JSON.stringify(dataUrl(pic.polaroid.photo, 'image/webp')) : '""';
       const html = page(pic).replace('"src":null', `"src":${photo}`);
       const file = join(dir, `${name}-${locale}.html`);
       writeFileSync(file, html);
       await tab.goto(pathToFileURL(file).href, { waitUntil: 'load' });
-      const count = await tab.evaluate(() => window.__ready);
+      const result = await tab.evaluate(() => window.__ready);
       if (errors.length) throw new Error(`${name} (${locale}): ${errors.join('; ')}`);
-      if (pic.flock && count !== 839) throw new Error(`${name} (${locale}): drew ${count} birds, expected 839`);
+      if (pic.flock && result.count !== 839) throw new Error(`${name} (${locale}): drew ${result.count} birds, expected 839`);
+      if (result.exit && !outDir) art[base] = { exit: pt(result.exit), land: pt(result.land), avoid: result.avoid.map((a) => ({ x: r4(a.x), y: r4(a.y), w: r4(a.w), h: r4(a.h) })) };
       const png = await tab.locator('#art').screenshot();
-      const base = `${pic.file}-${locale}`;
       if (outDir) {
         mkdirSync(outDir, { recursive: true });
         const out = join(outDir, `${base}.png`);
@@ -338,6 +353,7 @@ try {
       }
     }
   }
+  if (!outDir) writeFileSync(artFile, JSON.stringify(art, null, 2) + '\n');
 } finally {
   await browser.close();
   rmSync(dir, { recursive: true, force: true });
