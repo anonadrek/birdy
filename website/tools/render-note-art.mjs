@@ -63,7 +63,10 @@ export const PICTURES = {
   // robin, like the See the song cover, mirrored, with Birdy's line beside it.
   'why-birdy-flock': {
     file: 'why-birdy-flock-q25334',
-    flock: { qid: 'Q25334', box: { x: 150, y: 70, w: 560, h: 700 }, scale: 0.84, leaveSide: 1, litNear: { x: 300, y: 420 } },
+    // The robin's own silhouette (PhyloPic) faces left; mirrored here so it faces right, the same way as every
+    // small bird that fills it (and the same way as the home hero flock and See the song), so the flock and the
+    // bird it forms fly together instead of past each other.
+    flock: { qid: 'Q25334', box: { x: 150, y: 70, w: 560, h: 700 }, scale: 0.84, mirror: true, leaveSide: 1, litNear: { x: 300, y: 420 } },
     words: {
       x: 860, w: 620,
       en: [
@@ -136,6 +139,7 @@ function rng(seed) {
   return () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
 function keyIndex(key, n) { let h = 0; for (let i = 0; i < key.length; i++) h = (h * 31 + key.charCodeAt(i)) >>> 0; return n > 0 ? h % n : h; }
+function clamp(v, lo, hi) { return Math.min(Math.max(v, lo), hi); }
 function bird(g, x, y, size, rot, colour, alpha) {
   const k = size / MARK.w;
   g.save(); g.globalAlpha = alpha; g.translate(x, y); g.rotate(rot * Math.PI / 180); g.scale(k, k); g.translate(-MARK.cx, -MARK.cy);
@@ -152,7 +156,12 @@ async function silhouetteFlock(f) {
   if (h > f.box.h) { h = f.box.h; w = h * ar; }
   const x0 = f.box.x + (f.box.w - w) / 2, y0 = f.box.y + (f.box.h - h) / 2;
   const m = document.createElement('canvas'); m.width = W; m.height = H;
-  const mg = m.getContext('2d'); mg.drawImage(img, x0, y0, w, h);
+  const mg = m.getContext('2d');
+  mg.save();
+  // Some PhyloPic silhouettes face left; mirrored in place (same box) so the big bird faces the way the flock flies.
+  if (f.mirror) { mg.translate(x0 + w, y0); mg.scale(-1, 1); mg.drawImage(img, 0, 0, w, h); }
+  else mg.drawImage(img, x0, y0, w, h);
+  mg.restore();
   const px = mg.getImageData(0, 0, W, H).data;
   const inside = (x, y) => { x = Math.round(x); y = Math.round(y); return x >= 0 && y >= 0 && x < W && y < H && px[(y * W + x) * 4 + 3] > 128; };
   const r = rng(7919 ^ keyIndex(f.qid, 0));
@@ -187,23 +196,36 @@ async function silhouetteFlock(f) {
     if (edge.length + inner.length + LEAVE >= TOTAL) break;
   }
   while (edge.length + inner.length + LEAVE > TOTAL) { if (inner.length) inner.splice(Math.floor(r() * inner.length), 1); else edge.pop(); }
+  // litNear is written for the unmirrored silhouette; mirror it too, so the lit bird still lands on the breast.
+  const litNear = f.litNear && f.mirror ? { x: 2 * x0 + w - f.litNear.x, y: f.litNear.y } : f.litNear;
   let at = keyIndex(f.qid, inner.length);
-  if (f.litNear && inner.length) {
+  if (litNear && inner.length) {
     let best = Infinity;
-    inner.forEach((p, i) => { const d = (p[0] - f.litNear.x) ** 2 + (p[1] - f.litNear.y) ** 2; if (d < best) { best = d; at = i; } });
+    inner.forEach((p, i) => { const d = (p[0] - litNear.x) ** 2 + (p[1] - litNear.y) ** 2; if (d < best) { best = d; at = i; } });
   }
   const lit = inner.length ? inner.splice(at, 1)[0] : edge.pop();
   const pick = (wts) => { const u = r(); let a = 0; for (let i = 0; i < wts.length; i++) { a += wts[i]; if (u < a) return COLOURS[i]; } return COLOURS[1]; };
-  for (const p of inner) bird(ctx, p[0], p[1], (13 + r() * 12) * k, -8 + (r() - 0.5) * 44, pick([0.25, 0.4, 0.25, 0.1]), 0.72 + r() * 0.28);
-  for (const p of edge) bird(ctx, p[0], p[1], (19 + r() * 7) * k, -8 + (r() - 0.5) * 36, pick([0.05, 0.2, 0.5, 0.25]), 0.9 + r() * 0.1);
-  // A few leave from the flock's highest point on the open side.
+  // Every bird in the flock points the way the big bird faces: the shared heading of -8 degrees (a slight climb),
+  // at most about +-4 degrees off it, so the mass reads as one body in flight, not a jittery swarm.
+  for (const p of inner) bird(ctx, p[0], p[1], (13 + r() * 12) * k, -8 + (r() - 0.5) * 8, pick([0.25, 0.4, 0.25, 0.1]), 0.72 + r() * 0.28);
+  for (const p of edge) bird(ctx, p[0], p[1], (19 + r() * 7) * k, -8 + (r() - 0.5) * 8, pick([0.05, 0.2, 0.5, 0.25]), 0.9 + r() * 0.1);
+  // A few leave from the front of the head (the side the bird faces, near its top), in a gentle rising arc ahead
+  // of the flock. Each one sits at its own point t along the arc and is turned to the arc's tangent there, so its
+  // heading starts close to the flock's own -8 degrees and climbs the further it pulls away, reading as the
+  // flock's own leaders heading the same way rather than a separate, randomly aimed stream. Smaller and fainter
+  // with distance (increasing n), as they recede ahead of the flock.
   const side = f.leaveSide >= 0 ? edge.filter((p) => p[0] > x0 + w * 0.45) : edge.filter((p) => p[0] < x0 + w * 0.55);
   const from = side.length ? side : edge;
-  const top = from.reduce((a, p) => (p[1] < a[1] ? p : a), from[0]);
+  const head = from.reduce((a, p) => (p[1] < a[1] ? p : a), from[0]);
   const way = f.leaveSide >= 0 ? 1 : -1;
+  const EDGE_PAD = 18;
   for (let n = 0; n < LEAVE; n++) {
-    const lx = top[0] + way * (34 + n * 30 + r() * 16) * k, ly = top[1] - (26 + n * 20 + r() * 14) * k;
-    bird(ctx, lx, ly, (12 + r() * 6) * k, (way > 0 ? -28 : 28) + (r() - 0.5) * 24, COLOURS[1 + Math.floor(r() * 2)], 0.6 + r() * 0.3);
+    const t = n + r() * 0.4 - 0.2;
+    const lx = clamp(head[0] + way * (26 + 20 * t) * k, EDGE_PAD, W - EDGE_PAD);
+    const ly = clamp(head[1] - (18 + 3 * t + 1.3 * t * t) * k, EDGE_PAD, H - EDGE_PAD);
+    const heading = Math.atan2(-(3 + 2.6 * t), way * 28) * 180 / Math.PI + (r() - 0.5) * 8;
+    const size = Math.max(7, 17 - 1.3 * n + r() * 4) * k, alpha = Math.min(1, Math.max(0.3, 0.85 - 0.06 * n + r() * 0.15));
+    bird(ctx, lx, ly, size, heading, COLOURS[1 + Math.floor(r() * 2)], alpha);
   }
   const size = 44 * k;
   ctx.save(); ctx.beginPath(); ctx.arc(lit[0], lit[1], size * 0.95, 0, Math.PI * 2);
