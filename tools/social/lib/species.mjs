@@ -2,9 +2,12 @@
 //   <data>/src/data/species/<QID>.json and media under <data>/src/assets/species/.
 import { readdir, readFile, access } from 'node:fs/promises';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { heroImage, qualifies } from './licence.mjs';
 
-export const DEFAULT_DATA = 'C:/w/birdy-artdata/website';
+// The repo's own website directory (the species records are on main since 2026-10-10; the worktree this pointed to
+// is gone). Resolved from this file, so the tool runs from any working directory.
+export const DEFAULT_DATA = fileURLToPath(new URL('../../../website', import.meta.url));
 
 export function recordsDir(dataDir) {
   return join(dataDir, 'src', 'data', 'species');

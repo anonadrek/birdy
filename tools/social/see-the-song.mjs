@@ -19,7 +19,7 @@ import { dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { DEFAULT_DATA, loadRecords, mediaPath, qualifiesWithFiles } from './lib/species.mjs';
 import { heroImage, usesShareAlike, VIDEO_SA_LICENCE } from './lib/licence.mjs';
-import { buildCaptions, voiceWord, SHARE_ALIKE_LINE } from './lib/captions.mjs';
+import { buildCaptions, creditLine, voiceWord, SHARE_ALIKE_LINE } from './lib/captions.mjs';
 import { orderForSchedule, rowFor, planDates, mergeSchedule, parseCsv, toCsv, isValidIsoDate } from './lib/schedule.mjs';
 import { prepareClip, buildTrack, measureLoudness, isCut } from './lib/audio.mjs';
 import { probeDuration, run } from './lib/proc.mjs';
@@ -201,7 +201,10 @@ async function renderSpecies(rec, out, work, assets) {
   const coverAt = tl.A0 + fullestFrame(halo) / FPS;
   const track = await buildTrack(clip.clip, work, { leadSec: tl.A0, totalSec: tl.T });
   const heroFile = mediaPath(opt.data, heroImage(rec).file);
-  const creditLines = captions.credit.split(' · ');
+  // The end card credits the photo and the recording only, as in the videos published 8 to 9 Oct. The silhouette
+  // belongs to the flock cover (cover/title-card.mjs adds it) and is credited in the captions; on the end card it was
+  // one line too many (Mute Swan's credits ended under the Reels overlay).
+  const creditLines = creditLine(rec, { trimmed }).split(' · ');
   if (usesShareAlike(rec)) creditLines.push(SHARE_ALIKE_LINE);
   const config = {
     times: { A0: tl.A0, E: tl.E, settled: tl.settled, R: tl.R },
