@@ -1159,22 +1159,23 @@ test.describe('bloggen', () => {
       await expect(card.locator('.ncard-meta')).toContainText(minRead);
 
       await page.goto(`${prefix}/blog/why-birdy/`);
-      await expect(page.locator('.ahero img')).toBeVisible();
-      await expect(page.locator('.ahero .ameta')).toContainText(minRead);
+      await expect(page.locator('.phead .aplate img')).toBeVisible();
+      await expect(page.locator('.phead .ameta')).toContainText(minRead);
       await expect(page.locator('.article-prose blockquote')).toHaveCount(1);
       await expect(page.locator('.aend a[href*="play.google.com"]')).toHaveCount(1);
       await expect(page.locator('.aback a').first()).toContainText(allNotes);
-      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/_astro\/rodhake-q25334[^/]*\.jpg$/);
+      // The note's own Flock picture in the page's language (2026-10-10), cropped to 1200 × 630 for sharing.
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', new RegExp(`/_astro/why-birdy-flock-q25334-${prefix === '/sv' ? 'sv' : 'en'}[^/]*\\.jpg$`));
       const imageAlt = prefix === '/sv'
-        ? 'En rödhake som sitter på en vissnad hortensia och tittar åt vänster'
-        : 'A European robin perched on a faded hydrangea, looking left';
+        ? 'På persikofärgat papper bildar en flock små fåglar en rödhake bredvid Birdys rad ”Känn igen fågeln. Bevara stunden.”'
+        : 'On peach paper, a flock of small birds forms a European Robin next to Birdy’s line “Know the bird. Keep the moment.”';
       await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', imageAlt);
       const ogWidth = page.locator('meta[property="og:image:width"]');
       if (await ogWidth.count()) await expect(ogWidth).toHaveAttribute('content', '1200');
 
       const albitHref = prefix === '/sv' ? 'https://www.albit.se/produkter/birdy/' : 'https://www.albit.se/en/products/birdy/';
-      await expect(page.locator('.ahero .aby a')).toHaveText('Albin Abrahamsson, AlbIT');
-      await expect(page.locator('.ahero .aby a')).toHaveAttribute('href', albitHref);
+      await expect(page.locator('.phead .aby a')).toHaveText('Albin Abrahamsson, AlbIT');
+      await expect(page.locator('.phead .aby a')).toHaveAttribute('href', albitHref);
 
       const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
       const posting = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'BlogPosting');
@@ -1185,17 +1186,48 @@ test.describe('bloggen', () => {
     });
   }
 
-  // The newest note is the list's big first card (FieldNotesIndex sorts by date), and the home page shows the same one.
-  for (const [path, prefix, newest] of [['/sv/', '/sv', '/sv/blog/birdy-x-albit/'], ['/', '', '/blog/birdy-x-albit/']] as const) {
-    test(`startsidan visar senaste inlägget som fotokort på ${path}`, async ({ page }) => {
-      await page.goto(`${prefix}/blog/`);
-      const latest = page.locator('main .first a.ncard');
-      await expect(latest).toHaveAttribute('href', newest);
-      await page.goto(path);
-      await expect(page.locator('#field-notes a.ncard')).toHaveCount(1);
-      await expect(page.locator(`#field-notes a.ncard[href="${newest}"] img`)).toBeVisible();
+  // The home page shows the three newest notes side by side (Albin 2026-10-10: See the song and Why Birdy exists both on
+  // the front page), in the list's own order, lined up at their tops and at their meta lines.
+  test.describe('startsidans fältanteckningar', () => {
+    test.use({ contextOptions: { reducedMotion: 'reduce' } });
+    for (const [path, prefix] of [['/sv/', '/sv'], ['/', '']] as const) {
+      test(`startsidan visar de tre senaste inläggen bredvid varandra på ${path}`, async ({ page }) => {
+        await page.goto(`${prefix}/blog/`);
+        const newestThree = (await page.locator('main a.ncard').evaluateAll((els) => els.map((a) => a.getAttribute('href')))).slice(0, 3);
+        await page.setViewportSize({ width: 1440, height: 900 });
+        await page.goto(path);
+        const cards = page.locator('#field-notes a.ncard');
+        expect(await cards.evaluateAll((els) => els.map((a) => a.getAttribute('href')))).toEqual(newestThree);
+        // Today these are the two notes Albin asked to see there, with Birdy × AlbIT.
+        expect(newestThree).toContain(`${prefix}/blog/see-the-song/`);
+        expect(newestThree).toContain(`${prefix}/blog/why-birdy/`);
+        for (const card of await cards.all()) await expect(card.locator('img')).toBeVisible();
+        await page.locator('#field-notes').scrollIntoViewIfNeeded();
+        const tops = await cards.evaluateAll((els) => els.map((a) => Math.round(a.getBoundingClientRect().top)));
+        expect(new Set(tops).size, `kortens överkanter ${tops}`).toBe(1);
+        const metas = await page.locator('#field-notes .ncard-meta').evaluateAll((els) => els.map((m) => Math.round(m.getBoundingClientRect().bottom)));
+        expect(new Set(metas).size, `metaraderna ${metas}`).toBe(1);
+      });
+    }
+
+    // The list (2026-10-10, "more clean"): the newest note starts below the torn edge, the rest fill their columns (two
+    // for two), and the large card stacks below 1100 px so its picture is never cut in half.
+    test('bloggens lista: första kortet under revan, kolumnerna fyllda, det stora kortet staplat på smalare skärmar', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/blog/');
+      const head = (await page.locator('.bhead').boundingBox())!;
+      const first = (await page.locator('main .first').boundingBox())!;
+      expect(first.y).toBeGreaterThanOrEqual(head.y + head.height);
+      const rest = await page.locator('main .grid a.ncard').count();
+      const cols = await page.locator('main .grid').evaluate((g) => getComputedStyle(g).gridTemplateColumns.split(' ').length);
+      expect(cols).toBe(rest === 2 || rest === 4 || rest === 1 ? 2 : 3);
+      await page.setViewportSize({ width: 1000, height: 900 });
+      const card = (await page.locator('main .first a.ncard').boundingBox())!;
+      const img = (await page.locator('main .first .ncard-img').boundingBox())!;
+      expect(Math.abs(img.width - card.width)).toBeLessThan(2);
+      expect(Math.abs(img.width / img.height - 1600 / 840)).toBeLessThan(0.02);
     });
-  }
+  });
 
   // The note about the See the song videos (2026-10-09): one self-hosted video (no third-party player), its credit
   // right under it, the four channels and the first week's species pages.
@@ -1208,10 +1240,11 @@ test.describe('bloggen', () => {
     test(`inlägget See the song har videon med krediten, kanalerna och artlänkarna (${lang})`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       await page.goto(`${prefix}/blog/see-the-song/`);
-      await expect(page.locator('.ahero img')).toBeVisible();
-      await expect(page.locator('.ahero .ameta')).toContainText(minRead);
+      await expect(page.locator('.phead .aplate img')).toBeVisible();
+      await expect(page.locator('.phead .ameta')).toContainText(minRead);
       await expect(page.locator('.aby a')).toHaveText('Albin Abrahamsson, AlbIT');
-      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/_astro\/see-the-song-blames-q25404[^/]*\.jpg$/);
+      // The series' new flock cover, drawn wide in the page's language (Albin 2026-10-10, "the new minityr picture").
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', new RegExp(`/_astro/see-the-song-flock-q25404-${lang}[^/]*\\.jpg$`));
 
       // Nothing plays, and nothing but the poster loads, until the visitor presses play; it plays inline on phones.
       const figure = page.locator('.article-prose figure.note-video');
@@ -1221,11 +1254,11 @@ test.describe('bloggen', () => {
       expect(await video.evaluate((v) => ({
         controls: v.hasAttribute('controls'), autoplay: v.hasAttribute('autoplay'), muted: v.hasAttribute('muted'),
         playsinline: v.hasAttribute('playsinline'), preload: v.getAttribute('preload'), poster: v.getAttribute('poster'),
-      }))).toEqual({ controls: true, autoplay: false, muted: false, playsinline: true, preload: 'none', poster: '/video/see-the-song/eurasian-blue-tit.jpg' });
+      }))).toEqual({ controls: true, autoplay: false, muted: false, playsinline: true, preload: 'none', poster: '/video/see-the-song/eurasian-blue-tit-cover.jpg' });
       await expect(video.locator('source')).toHaveAttribute('src', '/video/see-the-song/eurasian-blue-tit.mp4');
       await expect(video.locator('track')).toHaveAttribute('kind', 'captions');
       await expect(video.locator('track')).toHaveAttribute('srclang', lang);
-      for (const url of ['/video/see-the-song/eurasian-blue-tit.mp4', '/video/see-the-song/eurasian-blue-tit.jpg', `/video/see-the-song/eurasian-blue-tit.${lang}.vtt`]) {
+      for (const url of ['/video/see-the-song/eurasian-blue-tit.mp4', '/video/see-the-song/eurasian-blue-tit-cover.jpg', `/video/see-the-song/eurasian-blue-tit.${lang}.vtt`]) {
         expect((await page.request.get(url)).status(), url).toBe(200);
       }
 
@@ -1237,6 +1270,9 @@ test.describe('bloggen', () => {
       await expect(caption.locator('a[href="https://commons.wikimedia.org/wiki/File:Cyanistes_caeruleus_-_Eurasian_Blue_Tit_XC538220.mp3"]')).toHaveText('Wikimedia Commons');
       await expect(caption.locator(`a[href="https://creativecommons.org/licenses/by/2.0/${deed}"]`)).toHaveText('CC BY 2.0');
       await expect(caption.locator(`a[href="https://creativecommons.org/licenses/by-sa/4.0/${deed}"]`)).toHaveText(['CC BY-SA 4.0', 'CC BY-SA 4.0']);
+      // The cover's silhouette (the poster and the picture at the top): Wouter Koch, CC0, via PhyloPic.
+      await expect(caption.locator(`a[href="https://creativecommons.org/publicdomain/zero/1.0/${deed}"]`)).toHaveText('CC0');
+      await expect(caption.locator('a[href="https://www.phylopic.org/images/069c4833-e1ac-48e7-90d5-f7bd11000588"]')).toHaveText('PhyloPic');
 
       for (const [, href] of channels) await expect(page.locator(`.article-prose a[href="${href}"]`)).toHaveCount(1);
       await expect(page.locator('.article-prose a[href*="instagram.com/birdy.community"]')).toHaveCount(0);
@@ -1292,52 +1328,35 @@ test.describe('bloggen', () => {
     }
   });
 
+  // Every note but the collab one (2026-10-10): its picture whole as a plate on the paper, the title on the paper below
+  // it and the light menu from the start. Nothing is laid over the picture, so there is no dark photo hero any more.
   for (const [width, height] of [[390, 844], [1440, 900]] as const) {
-    test(`menyn på inlägget blir espressobrun innan rubriken når den i ${width}×${height}`, async ({ page }) => {
+    test(`inläggets bild är en hel platta med rubriken under i ${width}×${height}`, async ({ page }) => {
       await page.setViewportSize({ width, height });
-      await page.goto('/sv/blog/why-birdy/');
-      const nav = page.locator('#site-nav');
-      const navH = await nav.evaluate((n) => n.getBoundingClientRect().height);
-      const inTop = await page.locator('.ahero .in').evaluate((c) => c.getBoundingClientRect().top + scrollY);
-      const settle = () => page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), Math.max(0, inTop - navH - 30));
-      await settle();
-      await expect(nav).not.toHaveClass(/is-solid/);
-      await page.evaluate((y) => window.scrollTo({ top: y, behavior: 'instant' }), inTop - navH + 2);
-      await expect(nav).toHaveClass(/is-solid/);
+      for (const path of ['/sv/blog/why-birdy/', '/blog/see-the-song/'] as const) {
+        await page.goto(path);
+        await expect(page.locator('.ahero'), path).toHaveCount(0);
+        await expect(page.locator('#site-nav'), path).toHaveClass(/nav--solid/);
+        await expect(page.locator('meta[name="theme-color"]'), path).toHaveAttribute('content', /^#f6efe2$/i);
+        const plate = (await page.locator('.phead .aplate img').boundingBox())!;
+        expect(Math.abs(plate.width / plate.height - 1600 / 840), `${path}: plattans form`).toBeLessThan(0.02);
+        const title = (await page.locator('.phead h1').boundingBox())!;
+        expect(title.y, `${path}: rubriken under bilden`).toBeGreaterThan(plate.y + plate.height);
+        // Nothing lies over the picture: the middle of the plate is the picture itself.
+        const hit = await page.evaluate(([x, y]) => document.elementFromPoint(x, y)?.tagName, [plate.x + plate.width / 2, plate.y + plate.height / 2]);
+        expect(hit, `${path}: över bilden`).toBe('IMG');
+        // No caption is written unless the note has one (imageCaption).
+        await expect(page.locator('.phead figcaption'), path).toHaveCount(0);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth), path).toBeLessThanOrEqual(width);
+      }
     });
   }
-
-  test.describe('kontrast över inläggsfotot', () => {
-    test.use({ contextOptions: { reducedMotion: 'reduce' } });
-
-    // Pixel-contrast guard (review item 1c): hides the hero text and the transparent nav's link
-    // text, screenshots what's really behind them, and checks the two worst known spots (the
-    // apricot kicker, and the first transparent nav link) clear WCAG AA at load (scrollY 0, before
-    // the nav has flipped solid) at 1440×900. The full sweep across widths/locales/scroll steps
-    // that justified the chosen scrim values lives in the PR report, not in CI, to keep this fast.
-    for (const post of ['/sv/blog/why-birdy/', '/sv/blog/see-the-song/'] as const) {
-      test(`kickern och den första menylänken klarar 4.5:1 mot fotot på ${post}`, async ({ page }) => {
-        await page.setViewportSize({ width: 1440, height: 900 });
-        await page.goto(post);
-        await page.addStyleTag({ content: '.ahero .in * { visibility: hidden !important; } #site-nav .links a { visibility: hidden !important; }' });
-        await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-        await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
-
-        const kickerRatio = await textContrastAgainstBackground(page, page.locator('.ahero .in .kick'));
-        expect(kickerRatio, `kicker mot fotot: ${kickerRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
-
-        const navLinkRatio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
-        expect(navLinkRatio, `första menylänken mot fotot: ${navLinkRatio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
-      });
-    }
-  });
 
   // "Varför Birdy finns" was rewritten on 2026-10-10: the date next to the original one, and the article's modified time.
   for (const [prefix, label] of [['/sv', 'Uppdaterad 10 oktober 2026'], ['', 'Updated 10 October 2026']] as const) {
     test(`ett omskrivet inlägg visar när det uppdaterades (${prefix || 'EN'})`, async ({ page }) => {
       await page.goto(`${prefix}/blog/why-birdy/`);
-      await expect(page.locator('.ahero .ameta')).toContainText(label);
+      await expect(page.locator('.phead .ameta')).toContainText(label);
       await expect(page.locator('meta[property="article:modified_time"]')).toHaveAttribute('content', /^2026-10-10/);
       const ld = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}');
       const posting = ld['@graph'].find((n: { '@type': string }) => n['@type'] === 'BlogPosting');
@@ -1360,6 +1379,7 @@ test.describe('bloggen', () => {
       await expect(hero).toHaveAttribute('role', 'img');
       expect((await hero.getAttribute('aria-label'))?.length ?? 0).toBeGreaterThan(60);
       await expect(page.locator('.ahero')).toHaveCount(0);
+      await expect(page.locator('.phead')).toHaveCount(0);
       await expect(hero.locator('svg.bxa-wide')).toBeVisible();
       await expect(hero.locator('svg.bxa-tall')).toBeHidden();
       // The flock: the bird defined once, used by both variants, and the AlbIT wordmark drawn in each.

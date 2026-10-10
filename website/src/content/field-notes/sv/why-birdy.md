@@ -6,10 +6,8 @@ description: Birdy började med någon som var rädd för fåglar. I dag känner
 date: 2026-09-24
 updated: 2026-10-10
 category: Bakom Birdy
-image: ../../../assets/photos/rodhake-q25334.webp
-imageAlt: En rödhake som sitter på en vissnad hortensia och tittar åt vänster
-imageCaption: Rödhake, Erithacus rubecula
-imagePosition: 30% 35%
+image: ../../../assets/photos/why-birdy-flock-q25334-sv.webp
+imageAlt: 'På persikofärgat papper bildar en flock små fåglar en rödhake bredvid Birdys rad ”Känn igen fågeln. Bevara stunden.”'
 ---
 
 Birdy började inte hos en fågelskådare. Jag var hemma hos min flickvän när fåglar kom på tal, och det visade sig att hon bar på en verklig rädsla för dem. Ur det samtalet kom idén: om du vet vilken fågel du ser, och kan lära dig något om den, blir den lite mindre främmande.
