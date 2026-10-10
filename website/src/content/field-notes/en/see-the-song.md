@@ -3,7 +3,7 @@ locale: en
 slug: see-the-song
 title: "See the song: hear the bird first, then meet it"
 description: "Our new video series plays a bird's sound before it shows the bird. A new video every morning for 30 days on Instagram, Facebook, YouTube and TikTok."
-date: 2026-10-09
+date: 2026-10-10
 category: Behind Birdy
 image: ../../../assets/photos/see-the-song-blames-q25404.webp
 imageAlt: "A ring of light bars around an orange question mark on a dark brown background, from the start of a See the song video"
@@ -40,9 +40,9 @@ Here is the first one. Turn the sound on and try to guess before the name appear
 
 ## A new bird every morning
 
-The videos start on Friday 9 October. For the first 30 days, a new one goes up every morning at 08:00 Swedish time, on Instagram, Facebook, YouTube Shorts and TikTok.
+The series started on Friday 9 October. For the first 30 days, a new video goes up every morning at 08:00 Swedish time, on Instagram, Facebook, YouTube Shorts and TikTok.
 
-Would you like to know the first week in advance? Here it is:
+Here is the first week:
 
 - Friday 9 October: [Eurasian Blue Tit](/species/eurasian-blue-tit/)
 - Saturday 10 October: [Common Crane](/species/common-crane/)
@@ -52,7 +52,9 @@ Would you like to know the first week in advance? Here it is:
 - Wednesday 14 October: [Common Buzzard](/species/common-buzzard/)
 - Thursday 15 October: [Great Tit](/species/great-tit/)
 
-The text with each post is in English, with the bird's Swedish name in brackets. Each video links to that bird's page here on birdy.community, where you can play the same recording again and read more about the bird.
+The text with each post is in English, with the bird's Swedish name in brackets. Each post has a link to that bird's page here on birdy.community, where you can play the same recording again and read more about the bird.
+
+Missed a morning? Every video that has gone out so far is on the [clips page](/clips/).
 
 ## Open photos and recordings
 

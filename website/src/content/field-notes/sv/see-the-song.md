@@ -3,7 +3,7 @@ locale: sv
 slug: see-the-song
 title: "See the song: hör fågeln först, se den sedan"
 description: "I vår nya videoserie hör du fågeln innan du ser den. En ny video varje morgon i 30 dagar på Instagram, Facebook, YouTube och TikTok."
-date: 2026-10-09
+date: 2026-10-10
 category: Bakom Birdy
 image: ../../../assets/photos/see-the-song-blames-q25404.webp
 imageAlt: "En ring av ljusa streck runt ett orange frågetecken på mörkbrun botten, från början av en video i See the song"
@@ -40,9 +40,9 @@ Här är den första. Slå på ljudet och försök gissa innan namnet visas.
 
 ## En ny fågel varje morgon
 
-Videorna börjar fredag den 9 oktober. De första 30 dagarna kommer en ny varje morgon klockan 08.00 svensk tid, på Instagram, Facebook, YouTube Shorts och TikTok.
+Serien startade fredag den 9 oktober. De första 30 dagarna kommer en ny video varje morgon klockan 08.00 svensk tid, på Instagram, Facebook, YouTube Shorts och TikTok.
 
-Vill du veta första veckan i förväg? Här är den:
+Här är första veckan:
 
 - Fredag 9 oktober: [Blåmes](/sv/arter/blames/)
 - Lördag 10 oktober: [Trana](/sv/arter/trana/)
@@ -52,7 +52,9 @@ Vill du veta första veckan i förväg? Här är den:
 - Onsdag 14 oktober: [Ormvråk](/sv/arter/ormvrak/)
 - Torsdag 15 oktober: [Talgoxe](/sv/arter/talgoxe/)
 
-Texten till varje inlägg är på engelska, med fågelns svenska namn inom parentes. Varje video länkar till fågelns sida här på birdy.community, där du kan spela samma inspelning igen och läsa mer om fågeln.
+Texten till varje inlägg är på engelska, med fågelns svenska namn inom parentes. Varje inlägg har en länk till fågelns sida här på birdy.community, där du kan spela samma inspelning igen och läsa mer om fågeln.
+
+Missade du en morgon? Alla videor som har gått ut finns samlade på [klippsidan](/sv/klipp/).
 
 ## Fria foton och inspelningar
 

@@ -1269,8 +1269,8 @@ test.describe('bloggen', () => {
     const postDates = [
       ['https://birdy.community/blog/why-birdy/', '2026-09-24'],
       ['https://birdy.community/sv/blog/why-birdy/', '2026-09-24'],
-      ['https://birdy.community/blog/see-the-song/', '2026-10-09'],
-      ['https://birdy.community/sv/blog/see-the-song/', '2026-10-09'],
+      ['https://birdy.community/blog/see-the-song/', '2026-10-10'],
+      ['https://birdy.community/sv/blog/see-the-song/', '2026-10-10'],
     ] as const;
     for (const [url, date] of postDates) {
       const block = blockFor(url);
