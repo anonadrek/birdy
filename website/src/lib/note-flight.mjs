@@ -196,7 +196,7 @@ function segments(path) {
 
 /**
  * The birds along a flight, one curve or a path of curves (laneFlight): spaced by arc length over the whole way, about
- * `gap` pixels apart (at least six birds, at most `max`), each turned along the way with a few degrees of slack, a
+ * `gap` pixels apart (five to `max` less one birds), each turned along the way with a few degrees of slack, a
  * little smaller and lighter in the middle where they are furthest from both flocks. `thin` (0 to below 1) spreads the
  * middle out and draws the birds closer together near both flocks, like a flock leaving and arriving; 0 spaces them
  * evenly. The very ends are left out: those birds belong to the flocks. A bird heading left is mirrored instead of
@@ -235,7 +235,12 @@ export function birdsAlong(path, { gap = 26, size = 11, seed = 1, max = 16, thin
   const band = Math.sin((UPRIGHT_BAND * Math.PI) / 180);
   const cos = (deg) => Math.cos((deg * Math.PI) / 180);
   const clear = spots.find((q) => Math.abs(cos(q.base)) >= band);
-  let side = clear ? cos(clear.base) < 0 : false;
+  // Within the band for the whole flight (a near straight climb, no heading ever clear of vertical): fall back to
+  // the flight's own overall drift rather than always unmirrored, so the same flight looks the same in both
+  // languages (the mirrored layout's flight mirrored too).
+  const overallStart = point(segs[0], 0);
+  const overallEnd = point(segs[segs.length - 1], 1);
+  let side = clear ? cos(clear.base) < 0 : overallEnd.x < overallStart.x;
   const r = rng(seed);
   return spots.map(({ p, base, s }) => {
     if (Math.abs(cos(base)) >= band) side = cos(base) < 0;
@@ -304,11 +309,22 @@ export function birdTransform(x, y, size, rot, mirror) {
   return `matrix(${f5(A)} ${f5(B)} ${f5(C)} ${f5(D)} ${f2(x - A * MARK.cx - C * MARK.cy)} ${f2(y - B * MARK.cx - D * MARK.cy)})`;
 }
 
+/** The text up to its last dot, or the whole string when it has none. */
+const beforeLastDot = (s) => {
+  const i = s.lastIndexOf('.');
+  return i === -1 ? s : s.slice(0, i);
+};
+
 /**
- * The picture's file name without folders, hash, extension or query: the key in src/data/note-art.json.
+ * The picture's file name without folders, hash, extension or query: the key in src/data/note-art.json. Strips the
+ * query, takes the basename and strips its extension (the last dot, so a version number earlier in the name such
+ * as `birdy-1.3-launch.webp` survives); only under `/_astro/` (the build's hashed output) does a second dot
+ * segment, the hash, come off too.
  * @param {unknown} src
  * @returns {string}
  */
 export function artKey(src) {
-  return String(src).split('?')[0].split('/').pop().split('.')[0];
+  const path = String(src).split('?')[0];
+  const base = beforeLastDot(path.split('/').pop());
+  return path.startsWith('/_astro/') ? beforeLastDot(base) : base;
 }

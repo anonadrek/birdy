@@ -25,9 +25,11 @@ test.describe('flocken flyger vidare mellan bloggens bilder', () => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/blog/');
     await expect(page.locator('[data-note-flight] > svg.nflight')).toHaveCount(1);
+    // One flight between each pair of cards actually on the page, not a count tied to today's three posts.
+    const cards = await page.locator('[data-note-flight] [data-flight-art]').count();
     const s = await flightState(page);
     expect(s.hidden).toBe('true');
-    expect(s.flights).toBe(2);
+    expect(s.flights).toBe(cards - 1);
     expect(s.birds).toBeGreaterThanOrEqual(8);
     expect(s.overText).toBe(0);
   });
@@ -39,8 +41,10 @@ test.describe('flocken flyger vidare mellan bloggens bilder', () => {
       if (path === '/') await page.locator('#field-notes').scrollIntoViewIfNeeded();
       // The layer is drawn after layout (a requestAnimationFrame past load), so wait for it before reading it.
       await expect(page.locator('[data-note-flight] > svg.nflight')).toHaveCount(1);
+      // One flight between each pair of cards actually on the page, not a count tied to today's three posts.
+      const cards = await page.locator('[data-note-flight] [data-flight-art]').count();
       const s = await flightState(page);
-      expect(s.flights).toBe(2);
+      expect(s.flights).toBe(cards - 1);
       for (const n of s.perFlight) expect(n).toBeGreaterThanOrEqual(6);
       expect(s.overText).toBe(0);
       expect(s.outside).toBe(0);
@@ -51,6 +55,14 @@ test.describe('flocken flyger vidare mellan bloggens bilder', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/blog/');
     await expect(page.locator('[data-note-flight] > svg.nflight')).toHaveCount(1);
+    // Let any redraw still pending from load settle (ResizeObserver's first callback, fonts.ready, an image load)
+    // before marking the svg, or the mark can land on a node a trailing redraw is about to replace.
+    await page.evaluate(async () => {
+      await document.fonts.ready;
+      await Promise.all([...document.querySelectorAll<HTMLImageElement>('[data-flight-art] img')]
+        .map((i) => (i.complete ? null : new Promise((r) => i.addEventListener('load', r, { once: true })))));
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    });
     await page.evaluate(() => { (document.querySelector('[data-note-flight] > svg.nflight') as SVGElement).dataset.seen = '1'; });
     await page.setViewportSize({ width: 390, height: 760 });
     await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done))));
@@ -73,11 +85,56 @@ test.describe('flocken flyger vidare mellan bloggens bilder', () => {
     await expect(page.locator('[data-note-flight] > svg.nflight')).toHaveCount(1);
     // One page.evaluate, not locator.evaluate: a late image load can legitimately redraw (remove and re-append) the
     // svg between resolving a locator's handle and reading it, which otherwise reads a detached node's empty style.
-    const pe = await page.evaluate(() => {
+    const result = await page.evaluate(() => {
       const svg = document.querySelector('[data-note-flight] > svg.nflight');
-      return svg ? getComputedStyle(svg).pointerEvents : null;
+      const pointerEvents = svg ? getComputedStyle(svg).pointerEvents : null;
+      const pics = [...document.querySelectorAll<HTMLElement>('[data-note-flight] [data-flight-art]')].map((a) => a.getBoundingClientRect());
+      const uses = svg ? [...svg.querySelectorAll('use')] : [];
+      // A bird drawn over a card's own picture: the point at its centre must land on the card's link under the
+      // (unclickable) svg layer, not on the svg itself, proving the layer really passes clicks through rather than
+      // merely saying so in its own computed style.
+      const over = uses.map((u) => u.getBoundingClientRect()).find((b) => {
+        const cx = b.left + b.width / 2;
+        const cy = b.top + b.height / 2;
+        return pics.some((p) => cx >= p.left && cx <= p.right && cy >= p.top && cy <= p.bottom);
+      });
+      const hit = over ? document.elementFromPoint(over.left + over.width / 2, over.top + over.height / 2) : null;
+      return { pointerEvents, foundBirdOverPicture: !!over, onLink: !!hit?.closest('a.ncard') };
     });
-    expect(pe).toBe('none');
+    expect(result.pointerEvents).toBe('none');
+    expect(result.foundBirdOverPicture).toBe(true);
+    expect(result.onLink).toBe(true);
+  });
+
+  test('ett kort utan flygdata hoppas inte över: inget flyg når det första kortet från det tredje', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/blog/');
+    await expect(page.locator('[data-note-flight] > svg.nflight')).toHaveCount(1);
+    // As if the middle picture had no entry in note-art.json: strip its flight data entirely (all four attributes
+    // come from the same lookup in NoteCard.astro, never just one), then force a redraw the way the "adressfältet"
+    // test above does, by changing the viewport's width and back.
+    const firstBox = await page.evaluate(() => {
+      const mid = [...document.querySelectorAll<HTMLElement>('[data-note-flight] [data-flight-art]')][1];
+      delete mid.dataset.flightArt;
+      delete mid.dataset.exit;
+      delete mid.dataset.land;
+      delete mid.dataset.avoid;
+      const r = document.querySelectorAll<HTMLElement>('[data-note-flight] .ncard-img')[0].getBoundingClientRect();
+      return { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
+    });
+    await page.setViewportSize({ width: 389, height: 844 });
+    await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done))));
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.evaluate(() => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done))));
+    const touchesFirst = await page.evaluate((box) => {
+      const svg = document.querySelector('[data-note-flight] > svg.nflight');
+      if (!svg) return false;
+      return [...svg.querySelectorAll('use')].some((u) => {
+        const r = u.getBoundingClientRect();
+        return r.left < box.right && box.left < r.right && r.top < box.bottom && box.top < r.bottom;
+      });
+    }, firstBox);
+    expect(touchesFirst).toBe(false);
   });
 });
 
@@ -106,5 +163,18 @@ test.describe('flocken flyger vidare med rörelse på', () => {
     const after = await drawNow();
     expect(before.length).toBeGreaterThan(0);
     expect(after).toEqual(before);
+  });
+
+  test('bloggen: fåglarna tonar in trots att sidan saknar data-reveal', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/blog/');
+    await expect(page.locator('[data-note-flight] > svg.nflight')).toHaveCount(1);
+    // NoteFlight owns its own motion gate: the blog index has no [data-reveal], so Layout never adds
+    // html.motion-ready there, and the fade-in used to never play on this page at all.
+    await expect(page.locator('[data-note-flight]')).toHaveClass(/nflight-motion/);
+    await expect.poll(
+      () => page.evaluate(() => getComputedStyle(document.querySelector('[data-note-flight] > svg.nflight use')!).opacity),
+      { timeout: 8000 },
+    ).toBe('1');
   });
 });

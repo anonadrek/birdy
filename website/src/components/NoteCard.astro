@@ -27,7 +27,8 @@ const titleId = `nc-title-${note.id.replace(/[^a-zA-Z0-9_-]+/g, '-')}`;
 
 // The picture's flight data (spec 2026-10-10 "Bloggen som en flygväg"): where its own trail leaves, where arriving
 // birds land, and the words to fly behind. Read through artKey so it survives both the build's hashed filenames and
-// the dev server's query strings. A picture outside note-art.json (none today) simply carries no flight.
+// the dev server's query strings. A picture outside note-art.json (none today) simply carries no flight, and the
+// flights on either side of it are skipped too, rather than jumping over it to connect its neighbours.
 type NoteArt = { exit: { x: number; y: number }; land: { x: number; y: number }; avoid: { x: number; y: number; w: number; h: number }[] };
 const art = (noteArt as Record<string, NoteArt>)[artKey(image.src)];
 ---

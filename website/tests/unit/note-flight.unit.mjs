@@ -182,6 +182,19 @@ test('birdsAlong: en lång väg får högst max fåglar', () => {
   assert.equal(birds.length, 14);
 });
 
+test('rakt uppåt med en svag sidledes drift: speglingen följer driften, inte alltid ospeglad', () => {
+  // The whole flight stays well inside the twelve degree upright band (a ten pixel drift over nine hundred), so no
+  // sampled heading is ever "clear" of vertical: the mirror default must then come from the flight's own overall
+  // direction, not always false, or the same near vertical flight would look mirrored in one language and not the
+  // other (the flight's own start and end swap sides when the layout mirrors).
+  const left = birdsAlong(line({ x: 50, y: 900 }, { x: 40, y: 0 }), { seed: 1 });
+  assert.ok(left.length > 0);
+  for (const b of left) assert.equal(b.mirror, true, 'driver åt vänster: speglad');
+  const right = birdsAlong(line({ x: 40, y: 900 }, { x: 50, y: 0 }), { seed: 1 });
+  assert.ok(right.length > 0);
+  for (const b of right) assert.equal(b.mirror, false, 'driver åt höger: inte speglad');
+});
+
 /** The x span a bird actually covers: the mark's own box, drawn with the same matrix as on the page. */
 function span(b) {
   // matrix(a b c d e f): a point (u, v) of the mark lands at x = a u + c v + e.
@@ -225,4 +238,7 @@ test('artKey: bildfilens namn ur bygget och ur dev-servern', () => {
   assert.equal(artKey('/_astro/see-the-song-flock-q25404-en.DYGdC81L.webp'), 'see-the-song-flock-q25404-en');
   assert.equal(artKey('/@fs/C:/w/birdy-flyg/website/src/assets/photos/why-birdy-flock-q25334-sv.webp?origWidth=3200&origHeight=1680&origFormat=webp'), 'why-birdy-flock-q25334-sv');
   assert.equal(artKey('/_astro/birdy-x-albit.Ab12Cd34.webp'), 'birdy-x-albit');
+  // A dot inside the name itself (a version number), not just in the build hash or the extension.
+  assert.equal(artKey('/_astro/birdy-1.3-launch.Ab12Cd34.webp'), 'birdy-1.3-launch');
+  assert.equal(artKey('/@fs/C:/x/birdy-1.3-launch.webp?origWidth=1'), 'birdy-1.3-launch');
 });
