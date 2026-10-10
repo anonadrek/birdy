@@ -131,7 +131,7 @@ function expectHeroClear(g: Awaited<ReturnType<typeof heroGeometry>>, width: num
 }
 
 test.describe('meny och sidfot', () => {
-  for (const [path, label, getApp] of [['/sv/', 'Arter', 'Hämta appen'], ['/', 'Species', 'Get the app']] as const) {
+  for (const [path, label, getApp] of [['/sv/', 'Möt fåglarna', 'Hämta appen'], ['/', 'Meet the birds', 'Get the app']] as const) {
     test(`menyn på ${path} har nya länkar och blir ljust papper efter första vyn`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       await page.setViewportSize({ width: 1280, height: 800 });
@@ -182,16 +182,16 @@ test.describe('meny och sidfot', () => {
     await expect(page.locator('#mobile-menu')).toBeHidden();
   });
 
-  test('menyn markerar Fältanteckningar på bloggen', async ({ page }) => {
+  test('menyn markerar Blogg på bloggen', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/sv/blog/');
-    await expect(page.locator('#site-nav .links a[aria-current="page"]')).toHaveText('Fältanteckningar');
+    await expect(page.locator('#site-nav .links a[aria-current="page"]')).toHaveText('Blogg');
   });
 
   test('sidfoten har kolumnerna', async ({ page }) => {
     await page.goto('/sv/');
     const footer = page.locator('footer.footer');
-    await expect(footer.locator('.fh')).toHaveText(['Arter', 'Utforska', 'Läs', 'Information']);
+    await expect(footer.locator('.fh')).toHaveText(['Möt fåglarna', 'Utforska', 'Läs', 'Information']);
     await expect(footer.locator('a[href="/legal/privacy/"]')).toHaveText('Integritetspolicy');
   });
 
@@ -247,7 +247,7 @@ test.describe('meny och sidfot', () => {
 });
 
 test.describe('menyn över persikopappret', () => {
-  for (const [path, label] of [['/sv/', 'Arter'], ['/', 'Species']] as const) {
+  for (const [path, label] of [['/sv/', 'Möt fåglarna'], ['/', 'Meet the birds']] as const) {
     // Albin 2026-10-10: the wordmark is the orange of the handwritten accent words (rust on light), and the bar the
     // site's light paper once it turns solid, with the same dark text as over the hero.
     test(`menyn på ${path} har mörk text och ett rostfärgat ordmärke, över hjälten och på det ljusa pappret`, async ({ page }) => {
@@ -1170,8 +1170,8 @@ test.describe('premium och integritet', () => {
 
 test.describe('bloggen', () => {
   for (const [prefix, minRead, allNotes] of [
-    ['/sv', 'min läsning', 'Alla fältanteckningar'],
-    ['', 'min read', 'All field notes'],
+    ['/sv', 'min läsning', 'Alla blogginlägg'],
+    ['', 'min read', 'All blog posts'],
   ] as const) {
     test(`listan och inlägget med bild på ${prefix || 'EN'}`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
