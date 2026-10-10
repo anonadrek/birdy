@@ -10,13 +10,10 @@ import PlayStoreBadge from './ui/PlayStoreBadge.astro';
 import BuiltSpeciesLinks from './ui/BuiltSpeciesLinks.astro';
 import CollabHero from './CollabHero.astro';
 import NoteCard from './NoteCard.astro';
-import NoteFlight from './NoteFlight.astro';
 import { fieldNoteHref, fieldNotesHref, formatNoteDate, getFieldNotes, readingMinutes, type FieldNote } from '../lib/field-notes';
 import { getCopy } from '../lib/i18n';
 import { albitProductHref, ALBIT_URL, ALBIN_URL } from '../lib/links';
 import albitWordmark from '../assets/brand/albit-wordmark-white.png';
-import noteArt from '../data/note-art.json';
-import { artKey } from '../lib/note-flight.mjs';
 import '../styles/article-prose.css';
 
 interface Props { note: FieldNote }
@@ -29,11 +26,6 @@ const pathname = fieldNoteHref(note);
 const otherPath = `${sv ? '' : '/sv'}/blog/${note.data.slug}/`;
 const home = sv ? '/sv/' : '/';
 const minutes = t.blog.minRead.replace('{n}', String(readingMinutes(note.body)));
-// The plate's flight data (spec 2026-10-10 "Bloggen som en flygväg"): on a single note, its picture's own trail
-// continues on up toward Birdy's logo in the menu. The collab note (birdy-x-albit) has its own hero, not a plate, so
-// the ternary below never reads this for that note even though the lookup itself still resolves.
-type NoteArt = { exit: { x: number; y: number }; land: { x: number; y: number }; avoid: { x: number; y: number; w: number; h: number }[] };
-const plateArt = (noteArt as Record<string, NoteArt>)[artKey(image.src)];
 // The note's own photo, cropped to 1200×630, is the share image (spec §6).
 const share = await getImage({ src: image, width: 1200, height: 630, fit: 'cover', format: 'jpg', quality: 82 });
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
@@ -60,16 +52,9 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
       </div>
     </header>
     ) : (
-    <>
-    <header class="phead" data-note-flight={plateArt ? 'logo' : undefined}>
+    <header class="phead">
       <figure class="wrap pfig">
-        <div
-          class="aplate"
-          data-flight-art={plateArt ? '' : undefined}
-          data-exit={plateArt ? JSON.stringify(plateArt.exit) : undefined}
-          data-land={plateArt ? JSON.stringify(plateArt.land) : undefined}
-          data-avoid={plateArt ? JSON.stringify(plateArt.avoid) : undefined}
-        >
+        <div class="aplate">
           <Image src={image} alt={imageAlt} widths={[800, 1200, 1600, 2400]} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1048px) calc(100vw - 88px), 960px" style={imagePosition ? `object-position:${imagePosition}` : undefined} loading="eager" fetchpriority="high" decoding="async" />
         </div>
         {imageCaption && <figcaption class="cap">{imageCaption}</figcaption>}
@@ -81,8 +66,6 @@ const [titleBefore, titleAfter] = title.includes('×') ? [title.slice(0, title.i
         <p class="ameta"><time datetime={date.toISOString().slice(0, 10)}>{formatNoteDate(date, locale)}</time> · {minutes}{updatedLabel && <> · {updatedLabel}</>}</p>
       </div>
     </header>
-    {plateArt && <NoteFlight />}
-    </>
     )}
     <article class="asheet">
       <div class="article-prose"><BuiltSpeciesLinks><Content /></BuiltSpeciesLinks></div>
