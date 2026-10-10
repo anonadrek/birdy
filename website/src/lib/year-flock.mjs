@@ -61,8 +61,9 @@ export function yearFlockSvg({ iso }) {
     if (d < 0.012 && Math.abs(off) < 14) off = off < 0 ? off - 14 : off + 14;
     const [x, y, a] = at(u, RING.r + off);
     const size = 9 + r() * 8;
-    // Flying clockwise along the ring: the mark faces along the tangent, each a little off it.
-    const rot = (a * 180) / Math.PI + 90 + (r() - 0.5) * 30;
+    // Flying clockwise along the ring: the mark faces along the tangent, each a little off it (at most about four
+    // degrees either way, so the ring reads as one flock in flight, not a scatter of birds facing every direction).
+    const rot = (a * 180) / Math.PI + 90 + (r() - 0.5) * 8;
     const weights = d < NEAR ? WEIGHTS_NEAR : WEIGHTS_FAR;
     const pick = r();
     let c = 0;
@@ -70,9 +71,13 @@ export function yearFlockSvg({ iso }) {
     groups[c].push(`<use href="#yf-mark" transform="${markMatrix(x, y, size, rot)}"/>`);
   }
   const birds = groups.map((uses, c) => `<g fill="${PALETTE[c]}">${uses.join('')}</g>`).join('');
-  const [lx, ly] = at(now, RING.r);
+  const [lx, ly, la] = at(now, RING.r);
+  // Today's bird flies the ring too: turned to the same clockwise tangent as its neighbours (no jitter, it is the
+  // one bird everyone's eye lands on), not a fixed heading that would point it across its own flock on the ring's
+  // near and far sides.
+  const litRot = (la * 180) / Math.PI + 90;
   const lit = `<circle cx="${r1(lx)}" cy="${r1(ly)}" r="17" fill="${LIT.disc}" stroke="${LIT.ring}" stroke-width="2.5"/>`
-    + `<use href="#yf-mark" fill="${LIT.bird}" transform="${markMatrix(lx, ly, 22, -8)}"/>`;
+    + `<use href="#yf-mark" fill="${LIT.bird}" transform="${markMatrix(lx, ly, 22, litRot)}"/>`;
   // The month from the date itself: twelve equal sectors would put 1 October in September.
   const month = Number(iso.slice(5, 7)) - 1;
   const labels = MONTHS.map((letter, m) => {

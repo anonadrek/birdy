@@ -43,6 +43,26 @@ test('månaden står i rost, de andra elva inte; bokstäverna är årets tolv', 
   assert.ok(svg.includes('class="yf-now">O</text>'));
 });
 
+test('dagens fågel är vänd efter ringens egen medsols tangent vid sin plats, inte ett fast håll', () => {
+  const sample = (iso) => {
+    const svg = yearFlockSvg({ iso });
+    const circle = svg.match(/<g class="yf-lit"><circle cx="([-\d.]+)" cy="([-\d.]+)"/);
+    const use = svg.match(/<g class="yf-lit">[\s\S]*?<use[^>]*transform="matrix\(([^)]+)\)"/);
+    const [cx, cy] = [Number(circle[1]), Number(circle[2])];
+    const [a, b] = use[1].trim().split(/\s+/).map(Number);
+    return { cx, cy, rot: (Math.atan2(b, a) * 180) / Math.PI };
+  };
+  // Four spots around the ring (top, right, bottom, left): the tangent for clockwise flight is the outward radius
+  // turned 90 degrees, never the old fixed -8 (which only ever matched the bird by coincidence at one spot).
+  for (const iso of ['2026-01-01', '2026-04-10', '2026-07-20', '2026-10-10']) {
+    const { cx, cy, rot } = sample(iso);
+    const radial = (Math.atan2(cy - RING.cy, cx - RING.cx) * 180) / Math.PI;
+    const expected = radial + 90;
+    const diff = ((rot - expected + 540) % 360) - 180;
+    assert.ok(Math.abs(diff) < 0.5, `${iso}: rot ${rot} väntat ${expected} (vid ${cx},${cy})`);
+  }
+});
+
 test('samma dag ger samma bild, en annan dag flyttar bara fåglarna kring den tända', () => {
   assert.equal(yearFlockSvg({ iso: '2026-10-10' }), yearFlockSvg({ iso: '2026-10-10' }));
   const transforms = (iso) => new Set([...yearFlockSvg({ iso }).matchAll(/transform="([^"]+)"/g)].map((m) => m[1]));
