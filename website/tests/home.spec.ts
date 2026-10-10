@@ -1120,10 +1120,27 @@ test.describe('appkarusellen', () => {
   });
 });
 
+// The year ring's flight (2026-10-10): once the band is in view the flock flies in, then rests, whole and upright.
+test.describe('flocken runt året', () => {
+  test.use({ contextOptions: { reducedMotion: 'no-preference' } });
+  test('flyger in när bandet syns och står sedan still', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/sv/');
+    const birds = page.locator('#premium [data-year-flock] .yf-birds');
+    await page.locator('#premium').scrollIntoViewIfNeeded();
+    await expect.poll(() => birds.evaluate((el) => getComputedStyle(el).animationName)).toBe('yf-fly');
+    await expect.poll(() => birds.evaluate((el) => el.getAnimations().filter((a) => a.playState === 'running').length), { timeout: 6000 }).toBe(0);
+    expect(await birds.evaluate((el) => getComputedStyle(el).opacity)).toBe('1');
+    // At rest: no turn left (the keyframes' fill leaves the identity matrix, or none).
+    expect(await birds.evaluate((el) => getComputedStyle(el).transform)).toMatch(/^(none|matrix\(1, 0, 0, 1, 0, 0\))$/);
+  });
+});
+
 test.describe('premium och integritet', () => {
   for (const [path, features, freeLabel, firstCol] of [
-    ['/sv/', ['Fynd-kartan', 'Fältdagboken som PDF', 'Säsongsstatistik', '7 premiummärken'], 'Alltid gratis:', 'Inget konto'],
-    ['/', ['Finds map', 'Field journal as PDF', 'Season statistics', '7 premium badges'], 'Always free:', 'No account'],
+    // The year first, as on the Premium page, so the numerals I to IV name the same thing on both (2026-10-10).
+    ['/sv/', ['Säsongsstatistik', 'Fältdagboken som PDF', '7 premiummärken', 'Fynd-kartan'], 'Alltid gratis:', 'Inget konto'],
+    ['/', ['Season statistics', 'Field journal as PDF', '7 premium badges', 'Finds map'], 'Always free:', 'No account'],
   ] as const) {
     test(`premium och integritet på ${path}`, async ({ page }) => {
       await page.goto(path);

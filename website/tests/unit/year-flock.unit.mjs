@@ -43,7 +43,11 @@ test('månaden står i rost, de andra elva inte; bokstäverna är årets tolv', 
   assert.ok(svg.includes('class="yf-now">O</text>'));
 });
 
-test('samma dag ger samma bild, en annan dag flyttar bara den tända fågeln och mässingen', () => {
+test('samma dag ger samma bild, en annan dag flyttar bara fåglarna kring den tända', () => {
   assert.equal(yearFlockSvg({ iso: '2026-10-10' }), yearFlockSvg({ iso: '2026-10-10' }));
-  assert.notEqual(yearFlockSvg({ iso: '2026-10-10' }), yearFlockSvg({ iso: '2026-10-11' }));
+  const transforms = (iso) => new Set([...yearFlockSvg({ iso }).matchAll(/transform="([^"]+)"/g)].map((m) => m[1]));
+  const today = transforms('2026-10-10');
+  const moved = [...transforms('2026-10-11')].filter((t) => !today.has(t));
+  // The lit bird and the few birds that make room for its disc, today's and tomorrow's: a few dozen of 839 (36 measured).
+  assert.ok(moved.length > 0 && moved.length <= 40, `${moved.length} flyttade`);
 });

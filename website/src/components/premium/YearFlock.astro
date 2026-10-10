@@ -20,15 +20,15 @@ const svg = yearFlockSvg({ iso: date.iso });
   .yflock :global(svg.yf) { display: block; width: 100%; height: 100%; overflow: visible; }
   .yflock :global(.yf-months text) { font: 600 12px var(--font-sans); letter-spacing: .1em; text-anchor: middle; fill: var(--muted); }
   .yflock :global(.yf-months text.yf-now) { fill: var(--rust); }
+  @media (max-width: 560px) { .yflock :global(.yf-months text) { font-size: 16px; } }
   .yflock :global(.yf-birds) { transform-box: view-box; transform-origin: 50% 50%; }
   /* The seal in the middle of the year, a little larger than the band's other stamps. */
   .yseal { position: absolute; left: 50%; top: 50%; width: 28%; height: 28%; margin: 0; transform: translate(-50%, -50%) rotate(-8deg); font-size: clamp(18px, 2.4vw, 26px); box-shadow: 0 6px 16px rgba(var(--dark-rgb), .22); }
   .yseal::before { inset: 6px; }
+  /* The reveal wrapper is the band's own (Premium.astro), outside this component's scope, so it is matched globally. */
   @media (prefers-reduced-motion: no-preference) {
-    :global(html.motion-ready) [data-reveal].is-visible .yflock :global(.yf-birds),
-    :global(html.motion-ready) .yflock[data-reveal].is-visible :global(.yf-birds) { animation: yf-fly 1.8s var(--ease-paper) both; }
-    :global(html.motion-ready) [data-reveal].is-visible .yflock :global(.yf-lit),
-    :global(html.motion-ready) .yflock[data-reveal].is-visible :global(.yf-lit) { animation: yf-light .5s 1.5s ease-out both; }
+    :global(html.motion-ready [data-reveal].is-visible) .yflock :global(.yf-birds) { animation: yf-fly 1.8s var(--ease-paper) both; }
+    :global(html.motion-ready [data-reveal].is-visible) .yflock :global(.yf-lit) { animation: yf-light .5s 1.5s ease-out both; }
   }
   @keyframes yf-fly { from { transform: rotate(-60deg); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: 1; } }
   @keyframes yf-light { from { opacity: 0; } to { opacity: 1; } }

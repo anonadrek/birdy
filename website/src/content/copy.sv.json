@@ -118,10 +118,10 @@
     "seal": "Premium",
     "ringAlt": "Birdys flock med 839 små fåglar flyger ett helt varv, ett år, runt Premiums mässingssigill, med månaderna runt om och en fågel tänd för i dag",
     "features": [
-      { "title": "Fynd-kartan", "body": "Se var du har sett dina fåglar" },
-      { "title": "Fältdagboken som PDF", "body": "Hela dagboken, redo att spara eller skriva ut" },
       { "title": "Säsongsstatistik", "body": "Mönster månad för månad" },
-      { "title": "7 premiummärken", "body": "Extra stämplar att jaga" }
+      { "title": "Fältdagboken som PDF", "body": "Hela dagboken, redo att spara eller skriva ut" },
+      { "title": "7 premiummärken", "body": "Extra stämplar att jaga" },
+      { "title": "Fynd-kartan", "body": "Se var du har sett dina fåglar" }
     ]
   },
   "privacy": {
@@ -195,7 +195,6 @@
     "lead": "Allt du behöver för att känna igen och spara fåglar är gratis. Premium är för dig som vill se ditt år i fält: årsringen, fältdagboken som PDF, sju extra märken och kartan över dina fynd.",
     "seePrices": "Se priserna",
     "heroSeal": "Premium",
-    "heroHand": "ditt år som en ring",
     "situation": {
       "kicker": "Läget",
       "headline": "Så ligger det till, *ärligt talat.*",

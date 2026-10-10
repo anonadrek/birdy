@@ -115,6 +115,26 @@ test.describe('Premium-sidan', () => {
     });
   }
 
+  // In the light since 2026-10-10: the site's own papers in turn, each torn into the next, the flock flying a year
+  // around the seal in the hero, and no espresso left anywhere in the page's main part.
+  test('sidan är ljus: papperen rivs i varandra, ringen i hjälten, inget espresso', async ({ page }) => {
+    await page.goto('/sv/premium/');
+    const fills = await page.locator('.deckle path').evaluateAll((ps) => ps.map((p) => getComputedStyle(p).fill));
+    const [PEACH, PAPER, CARD] = ['rgb(253, 229, 203)', 'rgb(246, 239, 226)', 'rgb(255, 250, 241)'];
+    // hero → läget → det här får du → alltid gratis → priser → tidiga → så köper du → sidfoten
+    expect(fills).toEqual([PEACH, PAPER, CARD, PEACH, PAPER, CARD, PAPER]);
+    const ring = page.locator('header.hero [data-year-flock]');
+    await expect(ring).toHaveAttribute('role', 'img');
+    await expect(ring).toHaveAttribute('aria-label', /839/);
+    expect(await ring.locator('svg use').count()).toBe(839);
+    const backgrounds = await page.locator('main, main section, main header').evaluateAll((els) =>
+      els.map((el) => `${getComputedStyle(el).backgroundColor} ${getComputedStyle(el).backgroundImage}`));
+    for (const bg of backgrounds) {
+      expect(bg).not.toContain('rgb(42, 29, 23)');
+      expect(bg).not.toContain('rgb(30, 20, 16)');
+    }
+  });
+
   for (const width of [320, 390]) {
     test(`inget sidledes scroll på ${width} px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 800 });

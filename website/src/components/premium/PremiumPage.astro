@@ -91,7 +91,6 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
         </div>
         <div class="hero-vis">
           <YearFlock label={t.premium.ringAlt} seal={p.heroSeal} />
-          <span class="hand" aria-hidden="true">{p.heroHand}</span>
         </div>
       </div>
     </header>
@@ -137,7 +136,7 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
         {p.gets.features.map((f, i) => (
           <div class:list={['feat', { flip: i % 2 === 1 }]} data-feature={i}>
             <div class="txt" data-reveal>
-              <span class="tag"><b>{['I', 'II', 'III', 'IV'][i]}</b>{f.tag}</span>
+              <span class="tag"><b aria-hidden="true">{['I', 'II', 'III', 'IV'][i]}</b>{f.tag}</span>
               <h3>{f.title}</h3>
               <p>{f.body}</p>
             </div>
@@ -234,7 +233,6 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
   .pp :global(.wrap) { position: relative; }
   /* Light sections in the site's order of papers; brass only where Premium speaks: kickers, numerals, rules, seals. */
   .pp { --kick-color: var(--brass-deep); --brass-rule: rgba(184, 137, 58, .55); --brass-rule-soft: rgba(184, 137, 58, .28); }
-  .pp :global(:focus-visible) { outline-color: var(--rust); }
 
   /* Hero: the home hero's peach paper, lit where the visual sits. */
   .hero { position: relative; overflow: hidden; padding: 104px 0 70px; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(70% 70% at 76% 38%, var(--peach-hi) 0%, var(--peach) 55%, var(--peach-lo) 100%); }
@@ -256,9 +254,8 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
   /* The year ring (YearFlock): the same flock around the same seal as the home page's Premium band. */
   .hero-vis { position: relative; width: min(420px, 100%); margin: 10px auto 40px; }
   /* The app's own screens in the dark phone, as in the gallery on the home page. */
-  .pphone { width: 100%; max-width: var(--pw, 250px); padding: 8px; border-radius: 34px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), var(--psh, 0 3px 6px rgba(var(--dark-rgb), .14), 0 22px 44px rgba(var(--dark-rgb), .26)); }
+  .pphone { width: 100%; max-width: var(--pw, 250px); padding: 8px; border-radius: 34px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 3px 6px rgba(var(--dark-rgb), .14), 0 22px 44px rgba(var(--dark-rgb), .26); }
   .pphone :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 26px; }
-  .hand { position: absolute; right: 2%; bottom: -6px; z-index: 3; font-family: var(--font-script); font-weight: 700; font-size: 25px; line-height: 1; color: var(--rust); transform: rotate(-4deg); white-space: nowrap; }
 
   /* Where we stand: the story and the timeline down a dotted line, on the paper. */
   .situation { position: relative; background: var(--paper); padding: 92px 0 84px; }
@@ -357,13 +354,9 @@ const phoneSizes = '(min-width: 900px) 270px, 230px';
     .early-phone { --pw: 280px; }
     .buy { padding: 116px 0; }
   }
-  /* The hero's flock flies in at load (the band's reveal never runs above the fold), then the note is written. */
+  /* The hero is the first view, not a reveal: its flock flies in as the page loads, with YearFlock's own keyframes. */
   @media (prefers-reduced-motion: no-preference) {
-    .hero-vis :global(.yf-birds) { animation: pp-fly 1.8s .1s var(--ease-paper) both; }
-    .hero-vis :global(.yf-lit) { animation: pp-light .5s 1.6s ease-out both; }
-    .hand { animation: pp-write 1s 1.7s cubic-bezier(.45, .05, .35, 1) both; }
+    .hero-vis :global(.yf-birds) { animation: yf-fly 1.8s .1s var(--ease-paper) both; }
+    .hero-vis :global(.yf-lit) { animation: yf-light .5s 1.6s ease-out both; }
   }
-  @keyframes pp-fly { from { transform: rotate(-60deg); opacity: 0; } 40% { opacity: 1; } to { transform: none; opacity: 1; } }
-  @keyframes pp-light { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pp-write { from { clip-path: inset(-20% 100% -20% 0); } to { clip-path: inset(-20% -2% -20% 0); } }
 </style>
