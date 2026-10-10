@@ -8,7 +8,7 @@ AI-driven app för fågelidentifiering. Realtidsskanning via kamera + foto-uploa
 
 ## Status (2026-10-10 kväll)
 
-**⏭️ NÄSTA SESSION BÖRJAR HÄR:** läs `docs/superpowers/plans/OVERLAMNING-2026-10-10.md` (lör 10 okt cirka 14.00, med en kvällsuppdatering överst). Allt ligger på `main` utom grenen `social/forloppsmatare` (worktree `C:/w/birdy-social`, förloppsmätaren till serien från 8 nov) som väntar på Albins val; inga öppna PR:er, inga stashar. Statusposterna från 30 april till 10 okt (cirka 146 000 tecken) ligger ordagrant i `docs/superpowers/status-arkiv/2026-10-10-claude-md-status.md`; läs där när en gammal detalj behövs. Skriv nya statusposter kort här, nyast överst, och flytta dem till arkivet när de är inaktuella.
+**⏭️ NÄSTA SESSION BÖRJAR HÄR:** läs `docs/superpowers/plans/OVERLAMNING-2026-10-10.md` (lör 10 okt cirka 14.00, med en kvällsuppdatering överst). Allt ligger på `main`: inga andra grenar, inga worktrees, inga öppna PR:er, inga stashar. Statusposterna från 30 april till 10 okt (cirka 146 000 tecken) ligger ordagrant i `docs/superpowers/status-arkiv/2026-10-10-claude-md-status.md`; läs där när en gammal detalj behövs. Skriv nya statusposter kort här, nyast överst, och flytta dem till arkivet när de är inaktuella.
 
 ### Läget i korthet
 
@@ -24,12 +24,11 @@ AI-driven app för fågelidentifiering. Realtidsskanning via kamera + foto-uploa
 3. **Siffrorna per kanal varje måndag från 12 okt** (YouTube Studio, TikTok Studio, Business Suite, Search Console, Vercel Analytics, Play Console): en rad per kanal i #birdy-marknad och i tabellen i Albins dokument "Birdy: läget, varumärket och 12–24 månader framåt".
 4. **Den betalda releasen nästa vecka:** `docs/superpowers/plans/2026-10-08-1.3.1-samlad-release.md`. Grindar: BirdNET:s svar, köptestet med vC129, MapTiler Flex + ny nyckel, Resend, och **brytpunkten = 1.3.1:s go-live + 48 h** (bygget stoppar annars). Varje del med egen plan och SDD i egen worktree under `C:/w/`.
 5. **Artsidorna tidigast tors 15 okt:** Search Console först, sedan återstart enligt överlämningen (worktreen för loopen återskapas, `website/reports/STOP` i huvudklonen tas bort), cirka 3 arter om dagen; våg 3 när API-budgeten räcker.
-6. **Nästa sociala serie (från 8 nov):** en liten förloppsmätare överst i klippen (Albin 10 okt, byggd på `social/forloppsmatare`, väntar på valet), omslagen med flocken som flyger åt samma håll, nya hookar och längre bildtexter; detaljerna överst i runbooken.
+6. **Nästa sociala serie (från 8 nov):** en liten förloppsmätare överst i klippen (Albins OK 10 okt kväll, sammanslagen; rendera med `node cover/title-card.mjs <set> --progress`), omslagen med flocken som flyger åt samma håll, nya hookar och längre bildtexter; detaljerna överst i runbooken.
 
 ### Väntar på Albin
 
 - AAB:n in i Play-utkastet (kontrollerat 10 okt kväll: utkastet "130 (1.3.1)" har fortfarande ingen app-bundle).
-- Förloppsmätaren (val 3 på valsidan): "OK" eller vad som ska ändras; grenen slås ihop först efter svaret.
 - Beslut: löftet "alla som laddar ner innan Premium börjar kosta får Premium gratis för alltid" (kräver brytpunkten, install referrer för Android 12 och äldre, ny webbtext); Märken 1a i den betalda releasen (rekommendation: ja, ihop med 1b); Cockpit-planen för måndagssiffrorna; undantagsarket för våg 2 före 15 okt.
 - Köptestet med vC129, MapTiler Flex, Resend-kontot, BirdNET-brevet, Slack Pro.
 - Klippsidan i bion (Instagram; TikTok efter företagskontot i appen), plattformsegendomarna TikTok och Instagram i Search Console, adresserna till de nya blogginläggen till albit.se-sessionen.
