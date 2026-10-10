@@ -67,7 +67,7 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
       <span class="nav-until" data-nav-until aria-hidden="true"></span>
       <Kicker text={t.hero.kicker} />
       <h1>{t.hero.headline} <em>{t.hero.line2}</em></h1>
-      <p class="sub">{t.hero.sub}</p>
+      <p class="sub">{t.hero.lead}</p>
       <div class="badges">
         <PlayStoreBadge locale={locale} href={playUrl} alt={t.alt.playStoreBadge} size="small" loading="eager" />
         <AppStoreBadge locale={locale} size="small" />
@@ -108,7 +108,7 @@ const flockLabel = t.hero.flockLabel.replace('{name}', bird.name);
   h1 { margin-top: 2px; font-size: clamp(42px, 11vw, 56px); line-height: .98; letter-spacing: -.02em; color: var(--ink); text-wrap: balance; }
   /* The handwritten half of the slogan, the same accent as JournalHeadline's (spec §5.1), tilted like on the profiles. */
   h1 em { display: block; width: fit-content; margin-top: 6px; color: var(--rust); font-family: var(--font-script); font-style: normal; font-weight: 700; font-size: 1.1em; letter-spacing: 0; line-height: .95; transform: rotate(-1.6deg); transform-origin: left; }
-  .sub { max-width: 30rem; margin: 18px 0 0; font-size: 15.5px; line-height: 1.65; color: var(--muted); }
+  .sub { max-width: 30rem; margin: 18px 0 0; font-size: 15.5px; line-height: 1.65; color: var(--muted); text-wrap: pretty; }
   .badges { margin-top: 22px; }
   /* Narrow screens: Birdy's bird under the words. .fit is the box the flock's VIEW (hero/flock.mjs, 680 × 720) fits
      into, the same box for the canvas and the <noscript> SVG. The polaroid hangs below the bird's heart (88 % of the

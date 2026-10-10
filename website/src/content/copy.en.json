@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Birdy: Identify birds and keep a field journal",
-    "description": "Identify 839 European bird species by photo, camera or song. Save sightings in a private field journal and explore the bird guide offline. Available for Android; coming to iPhone.",
+    "title": "Birdy: Identify, collect and get to know the birds",
+    "description": "Identify 839 European bird species by photo, camera or song, then collect them: a private field journal, a life list and badges to earn. Explore the bird guide offline. Available for Android; coming to iPhone.",
     "ogLocale": "en_US",
     "htmlLang": "en"
   },
@@ -10,11 +10,11 @@
     "howItWorks": "How it works",
     "app": "The app",
     "premium": "Premium",
-    "fieldNotes": "Field notes",
+    "fieldNotes": "Blog",
     "guide": "Field guide",
     "privacy": "Privacy",
     "faq": "FAQ",
-    "species": "Species",
+    "species": "Meet the birds",
     "switchLang": "SV",
     "switchLangHref": "/sv/",
     "getApp": "Get the app",
@@ -26,7 +26,7 @@
     "kicker": "Camera, photo or song",
     "headline": "Know the bird.",
     "line2": "Keep the moment.",
-    "sub": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and you save the sighting in your own field journal.",
+    "lead": "Point the camera, pick a photo or let the bird sing. Birdy suggests the species right on your phone, and every find goes into your field journal, onto your life list and towards your next badge.",
     "flockLabel": "A flock of small birds, one for every species in Birdy, that together form Birdy's bird. The bird of the day, {name}, is lit up in the flock."
   },
   "daily": {
@@ -137,17 +137,17 @@
     "policyLink": "Read the privacy policy"
   },
   "fieldNotes": {
-    "kicker": "Field notes",
+    "kicker": "Blog",
     "headline": "From *the field journal.*",
     "note": "notes from the people who build Birdy",
-    "all": "All field notes"
+    "all": "All blog posts"
   },
   "blog": {
-    "kicker": "Field notes",
+    "kicker": "Blog",
     "headline": "Notes *from the field.*",
     "lead": "About the birds we meet, how Birdy works and why it is built the way it is.",
     "minRead": "{n} min read",
-    "allNotes": "All field notes",
+    "allNotes": "All blog posts",
     "seeHow": "See how Birdy works",
     "endHeadline": "Take Birdy *into the field.*",
     "endSub": "Free to download. No account. Works without a signal.",
@@ -159,8 +159,8 @@
     "authorKicker": "Written by",
     "authorBio": "Founder of AlbIT AB, which builds websites and apps for businesses. Birdy is AlbIT's own app.",
     "authorLink": "More about Albin",
-    "moreNotes": "More field notes",
-    "indexTitle": "Field Notes: articles about Birdy and birds | Birdy",
+    "moreNotes": "More from the blog",
+    "indexTitle": "Blog: articles about Birdy and birds | Birdy",
     "indexDescription": "Read how Birdy is built, how the app works and the birds you can discover with it. Articles and guides in English."
   },
   "faq": {
@@ -376,7 +376,7 @@
     "descHubEmpty": "Species pages for the most common birds of Sweden and Europe are coming: photos, field marks and calls, sorted in the same groups as in the Birdy app.",
     "crumbLabel": "Breadcrumb",
     "crumbHome": "Birdy",
-    "crumbHub": "Species",
+    "crumbHub": "Meet the birds",
     "facts": {
       "scientific": "Scientific name",
       "family": "Family",
@@ -546,7 +546,7 @@
     "otherLanguage": "Svenska",
     "copyright": "© 2026 Birdy · Made in Sweden",
     "builtBy": "Built by",
-    "species": "Species",
+    "species": "Meet the birds",
     "allSpecies": "All species A to Z",
     "commonSpecies": "Common species",
     "follow": "Follow Birdy",
