@@ -5,7 +5,7 @@
 <style>
   :root {
     --bg: #E7E4DF; --surface: #F2EFEB; --ink: #24201D; --muted: #625A53; --line: #CDC6BD;
-    --accent: #9A4526; --flock: #9A4526; --tag: #DCD6CE;
+    --accent: #9A4526; --tag: #DCD6CE; --on-accent: #FFF8EE;
     --shadow: 0 8px 22px rgba(40, 30, 24, .14);
     --serif: 'DM Serif Display', Georgia, 'Times New Roman', serif;
     --hand: 'Caveat', 'Segoe Print', cursive;
@@ -15,13 +15,13 @@
     :root:not([data-theme="light"]) {
       color-scheme: dark;
       --bg: #1A1918; --surface: #232120; --ink: #EEEAE5; --muted: #ABA39B; --line: #3B3734;
-      --accent: #F2B27A; --flock: #F2B27A; --tag: #2E2B29; --shadow: 0 8px 22px rgba(0, 0, 0, .45);
+      --accent: #F2B27A; --tag: #2E2B29; --on-accent: #241B0C; --shadow: 0 8px 22px rgba(0, 0, 0, .45);
     }
   }
   :root[data-theme="dark"] {
     color-scheme: dark;
     --bg: #1A1918; --surface: #232120; --ink: #EEEAE5; --muted: #ABA39B; --line: #3B3734;
-    --accent: #F2B27A; --flock: #F2B27A; --tag: #2E2B29; --shadow: 0 8px 22px rgba(0, 0, 0, .45);
+    --accent: #F2B27A; --tag: #2E2B29; --on-accent: #241B0C; --shadow: 0 8px 22px rgba(0, 0, 0, .45);
   }
 
   body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
@@ -35,44 +35,41 @@
   .kick::before { content: ''; width: 22px; height: 2px; background: currentColor; }
   header h1 { margin-top: 12px; font-size: clamp(36px, 6vw, 58px); }
   header h1 em { font-family: var(--hand); font-style: normal; font-weight: 700; font-size: 1.12em; color: var(--accent); letter-spacing: 0; }
-  .lead { margin-top: 14px; max-width: 66ch; font-size: 16.5px; color: var(--ink); }
-  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px 28px; margin-top: 26px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
-  .facts h2 { font-family: var(--sans); font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .facts ul { margin: 0; padding-left: 18px; }
-  .facts li + li { margin-top: 6px; }
+  .lead { margin-top: 14px; max-width: 68ch; font-size: 16.5px; }
 
-  main { display: grid; gap: 52px; margin-top: 46px; }
+  .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px; margin-top: 26px; padding-block: 12px; background: var(--bg); border-bottom: 1px solid var(--line); }
+  .seg { display: inline-flex; padding: 3px; gap: 3px; background: var(--tag); border-radius: 999px; }
+  .seg button { appearance: none; border: 0; background: none; color: var(--ink); font: 600 13px/1 var(--sans); letter-spacing: .04em; padding: 9px 16px; border-radius: 999px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+  .bar p { color: var(--muted); font-size: 13px; }
+
+  main { display: grid; gap: 54px; margin-top: 34px; }
   .sec-h { font-size: clamp(26px, 4vw, 36px); }
-  .sec-sub { margin-top: 6px; color: var(--muted); max-width: 70ch; }
-
-  .strips { display: grid; gap: 18px; margin-top: 18px; }
-  .strips figure { margin: 0; }
-  figcaption { font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  figure.flock figcaption { color: var(--flock); }
+  .sec-sub { margin-top: 6px; color: var(--muted); max-width: 72ch; }
 
   .shot { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 10px; }
   .shot img { display: block; width: 100%; height: auto; max-width: 100%; border-radius: 10px; box-shadow: var(--shadow); background: var(--line); }
+  .strip { margin-top: 18px; overflow-x: auto; padding-bottom: 6px; }
+  .strip .shot { width: max(100%, 1100px); }
 
-  .rows { display: grid; gap: 40px; margin-top: 22px; }
-  .row { display: grid; gap: 14px; }
-  .cap { font-size: 15px; color: var(--muted); }
-  .cap .num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent); margin-right: 10px; }
-  .cap b { color: var(--ink); font-weight: 600; }
-  .cap .hl { font-family: var(--serif); font-size: 18px; color: var(--ink); margin-right: 4px; }
-  .pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 34px; }
-  .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-  .pair figure { margin: 0; min-width: 0; }
-  .row.feature .pairs { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 22px; margin-top: 22px; }
+  .card { margin: 0; display: grid; gap: 10px; align-content: start; }
+  .card figcaption { display: grid; gap: 3px; }
+  .card .num { font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .card .hl { font-family: var(--serif); font-size: 19px; line-height: 1.15; text-wrap: balance; }
+  .card .what { font-size: 13.5px; color: var(--muted); }
+  .feature { margin-top: 18px; max-width: 760px; }
 
-  .notes { margin-top: 16px; display: grid; gap: 12px; max-width: 78ch; }
-  .notes p { padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 28px; margin-top: 16px; }
+  .box { padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .box h3 { margin: 0 0 8px; font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .box ul { margin: 0; padding-left: 18px; }
+  .box li + li { margin-top: 6px; }
+  .box.ask { border-color: var(--accent); }
 
-  @media (max-width: 760px) {
-    .pairs { grid-template-columns: minmax(0, 1fr); gap: 18px; }
-    .wrap { padding-inline: 16px; padding-block: 28px 56px; }
-  }
+  @media (max-width: 980px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .wrap { padding-inline: 16px; padding-block: 28px 56px; } .cards { gap: 24px 14px; } }
 
-  /* Lightbox */
   .lb { position: fixed; inset: 0; z-index: 10; display: grid; grid-template-rows: 1fr auto; place-items: center; gap: 10px; padding: calc(env(safe-area-inset-top, 0px) + 58px) 14px calc(env(safe-area-inset-bottom, 0px) + 18px); background: rgba(18, 16, 15, .94); }
   .lb[hidden] { display: none; }
   .lb img { max-width: 100%; max-height: calc(100vh - 140px); max-height: calc(100dvh - 140px); border-radius: 10px; }
@@ -84,100 +81,71 @@
 <div class="wrap">
   <header>
     <p class="kick">Birdy 1.3.1 · Google Play</p>
-    <h1>The store images in the <em>Flock</em> look</h1>
-    <p class="lead">Six screenshots and a feature graphic per language, moved from Espresso to the website’s Flock look so the store matches birdy.community before 1.3.1 is sent to Google. Same captions, same app captures. Nothing is uploaded to Play Console.</p>
-    <div class="facts">
-      <div>
-        <h2>What changed</h2>
-        <ul>
-          <li>Peach paper lit like the home page instead of espresso; espresso headlines, the handwritten word in rust, the note in a quieter brown.</li>
-          <li>The phone is whole and floats with a soft shadow; Espresso cut it off at the bottom.</li>
-          <li>A quiet stream of the flock’s small birds passes behind each phone and joins from image to image. No arrows, lines or notes on top.</li>
-          <li>Birdy’s bird made of the 839 birds appears only on the feature graphic, with the slogan.</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Files</h2>
-        <ul>
-          <li><code>docs/play-store/store-assets/1.3.1-flock/sv/</code> and <code>/en/</code>, the same file names as 1.3.0.</li>
-          <li>Screenshots 1080 × 1920 PNG, 0.3 to 1.4 MB. Feature graphic 1024 × 500 PNG, 0.2 MB. RGB without alpha.</li>
-          <li>Rendered by variant F in <code>website/tools/store-assets/1.3/</code>; the Espresso variant renders byte for byte as before.</li>
-        </ul>
-      </div>
-    </div>
+    <h1>Eight screens from <em>1.3.1</em>, in the Flock look</h1>
+    <p class="lead">Fresh captures from the 1.3.1 build, now with the season statistics, the map and the encyclopedia search, in Swedish and English. Each image has one idea, the whole phone on peach paper, and nothing drawn over the screen. Nothing is in Play Console yet.</p>
   </header>
 
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Language">
+      <button type="button" id="lang-sv" data-lang="sv" aria-pressed="true">Svenska</button>
+      <button type="button" id="lang-en" data-lang="en" aria-pressed="false">English</button>
+    </div>
+    <p>Tap any image to see it large.</p>
+  </div>
+
   <main>
-    <section aria-labelledby="set-h">
-      <h2 class="sec-h" id="set-h">The six side by side</h2>
-      <p class="sec-sub">As Play lists them, Swedish. In the Flock set the stream of birds runs from one phone to the next: it comes in low on the first image and lifts away on the last.</p>
-      <div class="strips">
-        <figure class="espresso"><figcaption>Espresso · now in Play</figcaption><button type="button" class="shot" data-cap="Espresso, the six screenshots side by side (SV)"><img src="img/espresso-sv-strip.jpg" alt="The six Espresso screenshots side by side" width="2078" height="600"></button></figure>
-        <figure class="flock"><figcaption>Flock · new for 1.3.1</figcaption><button type="button" class="shot" data-cap="Flock, the six screenshots side by side (SV)"><img src="img/flock-sv-strip.jpg" alt="The six Flock screenshots side by side" width="2078" height="600"></button></figure>
+    <section aria-labelledby="strip-h">
+      <h2 class="sec-h" id="strip-h">As Play lists them</h2>
+      <p class="sec-sub">Side by side, the flock’s small birds fly from one phone to the next and lift away after the last one.</p>
+      <div class="strip">
+        <button type="button" class="shot" data-l="sv" data-cap="The eight screenshots side by side (SV)"><img src="img/sv-strip.jpg" alt="The eight Swedish screenshots side by side" width="2590" height="560"></button>
+        <button type="button" class="shot" data-l="en" data-cap="The eight screenshots side by side (EN)" hidden><img src="img/en-strip.jpg" alt="The eight English screenshots side by side" width="2590" height="560"></button>
       </div>
     </section>
 
-    <section aria-labelledby="each-h">
-      <h2 class="sec-h" id="each-h">Image by image</h2>
-      <p class="sec-sub">Espresso next to Flock, Swedish then English. Tap an image to see it large.</p>
-      <div class="rows">
-    <section class="row" aria-labelledby="r01">
-      <p class="cap" id="r01"><span class="num">01</span><b>Identifiera</b> <span class="hl">“Se. Lyssna. Spara.”</span> the flock’s stream comes in low from the left, the way the birds fly in on the home page.</p>
-      <div class="pairs">
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: screenshot 01"><img src="img/espresso-sv-01-identifiera.jpg" alt="Espresso · SV, screenshot 01" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: screenshot 01"><img src="img/flock-sv-01-identifiera.jpg" alt="Flock · SV, screenshot 01" width="720" height="1280" loading="lazy"></button></figure></div>
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: screenshot 01"><img src="img/espresso-en-01-identifiera.jpg" alt="Espresso · EN, screenshot 01" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: screenshot 01"><img src="img/flock-en-01-identifiera.jpg" alt="Flock · EN, screenshot 01" width="720" height="1280" loading="lazy"></button></figure></div>
-      </div>
+    <section aria-labelledby="cards-h">
+      <h2 class="sec-h" id="cards-h">Image by image</h2>
+      <div class="cards" id="cards"></div>
     </section>
-    <section class="row" aria-labelledby="r02">
-      <p class="cap" id="r02"><span class="num">02</span><b>Lyssna</b> <span class="hl">“Låt den sjunga.”</span> the whole phone stays in view, so the Listen screen shows down to its tab bar.</p>
-      <div class="pairs">
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: screenshot 02"><img src="img/espresso-sv-02-lyssna.jpg" alt="Espresso · SV, screenshot 02" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: screenshot 02"><img src="img/flock-sv-02-lyssna.jpg" alt="Flock · SV, screenshot 02" width="720" height="1280" loading="lazy"></button></figure></div>
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: screenshot 02"><img src="img/espresso-en-02-lyssna.jpg" alt="Espresso · EN, screenshot 02" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: screenshot 02"><img src="img/flock-en-02-lyssna.jpg" alt="Flock · EN, screenshot 02" width="720" height="1280" loading="lazy"></button></figure></div>
-      </div>
-    </section>
-    <section class="row" aria-labelledby="r03">
-      <p class="cap" id="r03"><span class="num">03</span><b>Match</b> <span class="hl">“Vilken fågel var det?”</span> the stream passes behind the phone and leaves at the height where the next image picks it up.</p>
-      <div class="pairs">
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: screenshot 03"><img src="img/espresso-sv-03-match.jpg" alt="Espresso · SV, screenshot 03" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: screenshot 03"><img src="img/flock-sv-03-match.jpg" alt="Flock · SV, screenshot 03" width="720" height="1280" loading="lazy"></button></figure></div>
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: screenshot 03"><img src="img/espresso-en-03-match.jpg" alt="Espresso · EN, screenshot 03" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: screenshot 03"><img src="img/flock-en-03-match.jpg" alt="Flock · EN, screenshot 03" width="720" height="1280" loading="lazy"></button></figure></div>
-      </div>
-    </section>
-    <section class="row" aria-labelledby="r04">
-      <p class="cap" id="r04"><span class="num">04</span><b>Mina arter</b> <span class="hl">“Din egen fältbok.”</span> espresso headline, the handwritten word in rust, the note in a quieter brown.</p>
-      <div class="pairs">
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: screenshot 04"><img src="img/espresso-sv-04-mina-arter.jpg" alt="Espresso · SV, screenshot 04" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: screenshot 04"><img src="img/flock-sv-04-mina-arter.jpg" alt="Flock · SV, screenshot 04" width="720" height="1280" loading="lazy"></button></figure></div>
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: screenshot 04"><img src="img/espresso-en-04-mina-arter.jpg" alt="Espresso · EN, screenshot 04" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: screenshot 04"><img src="img/flock-en-04-mina-arter.jpg" alt="Flock · EN, screenshot 04" width="720" height="1280" loading="lazy"></button></figure></div>
-      </div>
-    </section>
-    <section class="row" aria-labelledby="r05">
-      <p class="cap" id="r05"><span class="num">05</span><b>Uppslagsverk</b> <span class="hl">“Europas fåglar, i fickan.”</span> the longest headline in English; both lines keep the full size.</p>
-      <div class="pairs">
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: screenshot 05"><img src="img/espresso-sv-05-uppslagsverk.jpg" alt="Espresso · SV, screenshot 05" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: screenshot 05"><img src="img/flock-sv-05-uppslagsverk.jpg" alt="Flock · SV, screenshot 05" width="720" height="1280" loading="lazy"></button></figure></div>
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: screenshot 05"><img src="img/espresso-en-05-uppslagsverk.jpg" alt="Espresso · EN, screenshot 05" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: screenshot 05"><img src="img/flock-en-05-uppslagsverk.jpg" alt="Flock · EN, screenshot 05" width="720" height="1280" loading="lazy"></button></figure></div>
-      </div>
-    </section>
-    <section class="row" aria-labelledby="r06">
-      <p class="cap" id="r06"><span class="num">06</span><b>Artprofil</b> <span class="hl">“Lär känna dina fåglar.”</span> on the last image the flock lifts away to the top right.</p>
-      <div class="pairs">
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: screenshot 06"><img src="img/espresso-sv-06-artprofil.jpg" alt="Espresso · SV, screenshot 06" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: screenshot 06"><img src="img/flock-sv-06-artprofil.jpg" alt="Flock · SV, screenshot 06" width="720" height="1280" loading="lazy"></button></figure></div>
-        <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: screenshot 06"><img src="img/espresso-en-06-artprofil.jpg" alt="Espresso · EN, screenshot 06" width="720" height="1280" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: screenshot 06"><img src="img/flock-en-06-artprofil.jpg" alt="Flock · EN, screenshot 06" width="720" height="1280" loading="lazy"></button></figure></div>
-      </div>
-    </section>
-        <section class="row feature" aria-labelledby="rfg">
-          <p class="cap" id="rfg"><span class="num">FG</span><b>Feature graphic</b> <span class="hl">“Know the bird. Keep the moment.”</span> the 839 birds form Birdy’s bird beside the slogan, as on the website’s share image.</p>
-          <div class="pairs">
-            <div class="pair"><figure class="espresso"><figcaption>Espresso · SV</figcaption><button type="button" class="shot" data-cap="Espresso · SV: feature graphic"><img src="img/espresso-sv-feature-graphic.jpg" alt="Espresso · SV, feature graphic" width="1024" height="500" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · SV</figcaption><button type="button" class="shot" data-cap="Flock · SV: feature graphic"><img src="img/flock-sv-feature-graphic.jpg" alt="Flock · SV, feature graphic" width="1024" height="500" loading="lazy"></button></figure></div>
-            <div class="pair"><figure class="espresso"><figcaption>Espresso · EN</figcaption><button type="button" class="shot" data-cap="Espresso · EN: feature graphic"><img src="img/espresso-en-feature-graphic.jpg" alt="Espresso · EN, feature graphic" width="1024" height="500" loading="lazy"></button></figure><figure class="flock"><figcaption>Flock · EN</figcaption><button type="button" class="shot" data-cap="Flock · EN: feature graphic"><img src="img/flock-en-feature-graphic.jpg" alt="Flock · EN, feature graphic" width="1024" height="500" loading="lazy"></button></figure></div>
-          </div>
-        </section>
+
+    <section aria-labelledby="fg-h">
+      <h2 class="sec-h" id="fg-h">Feature graphic</h2>
+      <p class="sec-sub">The 839 birds form Birdy’s bird beside the slogan, as on the website. The wordmark is now the rust of the handwritten words.</p>
+      <div class="feature">
+        <button type="button" class="shot" data-l="sv" data-cap="Feature graphic (SV)"><img src="img/sv-feature.jpg" alt="Swedish feature graphic: Känn igen fågeln. Bevara stunden." width="1024" height="500"></button>
+        <button type="button" class="shot" data-l="en" data-cap="Feature graphic (EN)" hidden><img src="img/en-feature.jpg" alt="English feature graphic: Know the bird. Keep the moment." width="1024" height="500"></button>
       </div>
     </section>
 
-    <section aria-labelledby="note-h">
-      <h2 class="sec-h" id="note-h">Worth knowing</h2>
-      <div class="notes">
-        <p>Screenshot 01 is the 1.3.0 capture. Its small line under “Tre sätt att fånga” still has a dash between “Kamera, foto eller läte” and “arten dyker upp i din fältbok” (the same in English), where 1.3.1 now has a colon. A new capture from the 1.3.1 build would match the app exactly.</p>
-        <p>The map screenshot is still left out, as in 1.3.0: it is added with the same tool once the MapTiler style is in the app.</p>
+    <section aria-labelledby="notes-h">
+      <h2 class="sec-h" id="notes-h">What changed, and what the screens show</h2>
+      <div class="cols">
+        <div class="box">
+          <h3>Since last night</h3>
+          <ul>
+            <li>All sixteen screens are new captures from the 1.3.1 build (version 130). Last night’s set used 1.3.0 captures.</li>
+            <li>Two new cards: the season statistics and the map, both marked Premium in the small line above the headline.</li>
+            <li>The first card carries the slogan, as the website and the feature graphic do.</li>
+            <li>The encyclopedia card no longer says “839 species” or “Europe’s birds”, so Birdy isn’t tied to Europe.</li>
+            <li>The Birdy wordmark is rust, bird and name, like on the website.</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>The demo season on the screens</h3>
+          <ul>
+            <li>46 finds of 40 species from January to today, seeded on the emulator. No real finds of yours.</li>
+            <li>Every bird photo on the screens is CC0 or public domain. The app shows the photographer on screen, for example Hobbyfotowiki and Estormiz.</li>
+            <li>The map pins sit at public birding spots in Skaraborg (Hornborgasjön, Kinnekulle, the Vänern shore at Lidköping), never at a private address.</li>
+          </ul>
+        </div>
+        <div class="box ask">
+          <h3>Your call</h3>
+          <ul>
+            <li><b>OK?</b> Then I put the eight screenshots and the feature graphic into the Play draft for English and Swedish.</li>
+            <li>The order runs Identify, Listen, Match, Species, Lifelist, Statistics, Map, Encyclopedia. Play shows the first three or four on the listing.</li>
+            <li>Any headline you want changed, tell me which card.</li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
@@ -191,14 +159,58 @@
 
 <script>
   (() => {
-    const lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap'), close = document.getElementById('lb-close');
+    const CARDS = [
+      { id: '01-identifiera', sv: ['Identifiera · Dagens fågel', 'Känn igen fågeln. Bevara stunden.', 'Dagens fågel, en strandskata, och de tre sätten att fånga.'],
+        en: ['Identify · Bird of the day', 'Know the bird. Keep the moment.', 'The bird of the day, an oystercatcher, and the three ways to catch.'] },
+      { id: '02-lyssna', sv: ['Ljud · identifiering', 'Låt den sjunga.', 'Ljud-ID, redo att lyssna.'], en: ['Audio · identification', 'Let it sing.', 'Sound ID, ready to listen.'] },
+      { id: '03-match', sv: ['Match', 'Vilken fågel var det?', 'En talgoxe med 93 % match, först sedd 6 januari.'], en: ['Match', 'Which bird was that?', 'A great tit at a 93% match, first seen on 6 January.'] },
+      { id: '04-artprofil', sv: ['Uppslagsverk · Tallbit', 'Lär känna dina fåglar.', 'Tallbiten bland rönnbär, med fotografen på bilden.'], en: ['Encyclopedia · Pine Grosbeak', 'Know your birds.', 'A pine grosbeak among rowan berries, photographer credited.'] },
+      { id: '05-mina-arter', sv: ['Mina arter', 'Din egen fältbok.', '40 arter, 46 fynd och veckans uppslag.'], en: ['Lifelist', 'Your own field journal.', '40 species, 46 sightings and this week’s page.'] },
+      { id: '06-statistik', sv: ['Säsongsstatistik · Premium', 'Ditt år som en ring.', 'Året som en ring, maj var bästa månaden.'], en: ['Season statistics · Premium', 'Your year as a ring.', 'The year as a ring; May was the best month.'] },
+      { id: '07-karta', sv: ['Karta · Premium', 'Varje fynd på kartan.', 'Fynden på åtta lokaler i Skaraborg.'], en: ['Map · Premium', 'Every find on the map.', 'The finds at eight spots in Skaraborg.'] },
+      { id: '08-uppslagsverk', sv: ['Uppslagsverk', 'Slå upp fågeln du såg.', 'Sökningen ”skrake” med Dagens fågel ovanför.'], en: ['Encyclopedia', 'Look up the bird you saw.', 'A search for “merganser” under the bird of the day.'] },
+    ];
+    const grid = document.getElementById('cards');
+    const make = (tag, cls, text) => { const el = document.createElement(tag); if (cls) el.className = cls; if (text) el.textContent = text; return el; };
+    CARDS.forEach((c, i) => {
+      ['sv', 'en'].forEach((l) => {
+        const [kick, hl, what] = c[l];
+        const fig = make('figure', 'card');
+        fig.dataset.l = l;
+        if (l === 'en') fig.hidden = true;
+        const btn = make('button', 'shot');
+        btn.type = 'button';
+        btn.dataset.cap = `${String(i + 1).padStart(2, '0')} · ${hl}`;
+        const img = make('img');
+        img.src = `img/${l}-${c.id}.jpg`; img.alt = `${kick}: ${hl}`; img.width = 720; img.height = 1280; img.loading = 'lazy';
+        btn.append(img);
+        const cap = make('figcaption');
+        cap.append(make('span', 'num', `${String(i + 1).padStart(2, '0')} · ${kick}`), make('span', 'hl', hl), make('span', 'what', what));
+        fig.append(btn, cap);
+        grid.append(fig);
+      });
+    });
+
+    const setLang = (l) => {
+      document.querySelectorAll('[data-l]').forEach((el) => { el.hidden = el.dataset.l !== l; });
+      document.querySelectorAll('.seg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === l)));
+      try { localStorage.setItem('birdy-store-lang', l); } catch (e) { /* storage unavailable */ }
+    };
+    document.querySelectorAll('.seg button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    let saved = null;
+    try { saved = localStorage.getItem('birdy-store-lang'); } catch (e) { saved = null; }
+    if (saved === 'en' || saved === 'sv') setLang(saved);
+
+    const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap'), close = document.getElementById('lb-close');
     let opener = null;
-    const hide = () => { lb.hidden = true; img.removeAttribute('src'); if (opener) opener.focus(); };
-    document.querySelectorAll('.shot').forEach((b) => b.addEventListener('click', () => {
+    const hide = () => { lb.hidden = true; lbImg.removeAttribute('src'); if (opener) opener.focus(); };
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest('.shot');
+      if (!b) return;
       const im = b.querySelector('img');
-      opener = b; img.src = im.src; img.alt = im.alt; cap.textContent = b.dataset.cap || '';
+      opener = b; lbImg.src = im.src; lbImg.alt = im.alt; lbCap.textContent = b.dataset.cap || '';
       lb.hidden = false; close.focus();
-    }));
+    });
     close.addEventListener('click', hide);
     lb.addEventListener('click', (e) => { if (e.target === lb) hide(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) hide(); });

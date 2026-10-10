@@ -69,13 +69,13 @@
     }
   ],
   "flock": {
-    "_about": "Variant F (Flocken) för 1.3.1, webbens Flock-look sedan 2026-10-09. Egna kort (Albin 2026-10-10: åtta bilder som visar appen som den ser ut i dag, bland annat statistiken och kartan) med färska skärmdumpar ur 1.3.1-bygget i shots. Samma regler som cards: kickern är appens egna ord, inga tankstreck, inga utropstecken, inga precisionssiffror, inget 'gratis'. Säsongsstatistiken och kartan är Premium och säger det i kickern. Feature-grafiken bär sloganen och flocken som bildar Birdys fågel.",
+    "_about": "Variant F (Flocken) för 1.3.1, webbens Flock-look sedan 2026-10-09. Egna kort (Albin 2026-10-10: åtta bilder som visar appen som den ser ut i dag, bland annat statistiken och kartan) med färska skärmdumpar ur 1.3.1-bygget i shots. Samma regler som cards: kickern är appens egna ord, inga tankstreck, inga utropstecken, inga precisionssiffror, inget 'gratis'. Säsongsstatistiken och kartan är Premium och säger det i kickern. Feature-grafiken bär sloganen och flocken som bildar Birdys fågel. Kort 01 bär sloganen som webben (2026-10-10); kort 08 säger varken 839 eller Europa, så att Birdy inte binds till Europa (som profilerna 8 okt). Engelska kickern för uppslagsverket är skärmens eget ord Encyclopedia (fliken heter Archive).",
     "shots": "docs/play-store/screenshots/1.3.1",
     "cards": [
       {
         "id": "01-identifiera", "shot": "01-identifiera",
         "kicker": { "sv": "Identifiera · Dagens fågel", "en": "Identify · Bird of the day" },
-        "head": { "sv": "Se. Lyssna. *Spara.*", "en": "See. Listen. *Keep.*" },
+        "head": { "sv": "Känn igen fågeln. *Bevara stunden.*", "en": "Know the bird. *Keep the moment.*" },
         "note": { "sv": "kamera, foto eller läte", "en": "camera, photo or song" }
       },
       {
@@ -92,7 +92,7 @@
       },
       {
         "id": "04-artprofil", "shot": "04-artprofil",
-        "kicker": { "sv": "Uppslagsverk · Tallbit", "en": "Archive · Pine Grosbeak" },
+        "kicker": { "sv": "Uppslagsverk · Tallbit", "en": "Encyclopedia · Pine Grosbeak" },
         "head": { "sv": "Lär känna dina *fåglar.*", "en": "Know your *birds.*" },
         "note": { "sv": "foto, beskrivning och rödlista", "en": "photo, description and Red List" }
       },
@@ -116,9 +116,9 @@
       },
       {
         "id": "08-uppslagsverk", "shot": "08-uppslagsverk",
-        "kicker": { "sv": "Uppslagsverk · 839 arter", "en": "Archive · 839 species" },
-        "head": { "sv": "Europas fåglar, *i fickan.*", "en": "Europe's birds, *in your pocket.*" },
-        "note": { "sv": "slå upp fågeln du just såg", "en": "look up the bird you just saw" }
+        "kicker": { "sv": "Uppslagsverk", "en": "Encyclopedia" },
+        "head": { "sv": "Slå upp *fågeln du såg.*", "en": "Look up *the bird you saw.*" },
+        "note": { "sv": "sök på art, släkte eller familj", "en": "search by species, genus or family" }
       }
     ],
     "feature": {
