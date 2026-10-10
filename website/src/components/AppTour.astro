@@ -1,7 +1,8 @@
 ---
 // The app tour (plan 2026-10-08 Task 4, mockup lift-c.html "Appen"): the same carousel as before (scroll snap, depth,
 // arrows, keys, drag, the caption following the centred phone, app-tour.ts), now with real Birdy 1.3.0 screens in a CSS
-// phone on a dark gallery wall, each hung as a plate with its number and the app's own name for the screen. Swedish
+// phone on the site's light peach paper (Albin 2026-10-10: no brown wall), each hung as a plate with its number and the
+// app's own name for the screen. Swedish
 // pages show the Swedish screens, English pages the English ones (src/assets/screens/1.3.0/, from
 // docs/play-store/screenshots/1.3.0/ on release/1.3.0; the map is left out until its new style is in the app).
 import { Picture } from 'astro:assets';
@@ -116,14 +117,13 @@ const wavePct = ([left, width, top, height]: number[]) => ({
 </script>
 
 <style>
-  /* A dark gallery wall (mockup): a pool of light behind the phones, ending in espresso-deep for the torn edge below.
+  /* The light gallery wall (Albin 2026-10-10: the site's light theme, not the brown wall): the hero's peach paper with
+     a pool of light behind the phones, ending in plain --peach for the torn edge below (#how-it-works tears from it).
      The phone's shadow (offset + blur) must stay inside .track's padding-bottom, or the scroller clips it. */
-  .tour { position: relative; overflow-x: clip; color: var(--cream); background: radial-gradient(70% 55% at 50% 52%, #33251D 0%, var(--dark-deep) 70%); padding: 100px 0 80px; --kick-color: var(--apricot); --jh-ink: var(--cream); --jh-accent: var(--apricot); --mn-color: var(--peach); }
-  .tour :global(:focus-visible) { outline-color: var(--apricot); }
+  .tour { position: relative; overflow-x: clip; color: var(--ink); background-color: var(--peach); background-image: linear-gradient(0deg, var(--peach) 0, rgb(253 229 203 / 0) 120px), radial-gradient(70% 60% at 50% 55%, var(--peach-hi) 0%, var(--peach) 55%, var(--peach-lo) 100%); padding: 100px 0 80px; }
   .track:focus-visible { outline-offset: -3px; }
   .tour-head { position: relative; text-align: center; padding: 0 24px; }
-  /* alpha checked in scripts/check-contrast.mjs */
-  .tour-head .tour-lead { margin: 14px auto 0; max-width: 500px; font-size: 15.5px; line-height: 1.6; color: rgba(255, 248, 238, .78); }
+  .tour-head .tour-lead { margin: 14px auto 0; max-width: 500px; font-size: 15.5px; line-height: 1.6; color: var(--muted); }
   .track { --w: 222px; --gap: 30px; position: relative; display: flex; gap: var(--gap); overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; margin: 0; padding: 46px calc(50% - var(--w) / 2) 44px; scrollbar-width: none; cursor: grab; overscroll-behavior-x: contain; list-style: none; }
   .track::-webkit-scrollbar { display: none; }
   .track:global(.dragging) { cursor: grabbing; scroll-snap-type: none; }
@@ -132,10 +132,10 @@ const wavePct = ([left, width, top, height]: number[]) => ({
   .plate { margin: 0; }
   /* The phone: a warm near-black bezel with the screenshot untouched inside. Positioned so the wave
      overlay and the Premium seal (both absolute) anchor to the bezel, not the whole plate/caption. */
-  .phone { position: relative; padding: 8px; border-radius: 30px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 16px 24px rgba(0, 0, 0, .5); }
+  .phone { position: relative; padding: 8px; border-radius: 30px; background: #17100C; box-shadow: inset 0 0 0 1.5px rgba(255, 248, 238, .12), 0 3px 6px rgba(var(--dark-rgb), .14), 0 16px 24px rgba(var(--dark-rgb), .2); }
   .phone :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 22px; user-select: none; -webkit-user-drag: none; }
-  .plno { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255, 248, 238, .78); }
-  .plno b { font-family: var(--font-script); font-weight: 700; font-size: 23px; line-height: 1; letter-spacing: 0; text-transform: none; color: var(--apricot); transform: rotate(-3deg); }
+  .plno { display: flex; flex-direction: column; align-items: flex-start; margin-top: 14px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .plno b { font-family: var(--font-script); font-weight: 700; font-size: 23px; line-height: 1; letter-spacing: 0; text-transform: none; color: var(--rust); transform: rotate(-3deg); }
   /* The Listen card's sound wave, Albin's feedback 2026-10-10: a live pulse over the screenshot's own
      waveform. Positioned in % of the phone's content box (the Picture fills it at 9:16), each bar's
      resting box matches its real bar underneath (see WAVE_PX); transform-origin: center only ever
@@ -152,17 +152,18 @@ const wavePct = ([left, width, top, height]: number[]) => ({
      the same restrained vocabulary as .tag on the Premium page (PremiumPage.astro), not the filled
      wax-seal medallion used for the hero sections. It sits just outside the screenshot, pinned to
      the bezel like a small museum-label flag, so it never covers the photo underneath. The kicker
-     text (.plno-premium) is the other half of the "clear and important" ask. */
-  .pbadge { position: absolute; top: -10px; right: 10px; z-index: 2; padding: 3px 9px; border-radius: 999px; background: #17100C; border: 1px solid rgba(226, 192, 126, .55); color: var(--brass-hi); font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; line-height: 1.4; box-shadow: 0 3px 8px rgba(0, 0, 0, .4); }
-  .plno-premium { color: var(--brass-hi); }
+     text (.plno-premium) is the other half of the "clear and important" ask; on the light wall it is the deep brass
+     (--brass-deep), since --brass-hi only reads on the dark bezel. */
+  .pbadge { position: absolute; top: -10px; right: 10px; z-index: 2; padding: 3px 9px; border-radius: 999px; background: #17100C; border: 1px solid rgba(226, 192, 126, .55); color: var(--brass-hi); font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; line-height: 1.4; box-shadow: 0 3px 8px rgba(var(--dark-rgb), .3); }
+  .plno-premium { color: var(--brass-deep); }
 
   .foot { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 18px; max-width: 660px; margin: 6px auto 0; padding: 0 24px; }
-  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255, 248, 238, .45); background: transparent; color: var(--cream); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
-  .arrow:hover:not([aria-disabled="true"]) { background: rgba(255, 248, 238, .08); border-color: var(--apricot); }
+  .arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(var(--dark-rgb), .4); background: transparent; color: var(--ink); display: grid; place-items: center; cursor: pointer; transition: background .25s, border-color .25s, transform .25s; }
+  .arrow:hover:not([aria-disabled="true"]) { background: rgba(var(--dark-rgb), .05); border-color: var(--rust); }
   .arrow:active { transform: scale(.94); }
   .arrow[aria-disabled="true"] { opacity: .35; cursor: default; }
   /* The caption is the centred plate's museum label, pinned to the wall. */
-  .cap { position: relative; display: grid; text-align: center; min-height: 92px; padding: 18px 22px 16px; background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .25), 0 16px 30px rgba(0, 0, 0, .4); transform: rotate(-.5deg); }
+  .cap { position: relative; display: grid; text-align: center; min-height: 92px; padding: 18px 22px 16px; background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(var(--dark-rgb), .14), 0 14px 28px rgba(var(--dark-rgb), .14); transform: rotate(-.5deg); }
   .cap > :not(.cap-pin) { grid-area: 1 / 1; }
   .cap-pin { position: absolute; top: -6px; left: 50%; width: 13px; height: 13px; margin-left: -6.5px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #F4DDA9, var(--brass) 55%, #7A5A22); box-shadow: 0 2px 3px rgba(0, 0, 0, .35); }
   .cap-inner { transition: opacity .35s var(--ease-paper), transform .35s var(--ease-paper); }
@@ -170,15 +171,15 @@ const wavePct = ([left, width, top, height]: number[]) => ({
   .cap-sizer { visibility: hidden; pointer-events: none; }
   .cap h3, .cap-h { margin: 0; font-family: var(--font-serif); font-weight: 400; font-size: 25px; line-height: 1.15; color: var(--ink); text-wrap: balance; }
   .cap-text { margin: 6px 0 0; font-size: 14px; color: var(--muted); line-height: 1.5; text-wrap: pretty; }
-  .rail { position: relative; width: 200px; height: 2px; margin: 26px auto 0; background: rgba(255, 248, 238, .18); border-radius: 2px; overflow: hidden; }
-  .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / var(--n)); background: var(--apricot); border-radius: 2px; transform: translateX(calc(var(--p) * 100%)); }
+  .rail { position: relative; width: 200px; height: 2px; margin: 26px auto 0; background: rgba(var(--dark-rgb), .14); border-radius: 2px; overflow: hidden; }
+  .rail span { position: absolute; top: 0; bottom: 0; width: calc(100% / var(--n)); background: var(--rust); border-radius: 2px; transform: translateX(calc(var(--p) * 100%)); }
   @media (min-width: 761px) { .track { --w: 252px; --gap: 40px; } }
   @media (max-width: 760px) { .foot { gap: 10px; padding: 0 16px; } .cap { padding: 16px 14px 14px; } .cap h3, .cap-h { font-size: 22px; } }
 
   /* No-JS fallback: the scroller still works with native horizontal scrolling, but the shared caption can only ever
      show the first slide, so read the copy as a plain list instead and drop the arrows, caption and rail. */
   .tour :global(.cap-list) { list-style: none; margin: 0 auto; padding: 0 20px; max-width: 640px; text-align: center; display: grid; gap: 28px; }
-  .tour :global(.cap-list b) { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--cream); margin: 4px 0 6px; text-wrap: balance; }
-  .tour :global(.cap-list li > span:last-child) { display: block; font-size: 14px; color: rgba(255, 248, 238, .78); line-height: 1.5; }
+  .tour :global(.cap-list b) { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 26px; line-height: 1.15; color: var(--ink); margin: 4px 0 6px; text-wrap: balance; }
+  .tour :global(.cap-list li > span:last-child) { display: block; font-size: 14px; color: var(--muted); line-height: 1.5; }
   :global(html:not(.js)) .foot, :global(html:not(.js)) .rail { display: none; }
 </style>

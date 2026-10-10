@@ -9,10 +9,11 @@ import { premiumHref } from '../lib/links';
 interface Props {
   locale: Locale;
   switchLangHref?: string;
-  /** overlay = transparent over the first view until it scrolls past; solid = espresso bar in the flow. */
+  /** overlay = transparent over the first view until it scrolls past; solid = paper bar in the flow. */
   variant?: 'overlay' | 'solid';
-  /** What the transparent overlay bar lies on: 'dark' (espresso heroes and photos: cream text) or 'peach' (the home
-   * page's peach hero, spec 2026-10-09: ink text). The solid bar is espresso with cream text either way. */
+  /** What the transparent overlay bar lies on: 'dark' (espresso heroes and photos: cream text, apricot wordmark) or
+   * 'peach' (the home page's peach hero, spec 2026-10-09: ink text, rust wordmark). The solid bar is paper with ink
+   * text and the rust wordmark either way (Albin 2026-10-10: the site's light theme, no brown bar). */
   surface?: 'dark' | 'peach';
   /** Darkens the transparent overlay bar with an espresso gradient, for pages whose photo can't guarantee
    * text contrast on its own (the field note hero). The home hero measures well without it. */
@@ -46,7 +47,7 @@ const mobileOnly = [
 
 <nav id="site-nav" class:list={['nav', `nav--${variant}`, { 'nav--scrim': scrim, 'nav--peach': surface === 'peach' }]} aria-label={t.nav.label} data-variant={variant}>
   <div class="nav-inner">
-    <a href={home} class="brand" aria-label="Birdy"><Wordmark size="32px" alt={t.alt.wordmark} color="currentColor" /></a>
+    <a href={home} class="brand" aria-label="Birdy"><Wordmark size="32px" alt={t.alt.wordmark} color="var(--nav-brand)" /></a>
     <div class="links">
       {links.map((l) => <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>{l.label}</a>)}
       <a class="lang" href={langHref} lang={langAttr}>{t.nav.switchLang}</a>
@@ -67,12 +68,23 @@ const mobileOnly = [
   const nav = document.getElementById('site-nav');
   const toggle = nav?.querySelector<HTMLButtonElement>('.menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  // The browser bar (theme-color) follows the bar: the page's own colour (Layout's themeColor) while the overlay bar is
+  // transparent over the hero, paper (--paper) while the bar is solid or the menu is open.
+  const themeMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  const heroTheme = themeMeta?.content ?? '';
+  const paperTheme = getComputedStyle(document.documentElement).getPropertyValue('--paper').trim();
+  const syncTheme = () => {
+    if (!nav || !themeMeta || !paperTheme) return;
+    const light = nav.dataset.variant !== 'overlay' || nav.classList.contains('is-solid') || nav.classList.contains('is-open');
+    themeMeta.content = light ? paperTheme : heroTheme;
+  };
   const setOpen = (open: boolean) => {
     if (!nav || !toggle || !menu) return;
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '');
     menu.hidden = !open;
     nav.classList.toggle('is-open', open);
+    syncTheme();
   };
   toggle?.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
@@ -91,13 +103,17 @@ const mobileOnly = [
   // Leaving the mobile layout closes the menu (same breakpoint as the CSS).
   matchMedia('(max-width: 1023px)').addEventListener('change', (e) => { if (!e.matches) setOpen(false); });
 
-  // Overlay variant: transparent over the dark first view ([data-nav-until]), espresso once it has scrolled past.
+  // Overlay variant: transparent over the first view ([data-nav-until]), paper once it has scrolled past.
   if (nav?.dataset.variant === 'overlay') {
     const until = document.querySelector<HTMLElement>('[data-nav-until]');
     if (!until || !('IntersectionObserver' in window)) {
       nav.classList.add('is-solid');
+      syncTheme();
     } else {
-      new IntersectionObserver((entries) => nav.classList.toggle('is-solid', !entries[entries.length - 1].isIntersecting), {
+      new IntersectionObserver((entries) => {
+        nav.classList.toggle('is-solid', !entries[entries.length - 1].isIntersecting);
+        syncTheme();
+      }, {
         rootMargin: `-${nav.offsetHeight}px 0px 0px 0px`,
       }).observe(until);
     }
@@ -105,19 +121,24 @@ const mobileOnly = [
 </script>
 
 <style>
-  .nav { z-index: 100; color: var(--cream); font-size: 13px; font-weight: 600; transition: background-color .3s var(--ease-paper), box-shadow .3s var(--ease-paper), color .3s var(--ease-paper); }
+  /* The bar is the site's light paper with ink text (Albin 2026-10-10: no brown bar). The wordmark is the orange of the
+     handwritten accent words, --nav-brand: rust on the light bar and the peach hero, apricot on the dark first views. */
+  .nav { z-index: 100; color: var(--ink); --nav-brand: var(--rust); font-size: 13px; font-weight: 600; transition: background-color .3s var(--ease-paper), box-shadow .3s var(--ease-paper), color .3s var(--ease-paper); }
   .nav--overlay { position: fixed; top: 0; left: 0; right: 0; }
   .nav--solid { position: sticky; top: 0; }
-  /* Espresso by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
-  .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--dark); box-shadow: 0 1px 0 rgba(255, 255, 255, .08); }
-  :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; }
+  /* Paper by default, also without JavaScript. The overlay bar turns transparent only when scripts run (html.js, set in Layout). */
+  .nav--solid, .nav--overlay, .nav.is-solid, .nav.is-open { background: var(--paper); box-shadow: 0 1px 0 rgba(var(--dark-rgb), .12); }
+  /* Transparent over a dark first view (the Premium page's hero, a field note's photo): cream text, apricot wordmark,
+     apricot focus rings. */
+  :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) { background: transparent; box-shadow: none; color: var(--cream); --nav-brand: var(--apricot); }
+  :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) :global(:focus-visible) { outline-color: var(--apricot); }
   /* The field note hero's photo can't guarantee link contrast on its own (each post brings a new
      photo). This travels with the fixed transparent bar and is dropped the instant it turns solid. */
   :global(html.js) .nav--overlay.nav--scrim:not(.is-solid):not(.is-open) { background: linear-gradient(180deg, rgba(var(--dark-rgb), .85), rgba(var(--dark-rgb), .6)); }
-  /* The home page's peach hero (surface="peach", spec 2026-10-09): ink on the transparent bar (the wordmark follows,
-     it is currentColor), rust focus rings, and below 1024 px no espresso disc behind the menu button and no shadow
-     under the wordmark. The solid bar (scrolled past, menu open, no JavaScript) stays espresso with cream text. */
-  :global(html.js) .nav--overlay.nav--peach:not(.is-solid):not(.is-open) { color: var(--ink); }
+  /* The home page's peach hero (surface="peach", spec 2026-10-09): ink on the transparent bar, the rust wordmark, rust
+     focus rings, and below 1024 px no espresso disc behind the menu button and no shadow under the wordmark. The solid
+     bar (scrolled past, menu open, no JavaScript) is paper. */
+  :global(html.js) .nav--overlay.nav--peach:not(.is-solid):not(.is-open) { color: var(--ink); --nav-brand: var(--rust); }
   :global(html.js) .nav--overlay.nav--peach:not(.is-solid):not(.is-open) :global(:focus-visible) { outline-color: var(--rust); }
   @media (max-width: 1023px) {
     :global(html.js) .nav--overlay.nav--peach:not(.is-solid):not(.is-open) .menu-toggle { background: none; }
@@ -131,7 +152,7 @@ const mobileOnly = [
     :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .brand { filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .45)); }
   }
   .nav.is-open { transition: none; }
-  .nav :global(:focus-visible) { outline-color: var(--apricot); }
+  .nav :global(:focus-visible) { outline-color: var(--rust); }
   .nav-inner { max-width: 1320px; margin: 0 auto; height: 76px; display: flex; align-items: center; gap: 26px; padding: 0 44px; }
   .brand { margin-right: auto; display: inline-flex; }
   .links { display: flex; align-items: center; gap: 26px; }
@@ -143,7 +164,7 @@ const mobileOnly = [
   :global(html.js) .nav--overlay:not(.is-solid):not(.is-open) .links a:hover { opacity: 1; }
   .menu-toggle { display: none; background: none; border: 0; color: inherit; width: 44px; height: 44px; align-items: center; justify-content: center; cursor: pointer; transition: background-color .3s var(--ease-paper); }
   .mobile-menu { display: none; padding: 4px 20px 20px; max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; overscroll-behavior: contain; }
-  .mobile-menu a { padding: 14px 0; border-bottom: 1px solid rgba(255, 255, 255, .1); font-size: 15px; }
+  .mobile-menu a { padding: 14px 0; border-bottom: 1px solid rgba(var(--dark-rgb), .12); font-size: 15px; }
   .mobile-menu .btn { margin-top: 16px; justify-content: center; border-bottom: 0; }
   .mobile-menu a:focus-visible { outline-offset: -3px; }
   @media (max-width: 1023px) {

@@ -21,11 +21,15 @@ interface Props {
   /** Site-relative or absolute URL of a 1200×630 share image. Defaults to the locale's og-field image. */
   ogImage?: string;
   ogImageAlt?: string;
+  /** The browser bar's colour on load (Android's address bar): the top of the page under the menu. Paper by default
+   * (the solid menu bar, Albin 2026-10-10); the overlay pages pass their hero's colour, and Nav.astro switches it to
+   * paper while the bar is solid. */
+  themeColor?: string;
 }
 
 const {
   locale, pathname, noAlternateLocale = false, alternatePath, noindex = false, jsonLd: extraJsonLd = [],
-  title, description, articleDate, ogImage, ogImageAlt,
+  title, description, articleDate, ogImage, ogImageAlt, themeColor = '#F6EFE2',
 } = Astro.props;
 const copy = getCopy(locale);
 const metaTitle = title ?? copy.meta.title;
@@ -142,7 +146,7 @@ const jsonLd = {
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={ogAlt} />
 
-    <meta name="theme-color" content="#2A1D17" />
+    <meta name="theme-color" content={themeColor} />
 
     <script is:inline type="application/ld+json" set:html={serializeJsonLd(jsonLd)} />
   </head>

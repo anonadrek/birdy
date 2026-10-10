@@ -27,7 +27,7 @@ const share = await getImage({ src: image, width: 1200, height: 630, fit: 'cover
 const playUrl = 'https://play.google.com/store/apps/details?id=se.birdy.android';
 ---
 
-<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} ogImage={share.src} ogImageAlt={imageAlt}>
+<Layout locale={locale} pathname={pathname} title={`${title} | Birdy`} description={description} articleDate={date.toISOString()} ogImage={share.src} ogImageAlt={imageAlt} themeColor="#2A1D17">
   <Nav locale={locale} variant="overlay" scrim switchLangHref={otherPath} />
   <main id="main" tabindex="-1">
     <header class="ahero">

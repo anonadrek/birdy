@@ -19,6 +19,8 @@
   --brass: #B8893A;
   --brass-hi: #E2C07E;
   --brass-ink: #241B0C;
+  /* Brass as text on light paper (the gallery's Premium labels, 2026-10-10): --brass and --brass-hi only read on dark. */
+  --brass-deep: #7A5A22;
   --cream: #FFF8EE;
   --navy: #1F3A5F;
 

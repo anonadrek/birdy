@@ -123,7 +123,7 @@ function expectHeroClear(g: Awaited<ReturnType<typeof heroGeometry>>, width: num
 
 test.describe('meny och sidfot', () => {
   for (const [path, label, getApp] of [['/sv/', 'Arter', 'Hämta appen'], ['/', 'Species', 'Get the app']] as const) {
-    test(`menyn på ${path} har nya länkar och blir espressobrun efter första vyn`, async ({ page }) => {
+    test(`menyn på ${path} har nya länkar och blir ljust papper efter första vyn`, async ({ page }) => {
       const errors = trackConsoleErrors(page);
       await page.setViewportSize({ width: 1280, height: 800 });
       await page.goto(path);
@@ -136,7 +136,7 @@ test.describe('meny och sidfot', () => {
       await expect(nav).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)');
       await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
       await expect(nav).toHaveClass(/is-solid/);
-      await expect(nav).toHaveCSS('background-color', 'rgb(42, 29, 23)');
+      await expect(nav).toHaveCSS('background-color', 'rgb(246, 239, 226)');
       expect(errors).toEqual([]);
     });
   }
@@ -248,18 +248,20 @@ test.describe('meny och sidfot', () => {
 
 test.describe('menyn över persikopappret', () => {
   for (const [path, label] of [['/sv/', 'Arter'], ['/', 'Species']] as const) {
-    test(`menyn på ${path} har mörk text över hjälten och ljus text när den blir espressobrun`, async ({ page }) => {
+    // Albin 2026-10-10: the wordmark is the orange of the handwritten accent words (rust on light), and the bar the
+    // site's light paper once it turns solid, with the same dark text as over the hero.
+    test(`menyn på ${path} har mörk text och ett rostfärgat ordmärke, över hjälten och på det ljusa pappret`, async ({ page }) => {
       await page.setViewportSize({ width: 1280, height: 800 });
       await page.goto(path);
       const nav = page.locator('#site-nav');
       await expect(nav).not.toHaveClass(/is-solid/);
       await expect(nav.locator('.links a').first()).toHaveText(label);
       await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
-      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(48, 32, 25)');
+      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
       await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
       await expect(nav).toHaveClass(/is-solid/);
-      await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
-      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+      await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
+      await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
     });
   }
 
@@ -272,25 +274,48 @@ test.describe('menyn över persikopappret', () => {
   });
 
   // Review fix nit: .is-open is excluded from the peach-over-transparent selector, so an open mobile menu
-  // falls back to the espresso bar + cream text, same as scrolled-past.
-  test('mobilmenyn över hjälten blir espressobrun med ljus text på ordmärket', async ({ page }) => {
+  // falls back to the solid bar, same as scrolled-past: the light paper with the rust wordmark (2026-10-10).
+  test('mobilmenyn över hjälten blir ljust papper med det rostfärgade ordmärket', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/');
     const nav = page.locator('#site-nav');
     await expect(nav).not.toHaveClass(/is-solid/);
-    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
     await nav.locator('.menu-toggle').click();
     await expect(nav).toHaveClass(/is-open/);
-    await expect(nav).toHaveCSS('background-color', 'rgb(42, 29, 23)');
-    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    await expect(nav).toHaveCSS('background-color', 'rgb(246, 239, 226)');
+    await expect(nav.locator('#mobile-menu a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', /^#f6efe2$/i);
+    await nav.locator('.menu-toggle').click();
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#FDE5CB');
   });
 
-  test('Premium-sidans meny behåller ljus text över sin mörka hjälte', async ({ page }) => {
+  // Over a dark first view the transparent bar keeps cream links, and the wordmark is the accent orange of the dark
+  // bands (apricot); scrolled past, it is the same light paper bar as everywhere else.
+  test('Premium-sidans meny har ljus text och ett aprikosfärgat ordmärke över sin mörka hjälte', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/sv/premium/');
-    await expect(page.locator('#site-nav')).not.toHaveClass(/is-solid/);
-    await expect(page.locator('#site-nav .links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
-    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    const nav = page.locator('#site-nav');
+    await expect(nav).not.toHaveClass(/is-solid/);
+    await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(255, 248, 238)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(242, 178, 122)');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#2A1D17');
+    await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
+    await expect(nav).toHaveClass(/is-solid/);
+    await expect(nav).toHaveCSS('background-color', 'rgb(246, 239, 226)');
+    await expect(nav.locator('.links a').first()).toHaveCSS('color', 'rgb(48, 32, 25)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', /^#f6efe2$/i);
+  });
+
+  test('sidor med fast meny har det ljusa pappret från början', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/sv/arter/talgoxe/');
+    const nav = page.locator('#site-nav');
+    await expect(nav).toHaveCSS('background-color', 'rgb(246, 239, 226)');
+    await expect(nav.locator('.brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', /^#f6efe2$/i);
   });
 
   test.describe('kontrast', () => {
@@ -305,20 +330,29 @@ test.describe('menyn över persikopappret', () => {
       const ratio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
       expect(ratio, `första menylänken mot hjälten: ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
     });
+
+    test('den första menylänken klarar 4.5:1 på det ljusa pappret', async ({ page }) => {
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await page.goto('/sv/');
+      await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
+      await expect(page.locator('#site-nav')).toHaveClass(/is-solid/);
+      const ratio = await textContrastAgainstBackground(page, page.locator('#site-nav .links a').first());
+      expect(ratio, `första menylänken på pappret: ${ratio.toFixed(2)}:1`).toBeGreaterThanOrEqual(4.5);
+    });
   });
 });
 
 test.describe('utan JavaScript', () => {
   test.use({ javaScriptEnabled: false });
 
-  test('startsidans meny är espressobrun och den döda menyknappen dold', async ({ page }) => {
+  test('startsidans meny är ljust papper och den döda menyknappen dold', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/sv/');
-    await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(42, 29, 23)');
+    await expect(page.locator('#site-nav')).toHaveCSS('background-color', 'rgb(246, 239, 226)');
     await expect(page.locator('#site-nav .menu-toggle')).toBeHidden();
-    // The peach-over-transparent rule is gated on html.js (review fix nit): without it, the bar stays
-    // espresso and the wordmark keeps the base cream color, never the ink override.
-    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    // The transparent rules are gated on html.js (review fix nit): without them the bar stays the solid paper bar
+    // with the base colours, ink text and the rust wordmark.
+    await expect(page.locator('#site-nav .brand .wordmark')).toHaveCSS('color', 'rgb(154, 69, 38)');
   });
 
   // Without JavaScript the <noscript> SVG shows the landed flock with Hornuggla's bird lit, in exactly the fit box the
@@ -1229,12 +1263,13 @@ test.describe('bloggen', () => {
     });
   });
 
-  test('listkickern och karusellkickern är apricot (espresso), inte bladets stil', async ({ page }) => {
+  // The gallery wall turned light on 2026-10-10, so its kicker is the light sections' rust; the blog's band is still espresso.
+  test('listkickern är apricot på espresso och karusellkickern rost på det ljusa pappret', async ({ page }) => {
     await page.goto('/sv/blog/');
     await expect(page.locator('.bhead .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
 
     await page.goto('/sv/');
-    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(242, 178, 122)');
+    await expect(page.locator('.tour-head .kick').first()).toHaveCSS('color', 'rgb(154, 69, 38)');
   });
 
   for (const [prefix, home] of [['/sv', '/sv/'], ['', '/']] as const) {

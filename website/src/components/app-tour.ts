@@ -77,8 +77,9 @@ if (root && track) {
         const d = ds[i];
         const a = Math.min(Math.abs(d), 1.4);
         s.style.transform = `translate3d(0, ${(a * 22).toFixed(2)}px, 0) scale(${(1 - a * 0.13).toFixed(4)}) rotate(${(Math.max(-1.4, Math.min(1.4, d)) * -2.2).toFixed(2)}deg)`;
-        // The neighbours step back into the dark gallery wall.
-        s.style.opacity = (1 - Math.min(a, 1) * 0.42).toFixed(3);
+        // The neighbours step back into the light gallery wall: a gentler fade than on the old dark wall, where the
+        // bezels went grey at .58 (2026-10-10).
+        s.style.opacity = (1 - Math.min(a, 1) * 0.2).toFixed(3);
       });
     } else {
       // Reduced motion, possibly switched on mid-visit: drop any depth styling written earlier.

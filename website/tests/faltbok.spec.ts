@@ -8,6 +8,10 @@ const ESPRESSO = 'rgb(42, 29, 23)';
 const ESPRESSO_DEEP = 'rgb(30, 20, 16)';
 // The home page's hero is peach paper since 2026-10-09 (spec 2026-10-09-startsidan-flocken-lyfter).
 const PEACH = 'rgb(253, 229, 203)';
+// The menu bar and the gallery wall are the light theme since 2026-10-10 (Albin: no brown bar, no brown wall).
+const PAPER = 'rgb(246, 239, 226)';
+const INK = 'rgb(48, 32, 25)';
+const RUST = 'rgb(154, 69, 38)';
 
 // Läs copy-texterna direkt så framtida ordbyten inte kräver testredigering (spec 2026-09-28 §fixrunda).
 const contentDir = resolve(dirname(fileURLToPath(import.meta.url)), '../src/content');
@@ -25,7 +29,12 @@ test.describe('espresso i stället för mossa', () => {
     const prem = await page.locator('#premium').evaluate((el) => getComputedStyle(el).backgroundImage);
     expect(prem).toContain(ESPRESSO);
     expect(prem).toContain(ESPRESSO_DEEP);
-    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#2A1D17');
+    // The browser bar starts as the hero's peach (Layout's themeColor) and turns paper with the solid menu bar.
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#FDE5CB');
+    await page.evaluate(() => window.scrollTo({ top: 3000, behavior: 'instant' }));
+    await expect(page.locator('#site-nav')).toHaveClass(/is-solid/);
+    await expect(page.locator('#site-nav')).toHaveCSS('background-color', PAPER);
+    await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', /^#f6efe2$/i);
   });
 
   test('brödtexten är varm brun', async ({ page }) => {
@@ -49,14 +58,18 @@ test.describe('espresso i stället för mossa', () => {
 });
 
 test.describe('galleriväggen bakom karusellen', () => {
-  test('karusellen hänger på en mörk vägg med ljus text och en fastnålad bildtext', async ({ page }) => {
+  test('karusellen hänger på det ljusa persikopappret med mörk text och en fastnålad bildtext', async ({ page }) => {
     await page.goto('/sv/');
     const tour = page.locator('#app');
+    await expect(tour).toHaveCSS('background-color', PEACH);
     const bg = await tour.evaluate((el) => getComputedStyle(el).backgroundImage);
-    expect(bg).toContain(ESPRESSO_DEEP);
-    await expect(tour.locator('.tour-head .journal-headline')).toHaveCSS('color', 'rgb(255, 248, 238)');
+    expect(bg).toContain('rgb(254, 235, 214)'); // --peach-hi, the pool of light behind the phones
+    expect(bg).toContain('rgb(248, 214, 180)'); // --peach-lo at the edges
+    expect(bg).not.toContain(ESPRESSO_DEEP);
+    await expect(tour.locator('.tour-head .journal-headline')).toHaveCSS('color', INK);
     await expect(tour.locator('.cap')).toHaveCSS('background-color', 'rgb(255, 250, 241)');
     await expect(tour.locator('.plno b').first()).toHaveText('Pl. I');
+    await expect(tour.locator('.plno b').first()).toHaveCSS('color', RUST);
   });
 });
 
@@ -185,7 +198,7 @@ test.describe('rivna papperskanter', () => {
     const edges: [string, string][] = [
       ['#season > .deckle path', PEACH],                      // hero (persikopapper) → Fåglarna i oktober
       ['#app > .deckle path', 'rgb(246, 239, 226)'],          // Fåglarna i oktober → karusellen
-      ['#how-it-works > .deckle path', 'rgb(30, 20, 16)'],    // karusellen → Tre sätt att fånga
+      ['#how-it-works > .deckle path', PEACH],                // karusellen (persikopapper) → Tre sätt att fånga
       ['#guide > .deckle path', 'rgb(255, 250, 241)'],        // Fältboken → Uppslagsverket
       ['#premium > .deckle path', 'rgb(246, 239, 226)'],      // Uppslagsverket → Premium
       ['#privacy > .deckle path', 'rgb(30, 20, 16)'],         // Premium → Integritet
